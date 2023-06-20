@@ -1,0 +1,7 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/interrupts.h" name="firmware/src/config/pic32mx_eth_sk2/interrupts.h">
+<area shape="rect" id="node1" title=" " alt="" coords="328,5,525,45"/>
+<area shape="rect" id="node2" href="$interrupts_8c.html" title=" " alt="" coords="5,101,203,141"/>
+<area shape="rect" id="node3" href="$plib__dmac_8c.html" title=" " alt="" coords="227,93,415,148"/>
+<area shape="rect" id="node4" href="$plib__gpio_8c.html" title=" " alt="" coords="439,93,627,148"/>
+<area shape="rect" id="node5" href="$plib__uart2_8c.html" title=" " alt="" coords="651,93,839,148"/>
+</map>

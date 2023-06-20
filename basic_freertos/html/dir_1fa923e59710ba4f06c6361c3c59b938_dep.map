@@ -1,0 +1,9 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/peripheral" name="firmware/src/config/pic32mx_eth_sk2/peripheral">
+<area shape="rect" id="node2" href="dir_fa99e4d653fe84613ec7710c40e42861.html" title="clk" alt="" coords="323,63,362,88"/>
+<area shape="rect" id="node3" href="dir_1db616578ddf6f7560743991b1a5f894.html" title="dmac" alt="" coords="245,63,299,88"/>
+<area shape="rect" id="node4" href="dir_08cce8d4704fd477b92fedd33fbfd6c5.html" title="evic" alt="" coords="177,63,221,88"/>
+<area shape="rect" id="node5" href="dir_85dec1ace44d2a3b554fd99a2f043df9.html" title="gpio" alt="" coords="106,63,153,88"/>
+<area shape="rect" id="node6" href="dir_855756e31cece9c1206146f67780f1d0.html" title="uart" alt="" coords="38,63,82,88"/>
+<area shape="rect" id="clust2" href="dir_1fa923e59710ba4f06c6361c3c59b938.html" alt="" coords="27,52,476,99"/>
+<area shape="rect" id="clust1" href="dir_fbb5d486fe2e2fa90a8351e32ac07eef.html" title="pic32mx_eth_sk2" alt="" coords="16,16,487,109"/>
+</map>

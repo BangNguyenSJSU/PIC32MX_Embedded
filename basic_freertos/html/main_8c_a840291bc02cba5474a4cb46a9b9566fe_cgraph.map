@@ -1,0 +1,19 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,327,56,352"/>
+<area shape="rect" id="node2" href="$initialization_8c.html#a46eeb1c940fe9530dae90ad0ce44c57f" title=" " alt="" coords="104,228,207,253"/>
+<area shape="rect" id="node14" href="$tasks_8c.html#af9ad5acf548a2bbd66c249fe2fdad3b9" title=" " alt="" coords="110,351,201,376"/>
+<area shape="rect" id="node3" href="$app__task1_8c.html#a4b6669802ed6197bcf650ea27443a1c0" title=" " alt="" coords="255,5,405,31"/>
+<area shape="rect" id="node4" href="$app__task2_8c.html#aa045b128e446d42551818d9dc4af955f" title=" " alt="" coords="255,55,405,80"/>
+<area shape="rect" id="node5" href="$app__task3_8c.html#a603324127175441bc96fd126a2851c9f" title=" " alt="" coords="255,104,405,129"/>
+<area shape="rect" id="node8" href="$bsp_8c.html#a2a70be190d35528de1a33c03b0334d34" title=" " alt="" coords="279,153,381,179"/>
+<area shape="rect" id="node9" href="$plib__clk_8c.html#aeb0970e4d572f3aa2227d0cf458982e9" title=" " alt="" coords="279,203,381,228"/>
+<area shape="rect" id="node10" href="$plib__dmac_8c.html#a4458d6d8e2975494553186503676f6ea" title=" " alt="" coords="273,252,387,277"/>
+<area shape="rect" id="node11" href="$plib__evic_8c.html#ac1263eba476d45430b32c59ff3512b44" title=" " alt="" coords="277,301,383,327"/>
+<area shape="rect" id="node12" href="$plib__gpio_8c.html#af2c14d08f5cd6da2843b09b5329c5731" title=" " alt="" coords="276,351,384,376"/>
+<area shape="rect" id="node13" href="$plib__uart2_8c.html#a1c7f32800f7e5955bc04306b2686a0d7" title=" " alt="" coords="271,400,389,425"/>
+<area shape="rect" id="node6" href="$plib__gpio_8c.html#a36ab5edd618d6fa2824cd91d7dbf9ff7" title=" " alt="" coords="453,69,631,109"/>
+<area shape="rect" id="node7" href="$plib__gpio_8c.html#a2f738dabf74d85fcda038639b57f290f" title=" " alt="" coords="459,133,625,159"/>
+<area shape="rect" id="node15" href="$_free_r_t_o_s__tasks_8c.html#a598661cdd2a6af95a077245d11e3d142" title=" " alt="" coords="259,449,401,475"/>
+<area shape="rect" id="node16" href="$port_8c.html#ade5a8c6666e7413a0355cc252029c5c6" title=" " alt="" coords="473,424,611,449"/>
+<area shape="rect" id="node17" href="$timers_8h.html#af777ab3e9ac04abd5dd21be739fa1321" title=" " alt="" coords="463,473,621,499"/>
+</map>

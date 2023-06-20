@@ -1,0 +1,22 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/osal/osal_freertos.h" name="firmware/src/config/pic32mx_eth_sk2/osal/osal_freertos.h">
+<area shape="rect" id="node1" title=" " alt="" coords="596,5,752,60"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,181,71,207"/>
+<area shape="rect" id="node3" title=" " alt="" coords="209,108,283,133"/>
+<area shape="rect" id="node4" href="$_free_r_t_o_s_8h.html" title=" " alt="" coords="308,108,403,133"/>
+<area shape="rect" id="node13" href="$queue_8h.html" title=" " alt="" coords="888,181,956,207"/>
+<area shape="rect" id="node14" href="$task_8h.html" title=" " alt="" coords="929,255,987,280"/>
+<area shape="rect" id="node16" href="$semphr_8h.html" title=" " alt="" coords="752,108,828,133"/>
+<area shape="rect" id="node17" href="$device_8h.html" title=" " alt="" coords="639,108,709,133"/>
+<area shape="rect" id="node5" title=" " alt="" coords="197,181,265,207"/>
+<area shape="rect" id="node6" href="$_free_r_t_o_s_config_8h.html" title=" " alt="" coords="290,181,421,207"/>
+<area shape="rect" id="node7" href="$projdefs_8h.html" title=" " alt="" coords="95,181,173,207"/>
+<area shape="rect" id="node8" href="$portable_8h.html" title=" " alt="" coords="445,181,524,207"/>
+<area shape="rect" id="node9" href="$deprecated__definitions_8h.html" title=" " alt="" coords="109,255,271,280"/>
+<area shape="rect" id="node10" href="$portmacro_8h.html" title=" " alt="" coords="437,255,527,280"/>
+<area shape="rect" id="node12" href="$mpu__wrappers_8h.html" title=" " alt="" coords="295,255,413,280"/>
+<area shape="rect" id="node11" title=" " alt="" coords="500,328,547,353"/>
+<area shape="rect" id="node15" href="$list_8h.html" title=" " alt="" coords="933,328,983,353"/>
+<area shape="rect" id="node18" title=" " alt="" coords="769,181,864,207"/>
+<area shape="rect" id="node19" href="$toolchain__specifics_8h.html" title=" " alt="" coords="603,181,745,207"/>
+<area shape="rect" id="node20" title=" " alt="" coords="629,255,719,280"/>
+</map>

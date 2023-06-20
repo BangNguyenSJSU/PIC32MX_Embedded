@@ -1,0 +1,12 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.h" name="firmware/src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.h">
+<area shape="rect" id="node1" title=" " alt="" coords="103,5,291,60"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,181,73,207"/>
+<area shape="rect" id="node3" title=" " alt="" coords="98,181,173,207"/>
+<area shape="rect" id="node4" title=" " alt="" coords="197,181,263,207"/>
+<area shape="rect" id="node5" href="$device_8h.html" title=" " alt="" coords="355,108,425,133"/>
+<area shape="rect" id="node10" href="$plib__uart__common_8h.html" title=" " alt="" coords="127,108,266,133"/>
+<area shape="rect" id="node6" title=" " alt="" coords="287,181,333,207"/>
+<area shape="rect" id="node7" title=" " alt="" coords="357,181,452,207"/>
+<area shape="rect" id="node8" href="$toolchain__specifics_8h.html" title=" " alt="" coords="476,181,619,207"/>
+<area shape="rect" id="node9" title=" " alt="" coords="502,255,593,280"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/osal/osal_definitions.h" name="firmware/src/config/pic32mx_eth_sk2/osal/osal_definitions.h">
+<area shape="rect" id="node1" title=" " alt="" coords="596,5,752,60"/>
+<area shape="rect" id="node2" href="$osal__freertos_8h.html" title=" " alt="" coords="607,108,741,133"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,255,71,280"/>
+<area shape="rect" id="node4" title=" " alt="" coords="209,181,283,207"/>
+<area shape="rect" id="node5" href="$_free_r_t_o_s_8h.html" title=" " alt="" coords="308,181,403,207"/>
+<area shape="rect" id="node14" href="$queue_8h.html" title=" " alt="" coords="888,255,956,280"/>
+<area shape="rect" id="node15" href="$task_8h.html" title=" " alt="" coords="929,328,987,353"/>
+<area shape="rect" id="node17" href="$semphr_8h.html" title=" " alt="" coords="752,181,828,207"/>
+<area shape="rect" id="node18" href="$device_8h.html" title=" " alt="" coords="639,181,709,207"/>
+<area shape="rect" id="node6" title=" " alt="" coords="197,255,265,280"/>
+<area shape="rect" id="node7" href="$_free_r_t_o_s_config_8h.html" title=" " alt="" coords="290,255,421,280"/>
+<area shape="rect" id="node8" href="$projdefs_8h.html" title=" " alt="" coords="95,255,173,280"/>
+<area shape="rect" id="node9" href="$portable_8h.html" title=" " alt="" coords="445,255,524,280"/>
+<area shape="rect" id="node10" href="$deprecated__definitions_8h.html" title=" " alt="" coords="109,328,271,353"/>
+<area shape="rect" id="node11" href="$portmacro_8h.html" title=" " alt="" coords="437,328,527,353"/>
+<area shape="rect" id="node13" href="$mpu__wrappers_8h.html" title=" " alt="" coords="295,328,413,353"/>
+<area shape="rect" id="node12" title=" " alt="" coords="500,401,547,427"/>
+<area shape="rect" id="node16" href="$list_8h.html" title=" " alt="" coords="933,401,983,427"/>
+<area shape="rect" id="node19" title=" " alt="" coords="769,255,864,280"/>
+<area shape="rect" id="node20" href="$toolchain__specifics_8h.html" title=" " alt="" coords="603,255,745,280"/>
+<area shape="rect" id="node21" title=" " alt="" coords="629,328,719,353"/>
+</map>

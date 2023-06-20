@@ -1,0 +1,12 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/bsp/bsp.h" name="firmware/src/config/pic32mx_eth_sk2/bsp/bsp.h">
+<area shape="rect" id="node1" title=" " alt="" coords="117,5,307,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,93,67,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="91,93,155,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="179,93,245,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="269,93,344,119"/>
+<area shape="rect" id="node6" href="$device_8h.html" title=" " alt="" coords="368,93,437,119"/>
+<area shape="rect" id="node7" title=" " alt="" coords="285,167,331,192"/>
+<area shape="rect" id="node8" title=" " alt="" coords="355,167,450,192"/>
+<area shape="rect" id="node9" href="$toolchain__specifics_8h.html" title=" " alt="" coords="474,167,617,192"/>
+<area shape="rect" id="node10" title=" " alt="" coords="500,240,591,265"/>
+</map>
