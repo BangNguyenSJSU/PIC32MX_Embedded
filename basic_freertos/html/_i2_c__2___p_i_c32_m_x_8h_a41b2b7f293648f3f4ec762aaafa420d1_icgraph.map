@@ -1,0 +1,4 @@
+<map id="I2C_restart" name="I2C_restart">
+<area shape="rect" id="node1" title="Restart the I2C transmission." alt="" coords="175,5,260,31"/>
+<area shape="rect" id="node2" href="$_i2_c__2___p_i_c32_m_x_8c.html#af4f274b7750e28b3adf099a84889b8df" title="Read data from an I2C EEPROM." alt="" coords="5,5,127,31"/>
+</map>

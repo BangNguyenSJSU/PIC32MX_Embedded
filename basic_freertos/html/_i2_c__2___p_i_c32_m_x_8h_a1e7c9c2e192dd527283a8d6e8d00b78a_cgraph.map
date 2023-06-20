@@ -1,0 +1,6 @@
+<map id="I2C_raw_read" name="I2C_raw_read">
+<area shape="rect" id="node1" title="Read a value over I2C." alt="" coords="5,31,105,56"/>
+<area shape="rect" id="node2" href="$_i2_c__2___p_i_c32_m_x_8c.html#a696265e3a30195ef1189a6aaae0a7797" title="Send an ACK over I2C." alt="" coords="157,5,226,31"/>
+<area shape="rect" id="node4" href="$_i2_c__2___p_i_c32_m_x_8c.html#aa55c158cf85ac321094089f13c60fa91" title="Send a NACK over I2C." alt="" coords="153,55,229,80"/>
+<area shape="rect" id="node3" href="$_i2_c__2___p_i_c32_m_x_8c.html#a66ce13bb70bc05024b706c2aa753ec6e" title="Wait for the I2C module to become idle." alt="" coords="277,31,396,56"/>
+</map>

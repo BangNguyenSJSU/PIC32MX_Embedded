@@ -1,0 +1,4 @@
+<map id="I2C_nack" name="I2C_nack">
+<area shape="rect" id="node1" title="Send a NACK over I2C." alt="" coords="5,5,81,31"/>
+<area shape="rect" id="node2" href="$_i2_c__2___p_i_c32_m_x_8c.html#a66ce13bb70bc05024b706c2aa753ec6e" title="Wait for the I2C module to become idle." alt="" coords="129,5,248,31"/>
+</map>

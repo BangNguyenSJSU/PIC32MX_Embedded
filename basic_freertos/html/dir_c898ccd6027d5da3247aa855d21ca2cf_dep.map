@@ -1,10 +1,12 @@
 <map id="firmware/src" name="firmware/src">
-<area shape="rect" id="node2" href="dir_e77302991068fc73f3ccf4f15242f482.html" title="config" alt="" coords="37,136,93,161"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000018_000002.html" title="25" alt="" coords="73,113,88,127"/>
-<area shape="rect" id="node3" href="dir_f4275fb7e74584151b0dafcce4b078e7.html" title="third_party" alt="" coords="37,209,120,235"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000018_000020.html" title="41" alt="" coords="94,189,109,204"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000002_000020.html" title="12" alt="" coords="65,182,79,196"/>
-<area shape="rect" id="edge4-headlabel" href="dir_000020_000002.html" title="2" alt="" coords="68,174,76,189"/>
-<area shape="rect" id="clust2" href="dir_c898ccd6027d5da3247aa855d21ca2cf.html" alt="" coords="27,52,131,245"/>
-<area shape="rect" id="clust1" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html" title="firmware" alt="" coords="16,16,141,256"/>
+<area shape="rect" id="node2" href="dir_e77302991068fc73f3ccf4f15242f482.html" title="config" alt="" coords="91,209,147,235"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000022_000002.html" title="21" alt="" coords="81,184,95,199"/>
+<area shape="rect" id="node4" href="dir_377d44da65dca090c6546de0eb0f85b7.html" title="USER_DEFINITION_CONFIG" alt="" coords="65,136,255,161"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000022_000029.html" title="1" alt="" coords="143,109,151,123"/>
+<area shape="rect" id="node3" href="dir_f4275fb7e74584151b0dafcce4b078e7.html" title="third_party" alt="" coords="77,283,160,308"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000002_000025.html" title="12" alt="" coords="111,256,125,270"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000025_000002.html" title="2" alt="" coords="115,247,123,261"/>
+<area shape="rect" id="edge5-headlabel" href="dir_000029_000002.html" title="1" alt="" coords="138,190,146,205"/>
+<area shape="rect" id="clust2" href="dir_c898ccd6027d5da3247aa855d21ca2cf.html" alt="" coords="27,52,267,319"/>
+<area shape="rect" id="clust1" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html" title="firmware" alt="" coords="16,16,277,329"/>
 </map>

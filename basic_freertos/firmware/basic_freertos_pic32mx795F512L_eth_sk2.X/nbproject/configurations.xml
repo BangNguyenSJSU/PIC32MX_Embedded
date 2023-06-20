@@ -11,10 +11,6 @@
           <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
             <itemPath>../src/config/pic32mx_eth_sk2/bsp/bsp.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="driver" displayName="driver" projectFiles="true">
-            <itemPath>../src/config/pic32mx_eth_sk2/driver/driver.h</itemPath>
-            <itemPath>../src/config/pic32mx_eth_sk2/driver/driver_common.h</itemPath>
-          </logicalFolder>
           <logicalFolder name="osal" displayName="osal" projectFiles="true">
             <itemPath>../src/config/pic32mx_eth_sk2/osal/osal.h</itemPath>
             <itemPath>../src/config/pic32mx_eth_sk2/osal/osal_definitions.h</itemPath>
@@ -59,18 +55,6 @@
             <logicalFolder name="debug" displayName="debug" projectFiles="true">
               <itemPath>../src/config/pic32mx_eth_sk2/system/debug/sys_debug.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="dma" displayName="dma" projectFiles="true">
-              <itemPath>../src/config/pic32mx_eth_sk2/system/dma/sys_dma.h</itemPath>
-              <itemPath>../src/config/pic32mx_eth_sk2/system/dma/sys_dma_mapping.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="int" displayName="int" projectFiles="true">
-              <itemPath>../src/config/pic32mx_eth_sk2/system/int/sys_int.h</itemPath>
-              <itemPath>../src/config/pic32mx_eth_sk2/system/int/sys_int_mapping.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="ports" displayName="ports" projectFiles="true">
-              <itemPath>../src/config/pic32mx_eth_sk2/system/ports/sys_ports.h</itemPath>
-              <itemPath>../src/config/pic32mx_eth_sk2/system/ports/sys_ports_mapping.h</itemPath>
-            </logicalFolder>
             <logicalFolder name="reset" displayName="reset" projectFiles="true">
               <itemPath>../src/config/pic32mx_eth_sk2/system/reset/sys_reset.h</itemPath>
             </logicalFolder>
@@ -78,14 +62,11 @@
             <itemPath>../src/config/pic32mx_eth_sk2/system/system.h</itemPath>
             <itemPath>../src/config/pic32mx_eth_sk2/system/system_common.h</itemPath>
           </logicalFolder>
-          <itemPath>../src/config/pic32mx_eth_sk2/user.h</itemPath>
           <itemPath>../src/config/pic32mx_eth_sk2/FreeRTOSConfig.h</itemPath>
           <itemPath>../src/config/pic32mx_eth_sk2/interrupts.h</itemPath>
-          <itemPath>../src/config/pic32mx_eth_sk2/sys_tasks.h</itemPath>
-          <itemPath>../src/config/pic32mx_eth_sk2/definitions.h</itemPath>
           <itemPath>../src/config/pic32mx_eth_sk2/toolchain_specifics.h</itemPath>
-          <itemPath>../src/config/pic32mx_eth_sk2/configuration.h</itemPath>
           <itemPath>../src/config/pic32mx_eth_sk2/device.h</itemPath>
+          <itemPath>../src/config/pic32mx_eth_sk2/sys_tasksObject.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="FreeRTOS" projectFiles="true">
@@ -118,12 +99,10 @@
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>../src/app_task1.h</itemPath>
-      <itemPath>../src/app_task2.h</itemPath>
-      <itemPath>../src/app_task3.h</itemPath>
-      <itemPath>../src/app4.h</itemPath>
-      <itemPath>../src/app3.h</itemPath>
-      <itemPath>../src/app5.h</itemPath>
+      <logicalFolder name="USER_HELPER" displayName="USER_HELPER" projectFiles="true">
+        <itemPath>../src/USER_HELPER/HELPER_FUNCTION.h</itemPath>
+      </logicalFolder>
+      <itemPath>../src/LCD_Task1.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -188,12 +167,6 @@
             <itemPath>../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
           <logicalFolder name="system" displayName="system" projectFiles="true">
-            <logicalFolder name="dma" displayName="dma" projectFiles="true">
-              <itemPath>../src/config/pic32mx_eth_sk2/system/dma/sys_dma.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="int" displayName="int" projectFiles="true">
-              <itemPath>../src/config/pic32mx_eth_sk2/system/int/src/sys_int.c</itemPath>
-            </logicalFolder>
             <logicalFolder name="reset" displayName="reset" projectFiles="true">
               <itemPath>../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c</itemPath>
             </logicalFolder>
@@ -203,7 +176,7 @@
           <itemPath>../src/config/pic32mx_eth_sk2/interrupts_a.S</itemPath>
           <itemPath>../src/config/pic32mx_eth_sk2/exceptions.c</itemPath>
           <itemPath>../src/config/pic32mx_eth_sk2/freertos_hooks.c</itemPath>
-          <itemPath>../src/config/pic32mx_eth_sk2/tasks.c</itemPath>
+          <itemPath>../src/config/pic32mx_eth_sk2/sys_tasks.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="FreeRTOS" projectFiles="true">
@@ -228,20 +201,11 @@
           <itemPath>../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="USER_HELPER" displayName="USER_HELPER" projectFiles="true">
+        <itemPath>../src/USER_HELPER/HELPER_FUNCTION.c</itemPath>
+      </logicalFolder>
       <itemPath>../src/main.c</itemPath>
-      <itemPath>../src/app_task1.c</itemPath>
-      <itemPath>../src/app_task2.c</itemPath>
-      <itemPath>../src/app_task3.c</itemPath>
-      <itemPath>../src/app4.c</itemPath>
-      <itemPath>../src/app3.c</itemPath>
-      <itemPath>../src/app5.c</itemPath>
-    </logicalFolder>
-    <logicalFolder name="USER_DEFINITION_CONFIG"
-                   displayName="USER_DEFINITION_CONFIG"
-                   projectFiles="true">
-      <itemPath>../src/USER_DEFINITION_CONFIG/HELPER_FUNCTION.c</itemPath>
-      <itemPath>../src/USER_DEFINITION_CONFIG/SYSTEM_DEF.c</itemPath>
-      <itemPath>../src/USER_DEFINITION_CONFIG/SYSTEM_DEF.h</itemPath>
+      <itemPath>../src/LCD_Task1.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -293,6 +257,7 @@
       <C32>
         <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -322,6 +287,7 @@
         <property key="additional-options-chop-files" value="false"/>
       </C32-AR>
       <C32-AS>
+        <property key="appendMe" value=""/>
         <property key="assembler-symbols" value=""/>
         <property key="enable-symbols" value="true"/>
         <property key="exclude-floating-point-library" value="false"/>
@@ -351,6 +317,7 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -390,6 +357,7 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -430,6 +398,9 @@
         <property key="stack-smashing" value=""/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
+      <PKOBSKDEPlatformTool>
+        <property key="firmware.download.all" value="false"/>
+      </PKOBSKDEPlatformTool>
       <PM3PlatformTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="ToolFirmwareFilePath"

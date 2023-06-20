@@ -12,5 +12,7 @@ var searchData=
   ['_5f_5fstatic_5fforceinline_9',['__STATIC_FORCEINLINE',['../toolchain__specifics_8h.html#ab904513442afdf77d4f8c74f23cbb040',1,'toolchain_specifics.h']]],
   ['_5f_5fstatic_5finline_10',['__STATIC_INLINE',['../toolchain__specifics_8h.html#aba87361bfad2ae52cfe2f40c1a1dbf9c',1,'toolchain_specifics.h']]],
   ['_5f_5fused_11',['__USED',['../toolchain__specifics_8h.html#a3e40e4c553fc11588f7a4c2a19e789e0',1,'toolchain_specifics.h']]],
-  ['_5f_5fweak_12',['__WEAK',['../toolchain__specifics_8h.html#ac607bf387b29162be6a9b77fc7999539',1,'toolchain_specifics.h']]]
+  ['_5f_5fweak_12',['__WEAK',['../toolchain__specifics_8h.html#ac607bf387b29162be6a9b77fc7999539',1,'toolchain_specifics.h']]],
+  ['_5fgetinstructionclock_13',['_GetInstructionClock',['../_s_y_s_t_e_m___d_e_f_8h.html#a8f86353ce2495627180080ee752665ca',1,'SYSTEM_DEF.h']]],
+  ['_5fgetperipheralclock_14',['_GetPeripheralClock',['../_s_y_s_t_e_m___d_e_f_8h.html#a4c4c08b728c81ea366676f084880a0fd',1,'SYSTEM_DEF.h']]]
 ];

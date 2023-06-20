@@ -1,0 +1,6 @@
+<map id="I2C_start" name="I2C_start">
+<area shape="rect" id="node1" title="Start the I2C transmission." alt="" coords="176,55,251,80"/>
+<area shape="rect" id="node2" href="$_i2_c__2___p_i_c32_m_x_8c.html#af4f274b7750e28b3adf099a84889b8df" title="Read data from an I2C EEPROM." alt="" coords="6,5,127,31"/>
+<area shape="rect" id="node3" href="$_i2_c__2___p_i_c32_m_x_8c.html#a5de3eb544a10c007eecd01a09eb2e477" title="Write data to an I2C EEPROM." alt="" coords="5,55,128,80"/>
+<area shape="rect" id="node4" href="$_i2_c__2___p_i_c32_m_x_8c.html#aca626b2cc6cf4504c6e2578b3dfdbc24" title=" " alt="" coords="14,104,119,129"/>
+</map>

@@ -3,7 +3,9 @@
 #include <xc.h>
 #include <sys/attribs.h>
 #include "I2C_2_PIC32MX.h"
-#include "../../USER_DEFINITION_CONFIG/SYSTEM_DEF.h"
+#include "../../definitions.h" 
+#include "../coretimer/plib_coretimer.h"
+
 
 void
 I2C_Initalize (double i2cClkFrequency)
@@ -153,7 +155,7 @@ i2c_eeprom_write (uint8_t slaveAddress, uint16_t memLocation,unsigned char* data
 {
   uint8_t ByteIsRead = 0;
   bool ready = false;
-  delay_coreTimer_ms (5);
+  CORETIMER_DelayMs (5);
 
   if (size > 128)
     {
@@ -192,7 +194,7 @@ i2c_eeprom_read (uint8_t slaveAddress, uint16_t memLocation,unsigned char* data,
   uint8_t writtenByte = 0;
   bool ready = false;
   bool isRestartOk = false;
-  delay_coreTimer_ms (5);
+  CORETIMER_DelayMs (5);
 
   if (size > 128)
     {
@@ -252,7 +254,7 @@ uint8_t
 i2c_LCD_write (uint8_t slaveAddress,unsigned char* data)
 {
   bool ready = false;
-  delay_coreTimer_ms (1);
+  CORETIMER_DelayMs (1);
 
   ready = I2C_start ();
   if (!ready)

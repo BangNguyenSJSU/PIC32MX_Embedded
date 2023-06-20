@@ -4,7 +4,7 @@ var struct_queue_definition =
     [ "cTxLock", "struct_queue_definition.html#a24ac3f0707f098da2a22244d843fcf82", null ],
     [ "pcHead", "struct_queue_definition.html#a487dc7e43b380c58212cba72bc33e0ed", null ],
     [ "pcWriteTo", "struct_queue_definition.html#abdf13cc013c8488848cee3fce4f0fed3", null ],
-    [ "u", "struct_queue_definition.html#a026466df9465a22741441e259aa985aa", null ],
+    [ "u", "struct_queue_definition.html#a14d0765debf8b5e857e867a948c55042", null ],
     [ "uxItemSize", "struct_queue_definition.html#a81bb7d3826909244baa9debf5a55abb0", null ],
     [ "uxLength", "struct_queue_definition.html#ae80d17a812c669d4d41265b7f693988c", null ],
     [ "uxMessagesWaiting", "struct_queue_definition.html#a12b07a40152d0f21488ca06d362d13d1", null ],

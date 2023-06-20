@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); 
 <li>CACHE_LINE_SIZE&#160;:&#160;<a class="el" href="toolchain__specifics_8h.html#af89f60b07247176687889ade776c8e10">toolchain_specifics.h</a></li>
 <li>CHANGE_NOTICE_Handler()&#160;:&#160;<a class="el" href="interrupts_8c.html#a7ec354d7ce62b7e6bedc94dd77904f92">interrupts.c</a></li>
 <li>CHANGE_NOTICE_InterruptHandler()&#160;:&#160;<a class="el" href="interrupts_8h.html#a4137b471b9df8a730d36712b3b72b700">interrupts.h</a></li>
+<li>CLAMP_VALUE_TO_RANGE&#160;:&#160;<a class="el" href="_i2_c___l_c_d_8c.html#af72c66bec4371a65945e37a85c203c0e">I2C_LCD.c</a></li>
 <li>CLK_Initialize()&#160;:&#160;<a class="el" href="plib__clk_8c.html#aeb0970e4d572f3aa2227d0cf458982e9">plib_clk.c</a>, <a class="el" href="plib__clk_8h.html#aeb0970e4d572f3aa2227d0cf458982e9">plib_clk.h</a></li>
 <li>CN0_PIN&#160;:&#160;<a class="el" href="plib__gpio_8h.html#a30e0a0fff7720521a36d27bae2c955a7ad7803e6adc22887bc2535a2420db15e9">plib_gpio.h</a></li>
 <li>CN10_PIN&#160;:&#160;<a class="el" href="plib__gpio_8h.html#a30e0a0fff7720521a36d27bae2c955a7a88211f68ee4b0d95c6a72185b65df4a1">plib_gpio.h</a></li>
@@ -197,13 +198,29 @@ $(document).ready(function(){initNavTree('globals_c.html',''); initResizable(); 
 <li>configUSE_TIME_SLICING&#160;:&#160;<a class="el" href="_free_r_t_o_s_config_8h.html#a493c5763eb7a39bd80779a1c58de0d82">FreeRTOSConfig.h</a>, <a class="el" href="_free_r_t_o_s_8h.html#a493c5763eb7a39bd80779a1c58de0d82">FreeRTOS.h</a></li>
 <li>configUSE_TIMERS&#160;:&#160;<a class="el" href="_free_r_t_o_s_config_8h.html#ac342ae309b0c53828d2ecad3e6de355b">FreeRTOSConfig.h</a>, <a class="el" href="_free_r_t_o_s_8h.html#ac342ae309b0c53828d2ecad3e6de355b">FreeRTOS.h</a></li>
 <li>configUSE_TRACE_FACILITY&#160;:&#160;<a class="el" href="_free_r_t_o_s_config_8h.html#a27f5ee137dc9f125681a31f0b0a4b3be">FreeRTOSConfig.h</a>, <a class="el" href="_free_r_t_o_s_8h.html#a27f5ee137dc9f125681a31f0b0a4b3be">FreeRTOS.h</a></li>
+<li>convert_uint16_to_uint32()&#160;:&#160;<a class="el" href="_h_e_l_p_e_r___f_u_n_c_t_i_o_n_8c.html#af1e82f252b2655fc86853ad4e18eaa9a">HELPER_FUNCTION.c</a>, <a class="el" href="_s_y_s_t_e_m___d_e_f_8h.html#af1e82f252b2655fc86853ad4e18eaa9a">SYSTEM_DEF.h</a></li>
+<li>convert_uint16_to_uint8()&#160;:&#160;<a class="el" href="_h_e_l_p_e_r___f_u_n_c_t_i_o_n_8c.html#a4bd01b0c460806c9259237d17f453a2f">HELPER_FUNCTION.c</a>, <a class="el" href="_s_y_s_t_e_m___d_e_f_8h.html#a4bd01b0c460806c9259237d17f453a2f">SYSTEM_DEF.h</a></li>
+<li>convert_uint32_to_uint16()&#160;:&#160;<a class="el" href="_h_e_l_p_e_r___f_u_n_c_t_i_o_n_8c.html#a28167a40abdb53c0f3cbf00452b80c1e">HELPER_FUNCTION.c</a>, <a class="el" href="_s_y_s_t_e_m___d_e_f_8h.html#a28167a40abdb53c0f3cbf00452b80c1e">SYSTEM_DEF.h</a></li>
+<li>convert_uint8_to_uint16()&#160;:&#160;<a class="el" href="_h_e_l_p_e_r___f_u_n_c_t_i_o_n_8c.html#a4d63919eef7fc4f87fa6275f018ea108">HELPER_FUNCTION.c</a>, <a class="el" href="_s_y_s_t_e_m___d_e_f_8h.html#a4d63919eef7fc4f87fa6275f018ea108">SYSTEM_DEF.h</a></li>
 <li>ConvertToPhysicalAddress&#160;:&#160;<a class="el" href="plib__dmac_8c.html#a538c09054ebff41eab11f18e2ef432a0">plib_dmac.c</a></li>
 <li>ConvertToVirtualAddress&#160;:&#160;<a class="el" href="plib__dmac_8c.html#a6b89cb667675a890e096aef2696d0f4c">plib_dmac.c</a></li>
+<li>CORE_TIMER_COMPARE_VALUE&#160;:&#160;<a class="el" href="plib__coretimer_8h.html#a8818d6685f56b1603522ca276ec33891">plib_coretimer.h</a></li>
+<li>CORE_TIMER_FREQUENCY&#160;:&#160;<a class="el" href="plib__coretimer_8h.html#a889a410c1cb5accee3bd9fd89c39e89c">plib_coretimer.h</a></li>
+<li>CORETIMER_CompareHasExpired()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#a770578319b29425c30dcbf12431592af">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#a770578319b29425c30dcbf12431592af">plib_coretimer.h</a></li>
+<li>CORETIMER_CompareSet()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#a18a127109aceaa4252fc8301b195403f">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#a18a127109aceaa4252fc8301b195403f">plib_coretimer.h</a></li>
+<li>CORETIMER_CounterGet()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#ad54996e4c8d6d2b7852856cc0537a39c">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#ad54996e4c8d6d2b7852856cc0537a39c">plib_coretimer.h</a></li>
+<li>CORETIMER_DelayMs()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#ad4242affb96a82d24e6b4d4dfcbfbcef">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#ad4242affb96a82d24e6b4d4dfcbfbcef">plib_coretimer.h</a></li>
+<li>CORETIMER_DelayUs()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#ae25b73b128f7fcc5e31041144ffea269">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#ae25b73b128f7fcc5e31041144ffea269">plib_coretimer.h</a></li>
+<li>CORETIMER_FrequencyGet()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#a02fffef9ebb020508c3d85e70f4686c4">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#a02fffef9ebb020508c3d85e70f4686c4">plib_coretimer.h</a></li>
+<li>CORETIMER_Initialize()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#abab68c4ee3ffa105b12daaf5ce47bfbb">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#abab68c4ee3ffa105b12daaf5ce47bfbb">plib_coretimer.h</a></li>
+<li>CORETIMER_Start()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#a58256d340ee493bffb9de8c3efa7c2fd">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#a58256d340ee493bffb9de8c3efa7c2fd">plib_coretimer.h</a></li>
+<li>CORETIMER_Stop()&#160;:&#160;<a class="el" href="plib__coretimer_8c.html#a19b9806cd7ea5b389941e95e93f352c2">plib_coretimer.c</a>, <a class="el" href="plib__coretimer_8h.html#a19b9806cd7ea5b389941e95e93f352c2">plib_coretimer.h</a></li>
 <li>CoRoutineHandle_t&#160;:&#160;<a class="el" href="croutine_8h.html#a33b9d058688c92258155b5756d9936dd">croutine.h</a></li>
 <li>CPU_CLOCK_FREQUENCY&#160;:&#160;<a class="el" href="definitions_8h.html#a3c9af096e26c5f62dac4f095f4fab32a">definitions.h</a></li>
 <li>CRCB_t&#160;:&#160;<a class="el" href="croutine_8h.html#a1c15f304ffe02d0777ae2509b3658e6f">croutine.h</a></li>
 <li>crCOROUTINE_CODE&#160;:&#160;<a class="el" href="croutine_8h.html#a397a7505718dd366d8411ce324c49758">croutine.h</a></li>
 <li>crDELAY&#160;:&#160;<a class="el" href="croutine_8h.html#a05a06feb11028f2d1d440ea335f562ba">croutine.h</a></li>
+<li>createChar()&#160;:&#160;<a class="el" href="_i2_c___l_c_d_8c.html#ae223e8f06b94d88ea2d154f93aba631f">I2C_LCD.c</a>, <a class="el" href="_i2_c___l_c_d_8h.html#ae223e8f06b94d88ea2d154f93aba631f">I2C_LCD.h</a></li>
 <li>crEND&#160;:&#160;<a class="el" href="croutine_8h.html#ae6038cc976689b50000475ebfc4e2f23">croutine.h</a></li>
 <li>crQUEUE_RECEIVE&#160;:&#160;<a class="el" href="croutine_8h.html#a586d57fd9a3e2aa5ae66484ed3be36c9">croutine.h</a></li>
 <li>crQUEUE_RECEIVE_FROM_ISR&#160;:&#160;<a class="el" href="croutine_8h.html#a9c0fa977ca69adbddb4811affa2a71f7">croutine.h</a></li>

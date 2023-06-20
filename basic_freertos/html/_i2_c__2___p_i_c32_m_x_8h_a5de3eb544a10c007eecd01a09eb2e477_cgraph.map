@@ -1,0 +1,8 @@
+<map id="i2c_eeprom_write" name="i2c_eeprom_write">
+<area shape="rect" id="node1" title="Write data to an I2C EEPROM." alt="" coords="5,80,128,105"/>
+<area shape="rect" id="node2" href="$_h_e_l_p_e_r___f_u_n_c_t_i_o_n_8c.html#a924ade522dd497d0cc5a9d20f479859a" title=" " alt="" coords="176,5,319,31"/>
+<area shape="rect" id="node3" href="$_i2_c__2___p_i_c32_m_x_8c.html#ad2c73e103c0cf83a19799995c94642ab" title="Write a value over I2C." alt="" coords="196,55,299,80"/>
+<area shape="rect" id="node5" href="$_i2_c__2___p_i_c32_m_x_8c.html#a4e9b2b336ded405bdd99a520c741285b" title="Start the I2C transmission." alt="" coords="210,104,285,129"/>
+<area shape="rect" id="node6" href="$_i2_c__2___p_i_c32_m_x_8c.html#a1ac05df83d693e3df4b48c87665bb843" title="Stop the I2C transmission." alt="" coords="211,153,284,179"/>
+<area shape="rect" id="node4" href="$_i2_c__2___p_i_c32_m_x_8c.html#a66ce13bb70bc05024b706c2aa753ec6e" title="Wait for the I2C module to become idle." alt="" coords="367,104,485,129"/>
+</map>

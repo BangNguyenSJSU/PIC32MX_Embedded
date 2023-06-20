@@ -4,7 +4,7 @@ var dir_fbb5d486fe2e2fa90a8351e32ac07eef =
     [ "osal", "dir_046e8230ed88ecaa47ef0487b448a508.html", "dir_046e8230ed88ecaa47ef0487b448a508" ],
     [ "peripheral", "dir_1fa923e59710ba4f06c6361c3c59b938.html", "dir_1fa923e59710ba4f06c6361c3c59b938" ],
     [ "stdio", "dir_58d23f05d89fc0f89bfbecc0f441b630.html", "dir_58d23f05d89fc0f89bfbecc0f441b630" ],
-    [ "configuration.h", "configuration_8h.html", null ],
+    [ "system", "dir_a0075e06fad57c1aee85ad77d222a568.html", "dir_a0075e06fad57c1aee85ad77d222a568" ],
     [ "definitions.h", "definitions_8h.html", "definitions_8h" ],
     [ "device.h", "device_8h.html", null ],
     [ "exceptions.c", "exceptions_8c.html", "exceptions_8c" ],

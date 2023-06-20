@@ -53,7 +53,6 @@
 
 #include <stdbool.h>
 #include "system/system.h"
-#include "configuration.h"
 #ifdef SYS_DEBUG_USE_CONSOLE
 #include "system/console/sys_console.h"
 #endif

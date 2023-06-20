@@ -1,0 +1,4 @@
+<map id="I2C_raw_write" name="I2C_raw_write">
+<area shape="rect" id="node1" title="Write a value over I2C." alt="" coords="5,5,108,31"/>
+<area shape="rect" id="node2" href="$_i2_c__2___p_i_c32_m_x_8c.html#a66ce13bb70bc05024b706c2aa753ec6e" title="Wait for the I2C module to become idle." alt="" coords="156,5,275,31"/>
+</map>

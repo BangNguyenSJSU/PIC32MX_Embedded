@@ -1,0 +1,12 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.h" name="firmware/src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.h">
+<area shape="rect" id="node1" title=" " alt="" coords="56,5,244,60"/>
+<area shape="rect" id="node2" title=" " alt="" coords="73,181,141,207"/>
+<area shape="rect" id="node3" title=" " alt="" coords="23,108,88,133"/>
+<area shape="rect" id="node4" title=" " alt="" coords="113,108,187,133"/>
+<area shape="rect" id="node5" href="$device_8h.html" title=" " alt="" coords="371,108,441,133"/>
+<area shape="rect" id="node10" href="$plib__tmr__common_8h.html" title=" " alt="" coords="211,108,347,133"/>
+<area shape="rect" id="node6" title=" " alt="" coords="288,181,335,207"/>
+<area shape="rect" id="node7" title=" " alt="" coords="359,181,453,207"/>
+<area shape="rect" id="node8" href="$toolchain__specifics_8h.html" title=" " alt="" coords="477,181,620,207"/>
+<area shape="rect" id="node9" title=" " alt="" coords="503,255,594,280"/>
+</map>

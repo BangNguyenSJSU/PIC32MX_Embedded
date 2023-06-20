@@ -1,0 +1,10 @@
+<map id="LCD_init" name="LCD_init">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,76,105"/>
+<area shape="rect" id="node2" href="$_i2_c___l_c_d_8c.html#a71c2723c510c3511ac9a5d09bd8e2a38" title=" " alt="" coords="134,55,206,80"/>
+<area shape="rect" id="node8" href="$_i2_c__2___p_i_c32_m_x_8c.html#a122e104997f828dd710de2d37d8204bb" title="Initialize the I2C module." alt="" coords="124,104,216,129"/>
+<area shape="rect" id="node3" href="$_i2_c___l_c_d_8c.html#af418651def230cd56a8c988983707ece" title=" " alt="" coords="264,55,324,80"/>
+<area shape="rect" id="node4" href="$_i2_c___l_c_d_8c.html#a23ccca9e67633ad54a9768778ba510dc" title=" " alt="" coords="577,29,715,55"/>
+<area shape="rect" id="node5" href="$_h_e_l_p_e_r___f_u_n_c_t_i_o_n_8c.html#a924ade522dd497d0cc5a9d20f479859a" title=" " alt="" coords="575,79,717,104"/>
+<area shape="rect" id="node6" href="$_i2_c___l_c_d_8c.html#a173aa582ee66dc0d81749e2aa4aa83a4" title=" " alt="" coords="386,29,513,55"/>
+<area shape="rect" id="node7" href="$_i2_c___l_c_d_8c.html#a5c735f0f003c0b85ac564fc2c8533e31" title=" " alt="" coords="372,79,527,104"/>
+</map>

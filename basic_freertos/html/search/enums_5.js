@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['task1_5fstates_0',['TASK1_STATES',['../task1_8h.html#a598e4b9f53bafa57fda1ec772c8e4571',1,'task1.h']]],
-  ['task2_5fstates_1',['TASK2_STATES',['../task2_8h.html#aa2c132d06ea7ab4eda37f6e5714a5a00',1,'task2.h']]],
-  ['task3_5fstates_2',['TASK3_STATES',['../task3_8h.html#a632c347538432cfdea890cee726c65f0',1,'task3.h']]],
-  ['task4_5fstates_3',['TASK4_STATES',['../task4_8h.html#a8694dcdbe89fe0374be7132fb186e603',1,'task4.h']]]
+  ['osal_5fcrit_5ftype_0',['OSAL_CRIT_TYPE',['../osal__freertos_8h.html#add8298d7faecf9ad180e842cd0a3b8df',1,'osal_freertos.h']]],
+  ['osal_5fresult_1',['OSAL_RESULT',['../osal__freertos_8h.html#a7336b4c1359f6efe87aa0d430a54e8f4',1,'osal_freertos.h']]],
+  ['osal_5fsem_5ftype_2',['OSAL_SEM_TYPE',['../osal__freertos_8h.html#a4f149265f9ec0bda73350bd95220d470',1,'osal_freertos.h']]]
 ];

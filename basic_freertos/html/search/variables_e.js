@@ -1,9 +1,19 @@
 var searchData=
 [
-  ['s5_0',['s5',['../_i_s_r___support_8h.html#ac191afe269c7fb173a43955ccc2ebe9e',1,'ISR_Support.h']]],
-  ['s6_1',['s6',['../_i_s_r___support_8h.html#a9b90f6fbe05a247d9f056e033e3f2b0c',1,'ISR_Support.h']]],
-  ['s8_2',['s8',['../_i_s_r___support_8h.html#a519be53b177adec4308908cb794cad64',1,'ISR_Support.h']]],
-  ['sp_3',['sp',['../_i_s_r___support_8h.html#a71a70706cd710e6e6dd6429ceeb6d5be',1,'ISR_Support.h']]],
-  ['state_4',['state',['../struct_a_p_p___t_a_s_k1___d_a_t_a.html#aea2b66f783db9760f502f92d38b430d0',1,'APP_TASK1_DATA::state()'],['../struct_a_p_p___t_a_s_k2___d_a_t_a.html#a161b727ca380216c6b6b531a51149997',1,'APP_TASK2_DATA::state()'],['../struct_a_p_p___t_a_s_k3___d_a_t_a.html#a96d7798c025e37095c8ef7ec55f4ca21',1,'APP_TASK3_DATA::state()'],['../struct_t_a_s_k1___d_a_t_a.html#a2b294363ec814948eeb610eadefacbbc',1,'TASK1_DATA::state()'],['../struct_t_a_s_k2___d_a_t_a.html#aa22ae31c0acabd92fd10b3ab887fce87',1,'TASK2_DATA::state()'],['../struct_t_a_s_k3___d_a_t_a.html#a3e13fd4d636c4f8d479ae9d73d1446c7',1,'TASK3_DATA::state()'],['../struct_t_a_s_k4___d_a_t_a.html#a7eb19bdd1df370d0275769ac8757fd81',1,'TASK4_DATA::state()']]],
-  ['stopbits_5',['stopBits',['../struct_u_a_r_t___s_e_r_i_a_l___s_e_t_u_p.html#a2e9770ffb638cd9265fdbc772d4e067d',1,'UART_SERIAL_SETUP']]]
+  ['ra_0',['ra',['../_i_s_r___support_8h.html#acca3a084c342502030b243e00ecd3791',1,'ISR_Support.h']]],
+  ['rdbuffersize_1',['rdBufferSize',['../struct_u_a_r_t___r_i_n_g___b_u_f_f_e_r___o_b_j_e_c_t.html#ad38aa1202ecc25fbc2a1921c99034953',1,'UART_RING_BUFFER_OBJECT']]],
+  ['rdcallback_2',['rdCallback',['../struct_u_a_r_t___r_i_n_g___b_u_f_f_e_r___o_b_j_e_c_t.html#a2cf7c01fecf7ae006bc8c1bb6f34e126',1,'UART_RING_BUFFER_OBJECT']]],
+  ['rdcontext_3',['rdContext',['../struct_u_a_r_t___r_i_n_g___b_u_f_f_e_r___o_b_j_e_c_t.html#a3bc25314b0123b85e9d8f4e9d1b9c124',1,'UART_RING_BUFFER_OBJECT']]],
+  ['rdinindex_4',['rdInIndex',['../struct_u_a_r_t___r_i_n_g___b_u_f_f_e_r___o_b_j_e_c_t.html#afd38a6de581c5a4f63e6ed202d40b979',1,'UART_RING_BUFFER_OBJECT']]],
+  ['rdoutindex_5',['rdOutIndex',['../struct_u_a_r_t___r_i_n_g___b_u_f_f_e_r___o_b_j_e_c_t.html#aac813a05b109ae2d128fc10039441733',1,'UART_RING_BUFFER_OBJECT']]],
+  ['rdthreshold_6',['rdThreshold',['../struct_u_a_r_t___r_i_n_g___b_u_f_f_e_r___o_b_j_e_c_t.html#a0456a436c34bf5c44bb6761d35226972',1,'UART_RING_BUFFER_OBJECT']]],
+  ['reserved_7',['reserved',['../struct_s_y_s_t_e_m___o_b_j_e_c_t_s.html#a719f411e19fbfff5276970ffb91d5f39',1,'SYSTEM_OBJECTS::reserved()'],['../union_s_y_s___m_o_d_u_l_e___i_n_i_t.html#abff03259c62590e947038f8c9518eb06',1,'SYS_MODULE_INIT::reserved()']]],
+  ['reverse_5fcrc_5finput_8',['reverse_crc_input',['../struct_d_m_a_c___c_r_c___s_e_t_u_p.html#af2c430f37f0f3dc2a31d7536f683e3eb',1,'DMAC_CRC_SETUP']]],
+  ['reverse_5fcrc_5foutput_9',['reverse_crc_output',['../struct_d_m_a_c___c_r_c___s_e_t_u_p.html#a2308cbd54493fd12fd98ce4dc8fa7c5b',1,'DMAC_CRC_SETUP']]],
+  ['rxbuffer_10',['rxBuffer',['../struct_u_a_r_t___o_b_j_e_c_t.html#ae6947058d16bb9158a96b433dd9ac3b6',1,'UART_OBJECT']]],
+  ['rxbusystatus_11',['rxBusyStatus',['../struct_u_a_r_t___o_b_j_e_c_t.html#aabbb2a13c40df450b6dcf2474b370f0f',1,'UART_OBJECT']]],
+  ['rxcallback_12',['rxCallback',['../struct_u_a_r_t___o_b_j_e_c_t.html#a0321aab879d54cfe1adf01017ccb57ca',1,'UART_OBJECT']]],
+  ['rxcontext_13',['rxContext',['../struct_u_a_r_t___o_b_j_e_c_t.html#a72362dacac290df7736e6a7717173628',1,'UART_OBJECT']]],
+  ['rxprocessedsize_14',['rxProcessedSize',['../struct_u_a_r_t___o_b_j_e_c_t.html#aac220d05787cd92fe44cd86a5ad57ce8',1,'UART_OBJECT']]],
+  ['rxsize_15',['rxSize',['../struct_u_a_r_t___o_b_j_e_c_t.html#a2829f8c7c2214983c9debc8d6f3130fe',1,'UART_OBJECT']]]
 ];

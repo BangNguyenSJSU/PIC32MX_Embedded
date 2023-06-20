@@ -1,0 +1,14 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c" name="firmware/src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c">
+<area shape="rect" id="node1" title=" " alt="" coords="176,5,364,60"/>
+<area shape="rect" id="node2" href="$device_8h.html" title=" " alt="" coords="89,181,158,207"/>
+<area shape="rect" id="node7" href="$plib__tmr1_8h.html" title=" " alt="" coords="227,108,313,133"/>
+<area shape="rect" id="node12" href="$interrupts_8h.html" title=" " alt="" coords="412,108,499,133"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,255,52,280"/>
+<area shape="rect" id="node4" title=" " alt="" coords="76,255,171,280"/>
+<area shape="rect" id="node5" href="$toolchain__specifics_8h.html" title=" " alt="" coords="195,255,337,280"/>
+<area shape="rect" id="node6" title=" " alt="" coords="221,328,311,353"/>
+<area shape="rect" id="node8" title=" " alt="" coords="365,255,433,280"/>
+<area shape="rect" id="node9" title=" " alt="" coords="499,181,564,207"/>
+<area shape="rect" id="node10" title=" " alt="" coords="233,181,307,207"/>
+<area shape="rect" id="node11" href="$plib__tmr1__common_8h.html" title=" " alt="" coords="332,181,475,207"/>
+</map>

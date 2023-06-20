@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h> 
-#include "../../USER_DEFINITION_CONFIG/SYSTEM_DEF.h"
+#include "../coretimer/plib_coretimer.h"
 #include "I2C_LCD.h"
 #include "I2C_2_PIC32MX.h"
 
@@ -146,10 +146,10 @@ pulseEnable (uint8_t _data)
 {
   expanderWrite (_data | ENABLE_BIT); // En high
   //delay_coreTimer_ms(1); // enable pulse must be >450ns
-  delay_coreTimer_us (100);
+  CORETIMER_DelayUs (100);
 
   expanderWrite (_data & ~ENABLE_BIT); // En low
-  delay_coreTimer_us (50); // commands need > 37us to settle
+  CORETIMER_DelayUs (50); // commands need > 37us to settle
 }
 
 static void
@@ -213,11 +213,11 @@ _begin (uint8_t cols, uint8_t lines, uint8_t charsize)
   // according to datasheet, we need at least 40ms after power rises above 2.7V
   // before sending commands. MCU can turnON at 4.5V (faster than LCD) so we'll wait 50
   /////////////////////////////////////////////////////////////////////////////////
-  delay_coreTimer_ms (40);
+  CORETIMER_DelayMs (40);
 
   // Now we pull both RS and R/W low to begin commands
   expanderWrite (_backlightval); // reset expande_rand turn backlightOff (Bit 8 =1)
-  delay_coreTimer_ms (10); // 1000
+  CORETIMER_DelayMs (10); // 1000
 
   ////////////////////////////////////////////////////////
   // put the LCD into 4 bit mode
@@ -227,15 +227,15 @@ _begin (uint8_t cols, uint8_t lines, uint8_t charsize)
 
   // we start in 8bit mode, try to set 4 bit mode
   write4bits (0x30);
-  delay_coreTimer_ms (1); // wait min 1ms
+  CORETIMER_DelayMs (1); // wait min 1ms
 
   // second try
   write4bits (0x30);
-  delay_coreTimer_ms (1); // wait min 1ms
+  CORETIMER_DelayMs (1); // wait min 1ms
 
   // third go!
   write4bits (0x30);
-  delay_coreTimer_ms (1);
+  CORETIMER_DelayMs (1);
 
   // finally, set to 4-bit interface
   write4bits (0x20);
@@ -265,7 +265,7 @@ LCD_CLEAR_ALL ()
 {
   // clear display, set cursor position to zero
   _writeCommandBus (LCD_CLEARDISPLAY);
-  delay_coreTimer_ms (2); // this command takes a long time!
+  CORETIMER_DelayMs (2); // this command takes a long time!
 }
 
 void
@@ -288,7 +288,7 @@ void
 LCD_CURSOR_HOME ()
 {
   _writeCommandBus (LCD_RETURNHOME); // set cursor position to zero
-  delay_coreTimer_ms (2); // this command takes a long time!
+  CORETIMER_DelayMs (2); // this command takes a long time!
 }
 
 void

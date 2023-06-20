@@ -1,0 +1,4 @@
+<map id="I2C_restart" name="I2C_restart">
+<area shape="rect" id="node1" title="Restart the I2C transmission." alt="" coords="5,5,91,31"/>
+<area shape="rect" id="node2" href="$_i2_c__2___p_i_c32_m_x_8c.html#a66ce13bb70bc05024b706c2aa753ec6e" title="Wait for the I2C module to become idle." alt="" coords="139,5,257,31"/>
+</map>

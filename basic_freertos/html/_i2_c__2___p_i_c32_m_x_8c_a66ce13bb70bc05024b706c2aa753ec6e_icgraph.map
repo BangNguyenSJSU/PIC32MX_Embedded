@@ -1,0 +1,13 @@
+<map id="I2C_wait_for_idle" name="I2C_wait_for_idle">
+<area shape="rect" id="node1" title="Wait for the I2C module to become idle." alt="" coords="496,181,615,207"/>
+<area shape="rect" id="node2" href="$_i2_c__2___p_i_c32_m_x_8c.html#a696265e3a30195ef1189a6aaae0a7797" title="Send an ACK over I2C." alt="" coords="362,256,431,281"/>
+<area shape="rect" id="node5" href="$_i2_c__2___p_i_c32_m_x_8c.html#aa55c158cf85ac321094089f13c60fa91" title="Send a NACK over I2C." alt="" coords="359,307,435,332"/>
+<area shape="rect" id="node6" href="$_i2_c__2___p_i_c32_m_x_8c.html#ad2c73e103c0cf83a19799995c94642ab" title="Write a value over I2C." alt="" coords="345,205,448,231"/>
+<area shape="rect" id="node9" href="$_i2_c__2___p_i_c32_m_x_8c.html#a41b2b7f293648f3f4ec762aaafa420d1" title="Restart the I2C transmission." alt="" coords="193,5,279,31"/>
+<area shape="rect" id="node10" href="$_i2_c__2___p_i_c32_m_x_8c.html#a4e9b2b336ded405bdd99a520c741285b" title="Start the I2C transmission." alt="" coords="359,107,434,132"/>
+<area shape="rect" id="node11" href="$_i2_c__2___p_i_c32_m_x_8c.html#a1ac05df83d693e3df4b48c87665bb843" title="Stop the I2C transmission." alt="" coords="360,156,433,181"/>
+<area shape="rect" id="node3" href="$_i2_c__2___p_i_c32_m_x_8c.html#a1e7c9c2e192dd527283a8d6e8d00b78a" title="Read a value over I2C." alt="" coords="186,308,286,333"/>
+<area shape="rect" id="node4" href="$_i2_c__2___p_i_c32_m_x_8c.html#af4f274b7750e28b3adf099a84889b8df" title="Read data from an I2C EEPROM." alt="" coords="5,207,127,232"/>
+<area shape="rect" id="node7" href="$_i2_c__2___p_i_c32_m_x_8c.html#a5de3eb544a10c007eecd01a09eb2e477" title="Write data to an I2C EEPROM." alt="" coords="175,156,297,181"/>
+<area shape="rect" id="node8" href="$_i2_c__2___p_i_c32_m_x_8c.html#aca626b2cc6cf4504c6e2578b3dfdbc24" title=" " alt="" coords="183,107,289,132"/>
+</map>

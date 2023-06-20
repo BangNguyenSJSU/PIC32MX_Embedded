@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['task1_5fstate_5finit_0',['TASK1_STATE_INIT',['../task1_8h.html#a598e4b9f53bafa57fda1ec772c8e4571aae6f5c4f1cd5dbf417a31647046a73c0',1,'task1.h']]],
-  ['task1_5fstate_5fservice_5ftasks_1',['TASK1_STATE_SERVICE_TASKS',['../task1_8h.html#a598e4b9f53bafa57fda1ec772c8e4571a20b156b6071b0018a9e9916b3b4f3f57',1,'task1.h']]],
-  ['task2_5fstate_5finit_2',['TASK2_STATE_INIT',['../task2_8h.html#aa2c132d06ea7ab4eda37f6e5714a5a00a4cdf1c2c2be5e4d173cfdfe4304a1998',1,'task2.h']]],
-  ['task2_5fstate_5fservice_5ftasks_3',['TASK2_STATE_SERVICE_TASKS',['../task2_8h.html#aa2c132d06ea7ab4eda37f6e5714a5a00a76131f182b30f4c190da9340e5758874',1,'task2.h']]],
-  ['task3_5fstate_5finit_4',['TASK3_STATE_INIT',['../task3_8h.html#a632c347538432cfdea890cee726c65f0a8617244b253238419757519742f8736e',1,'task3.h']]],
-  ['task3_5fstate_5fservice_5ftasks_5',['TASK3_STATE_SERVICE_TASKS',['../task3_8h.html#a632c347538432cfdea890cee726c65f0a6f006a6b464ebdac57601bc1571bcce5',1,'task3.h']]],
-  ['task4_5fstate_5finit_6',['TASK4_STATE_INIT',['../task4_8h.html#a8694dcdbe89fe0374be7132fb186e603a2f14e6d48e79058617cf4311bcc183e9',1,'task4.h']]],
-  ['task4_5fstate_5fservice_5ftasks_7',['TASK4_STATE_SERVICE_TASKS',['../task4_8h.html#a8694dcdbe89fe0374be7132fb186e603aa7f2d20ac491983e35966c5e330a81de',1,'task4.h']]]
+  ['osal_5fcrit_5ftype_5fhigh_0',['OSAL_CRIT_TYPE_HIGH',['../osal__freertos_8h.html#add8298d7faecf9ad180e842cd0a3b8dfa478cce79149f9ec5fd8963fde9a85735',1,'osal_freertos.h']]],
+  ['osal_5fcrit_5ftype_5flow_1',['OSAL_CRIT_TYPE_LOW',['../osal__freertos_8h.html#add8298d7faecf9ad180e842cd0a3b8dfaf677a6d70f64c99e52289d05f0ebe7c4',1,'osal_freertos.h']]],
+  ['osal_5fresult_5ffail_2',['OSAL_RESULT_FAIL',['../osal__freertos_8h.html#a7336b4c1359f6efe87aa0d430a54e8f4aaf5b26bb68efc0aa50c4bdd984a553af',1,'osal_freertos.h']]],
+  ['osal_5fresult_5ffalse_3',['OSAL_RESULT_FALSE',['../osal__freertos_8h.html#a7336b4c1359f6efe87aa0d430a54e8f4a8d6e24107fe77e37a2eac7934cbe36ce',1,'osal_freertos.h']]],
+  ['osal_5fresult_5fnot_5fimplemented_4',['OSAL_RESULT_NOT_IMPLEMENTED',['../osal__freertos_8h.html#a7336b4c1359f6efe87aa0d430a54e8f4a5e25e7ca3c70b66bb3307381ef20374e',1,'osal_freertos.h']]],
+  ['osal_5fresult_5fsuccess_5',['OSAL_RESULT_SUCCESS',['../osal__freertos_8h.html#a7336b4c1359f6efe87aa0d430a54e8f4a5bf5a1682b777fee0cf60fe9ed5b4cfa',1,'osal_freertos.h']]],
+  ['osal_5fresult_5ftrue_6',['OSAL_RESULT_TRUE',['../osal__freertos_8h.html#a7336b4c1359f6efe87aa0d430a54e8f4a05088bb50467b56c735acae86a12b2eb',1,'osal_freertos.h']]],
+  ['osal_5fsem_5ftype_5fbinary_7',['OSAL_SEM_TYPE_BINARY',['../osal__freertos_8h.html#a4f149265f9ec0bda73350bd95220d470a89aeeeb0f5f80c44c41739fc028ed191',1,'osal_freertos.h']]],
+  ['osal_5fsem_5ftype_5fcounting_8',['OSAL_SEM_TYPE_COUNTING',['../osal__freertos_8h.html#a4f149265f9ec0bda73350bd95220d470ae13f6c4c8c15a45ffe5b3742cf0a2562',1,'osal_freertos.h']]]
 ];

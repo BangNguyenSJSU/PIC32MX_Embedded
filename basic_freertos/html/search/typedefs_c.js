@@ -14,5 +14,12 @@ var searchData=
   ['statictask_5ft_11',['StaticTask_t',['../_free_r_t_o_s_8h.html#af0002e4ad72220b34b95fcdf43bcd82d',1,'FreeRTOS.h']]],
   ['statictimer_5ft_12',['StaticTimer_t',['../_free_r_t_o_s_8h.html#a85fc227d111ec21647641e0deddcccc6',1,'FreeRTOS.h']]],
   ['streambuffer_5ft_13',['StreamBuffer_t',['../stream__buffer_8c.html#ac30372f81bb381115f91d7daa384db2d',1,'stream_buffer.c']]],
-  ['streambufferhandle_5ft_14',['StreamBufferHandle_t',['../stream__buffer_8h.html#a8b80974e2278f073412293e6580ce56f',1,'stream_buffer.h']]]
+  ['streambufferhandle_5ft_14',['StreamBufferHandle_t',['../stream__buffer_8h.html#a8b80974e2278f073412293e6580ce56f',1,'stream_buffer.h']]],
+  ['sys_5fmodule_5fdeinitialize_5froutine_15',['SYS_MODULE_DEINITIALIZE_ROUTINE',['../system__module_8h.html#ac9047fd391e7e80dbcf2e780613c1a92',1,'system_module.h']]],
+  ['sys_5fmodule_5findex_16',['SYS_MODULE_INDEX',['../system__module_8h.html#a3574e451727a0396ca10655fd0781f56',1,'system_module.h']]],
+  ['sys_5fmodule_5finitialize_5froutine_17',['SYS_MODULE_INITIALIZE_ROUTINE',['../system__module_8h.html#a33d35456737b34690ecf817774fefa50',1,'system_module.h']]],
+  ['sys_5fmodule_5fobj_18',['SYS_MODULE_OBJ',['../system__module_8h.html#a0ed17d9df6354438576851e1d0341df9',1,'system_module.h']]],
+  ['sys_5fmodule_5freinitialize_5froutine_19',['SYS_MODULE_REINITIALIZE_ROUTINE',['../system__module_8h.html#a4e40b6a201099135de3d0b0a59636802',1,'system_module.h']]],
+  ['sys_5fmodule_5fstatus_5froutine_20',['SYS_MODULE_STATUS_ROUTINE',['../system__module_8h.html#ad44de5557b53743f33fd2d138982234c',1,'system_module.h']]],
+  ['sys_5fmodule_5ftasks_5froutine_21',['SYS_MODULE_TASKS_ROUTINE',['../system__module_8h.html#a664d82766348918516c2759235bcca06',1,'system_module.h']]]
 ];

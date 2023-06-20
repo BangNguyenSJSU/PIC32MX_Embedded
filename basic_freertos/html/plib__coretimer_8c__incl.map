@@ -1,0 +1,12 @@
+<map id="firmware/src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c" name="firmware/src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c">
+<area shape="rect" id="node1" title=" " alt="" coords="211,5,399,60"/>
+<area shape="rect" id="node2" href="$device_8h.html" title=" " alt="" coords="151,115,221,141"/>
+<area shape="rect" id="node7" href="$plib__coretimer_8h.html" title=" " alt="" coords="373,108,509,148"/>
+<area shape="rect" id="node10" href="$interrupts_8h.html" title=" " alt="" coords="261,115,348,141"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,196,52,221"/>
+<area shape="rect" id="node4" title=" " alt="" coords="76,196,171,221"/>
+<area shape="rect" id="node5" href="$toolchain__specifics_8h.html" title=" " alt="" coords="195,196,337,221"/>
+<area shape="rect" id="node6" title=" " alt="" coords="221,269,311,295"/>
+<area shape="rect" id="node8" title=" " alt="" coords="361,196,427,221"/>
+<area shape="rect" id="node9" title=" " alt="" coords="451,196,526,221"/>
+</map>

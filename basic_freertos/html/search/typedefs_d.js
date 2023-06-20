@@ -10,5 +10,7 @@ var searchData=
   ['timeout_5ft_7',['TimeOut_t',['../task_8h.html#a558b407b5433bee1696535e3c4816bdf',1,'task.h']]],
   ['timercallbackfunction_5ft_8',['TimerCallbackFunction_t',['../timers_8h.html#a5cf6d1f61ccd4871022ed8ad454c6027',1,'timers.h']]],
   ['timerhandle_5ft_9',['TimerHandle_t',['../timers_8h.html#ae2aa96927b4806e5dcfd264ba7bc8bf6',1,'timers.h']]],
-  ['tsktcb_10',['tskTCB',['../_free_r_t_o_s__tasks_8c.html#a67b1ddede4e49c946dd720d83c5838a5',1,'FreeRTOS_tasks.c']]]
+  ['tmr1_5fcallback_10',['TMR1_CALLBACK',['../plib__tmr1__common_8h.html#aa4dca6ba2e1fba8d092dc26d922117b4',1,'plib_tmr1_common.h']]],
+  ['tmr_5fcallback_11',['TMR_CALLBACK',['../plib__tmr__common_8h.html#a3dfc0732b8dab247e647103a34b03727',1,'plib_tmr_common.h']]],
+  ['tsktcb_12',['tskTCB',['../_free_r_t_o_s__tasks_8c.html#a67b1ddede4e49c946dd720d83c5838a5',1,'FreeRTOS_tasks.c']]]
 ];

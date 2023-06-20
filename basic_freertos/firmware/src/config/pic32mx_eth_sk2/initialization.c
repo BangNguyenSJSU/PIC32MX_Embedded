@@ -43,7 +43,6 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include "configuration.h"
 #include "definitions.h"
 #include "device.h"
 
@@ -177,9 +176,9 @@ void SYS_Initialize ( void* data )
 	GPIO_Initialize();
 
     CORETIMER_Initialize();
+	BSP_Initialize();
 	UART2_Initialize();
 
-	BSP_Initialize();
     TMR2_Initialize();
 
     DMAC_Initialize();
@@ -196,12 +195,7 @@ void SYS_Initialize ( void* data )
 
 
     /* MISRAC 2012 deviation block end */
-    APP_TASK1_Initialize();
-    APP_TASK2_Initialize();
-    APP_TASK3_Initialize();
-    APP3_Initialize();
-    APP4_Initialize();
-    APP5_Initialize();
+    LCD_TASK1_Initialize();
 
 
     EVIC_Initialize();

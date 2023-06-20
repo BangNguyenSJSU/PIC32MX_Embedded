@@ -49,8 +49,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "peripheral/coretimer/plib_coretimer.h"
-#include "peripheral/uart/plib_uart2.h"
 #include "bsp/bsp.h"
+#include "peripheral/uart/plib_uart2.h"
 #include "peripheral/tmr/plib_tmr2.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
@@ -59,18 +59,11 @@
 #include "peripheral/tmr1/plib_tmr1.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "system/int/sys_int.h"
-#include "system/ports/sys_ports.h"
-#include "system/dma/sys_dma.h"
 #include "system/reset/sys_reset.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
-#include "app_task1.h"
-#include "app_task2.h"
-#include "app_task3.h"
-#include "app3.h"
-#include "app4.h"
-#include "app5.h"
+#include "LCD_Task1.h"
+
 
 
 
@@ -89,8 +82,15 @@ extern "C" {
 #define DEVICE_SERIES		 "PIC32MX"
 
 /* CPU clock frequency */
-#define CPU_CLOCK_FREQUENCY 80000000
-
+#define CPU_CLOCK_FREQUENCY 80000000U
+    /* --------------------------------------------
+     * SETUP <SYTEM CLOCK> + <PERIPHERAL CLOCK>
+       -------------------------------------------- */
+    // Considerations in clock frequency selection:
+    // - UART getting <2% error at 115200 baudrate
+#define	_GetPeripheralClock()               (CPU_CLOCK_FREQUENCY/(1 << OSCCONbits.PBDIV))
+#define	_GetInstructionClock()              (CPU_CLOCK_FREQUENCY)       
+    
 // *****************************************************************************
 // *****************************************************************************
 // Section: System Functions
