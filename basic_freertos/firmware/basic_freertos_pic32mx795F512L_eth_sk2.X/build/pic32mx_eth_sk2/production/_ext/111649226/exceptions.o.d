@@ -8,6 +8,8 @@ build/pic32mx_eth_sk2/production/_ext/111649226/exceptions.o: \
  ../src/config/pic32mx_eth_sk2/device.h \
  ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.h \
  ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart_common.h \
+ ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.h \
+ ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/../uart/plib_uart_common.h \
  ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.h \
  ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr_common.h \
  ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.h \
@@ -54,6 +56,10 @@ build/pic32mx_eth_sk2/production/_ext/111649226/exceptions.o: \
 ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.h:
 
 ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart_common.h:
+
+../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.h:
+
+../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/../uart/plib_uart_common.h:
 
 ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.h:
 

@@ -4,7 +4,7 @@
 #include <string.h> 
 #include "../coretimer/plib_coretimer.h"
 #include "I2C_LCD.h"
-#include "I2C_2_PIC32MX.h"
+#include "I2C2_PIC32MX.h"
 
 #define CLAMP_VALUE_TO_RANGE(inputVal, low, high) ((inputVal) < (low) ? (low) : ((inputVal) > (high) ? (high) : (inputVal)))
 

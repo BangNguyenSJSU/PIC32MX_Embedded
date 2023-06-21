@@ -97,6 +97,7 @@ void UART_2_Handler (void)
 void DMA_0_Handler (void)
 {
     DMA_0_InterruptHandler();
+    UART_2_DMA_RX_2_InterruptHandler();
 }
 
 

@@ -3,32 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/app_task3.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/app_task1.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/tasks.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/exceptions.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/basic_freertos_pic32mx795F512L_eth_sk2.X/nbproject/Makefile-pic32mx_eth_sk2.mk</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/system/reset/sys_reset.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/system/reset/sys_reset.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/sys_tasks.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/definitions.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/device.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/interrupts_a.S</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/FreeRTOSConfig.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/osal/osal.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/interrupts.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/user.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/interrupts.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/app_task2.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/app_task3.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/app_task1.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/initialization.c</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/system/debug/sys_debug.h</file>
-            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/bsp/bsp.h</file>
+            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/USER_HELPER/HELPER_FUNCTION.h</file>
+            <file>file:/C:/LC_P500/Git_repo/PIC32MX_Embedded/basic_freertos/firmware/src/LCD_Task1.c</file>
         </group>
     </open-files>
 </project-private>

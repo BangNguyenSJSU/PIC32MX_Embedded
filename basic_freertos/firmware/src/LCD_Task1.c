@@ -84,6 +84,18 @@ static void SwitchPressLCD_Handler(CN_PIN cnPin, uintptr_t context) {
 // Section: Application Local Functions
 // *****************************************************************************
 
+static void
+byteArrayToHexString(const unsigned char* byteArray, int length, char* hexString) {
+    const char hexChars[] = "0123456789ABCDEF";
+
+    for (int i = 0; i < length; i++) {
+        unsigned char byte = byteArray[i];
+        hexString[i * 2] = hexChars[byte >> 4]; // Get the high nibble
+        hexString[i * 2 + 1] = hexChars[byte & 0x0F]; // Get the low nibble
+    }
+
+    hexString[length * 2] = '\0'; // Null-terminate the string
+}
 
 
 // *****************************************************************************
@@ -97,8 +109,10 @@ void LCD_TASK1_Initialize(void) {
     /* TODO: Initialize your application's state machine and other parameters */
     LCD_init(LCD_I2C_SLAVE_ADD, LCD_MAX_COLLUM, LCD_MAX_ROW, I2C_SPEED_HZ);
     LCD_SET_BACK_LIGHT(true);
+    LCD_PRINT_STRING("RTOS: ", 0, 0, 0);
     GPIO_PinInterruptCallbackRegister(CN19_PIN, SwitchPressLCD_Handler, (uintptr_t) NULL);
     GPIO_PinInterruptEnable(CN19_PIN);
+    UART2_DMA_RX_Initialize();
 }
 
 /******************************************************************************
@@ -111,17 +125,32 @@ void LCD_TASK1_Initialize(void) {
 void LCD_TASK1_Tasks(void) {
 
     switchPressToLCDSemaphore = xSemaphoreCreateBinary();
-
-
-    while (1) {
+    /* DMA */
+    char lcd_TestStringRow1[] = "RX_Byte:";
+    char lcd_TestStringRow1_2[6];
+    unsigned char lcd_string[40] = {0};
+    UART_RX_DMA_CtrlObj* UART2_RX_Object = UART2_Get_CtrlObjectPtr();
+   
+    while (1)
+    {
         LED1_Toggle();
-        LCD_PRINT_STRING("RTOS !!", 0, 0, 3);
-        if (xSemaphoreTakeFromISR(switchPressToLCDSemaphore, pdFALSE) == pdTRUE) {
-            LCD_PRINT_STRING("SW_ON !!", 5, 2, 3);
-            LED2_Toggle();
-        } else {
-            LCD_PRINT_STRING("SW_OFF !!", 5, 2, 3);
-        }
+        LCD_PRINT_STRING("count", 0, 0, 6);
+        byteArrayToHexString (UART2_RX_Object->data, 40, lcd_string);
+         if (!DCH0CONbits.CHEDET)
+        {
+          LCD_PRINT_STRING (lcd_string, 40, 1, 0);
+          memset (lcd_TestStringRow1_2, 0, 6);
+          sprintf (lcd_TestStringRow1_2, "%2u\0 ", UART2_DMA_RX_HeadNodeIndex() + 1);
+          LCD_PRINT_STRING (lcd_TestStringRow1_2, 6, 0, 11);
+          UART2_DMA_RX_Reset();
+       }
+
+//        if (xSemaphoreTakeFromISR(switchPressToLCDSemaphore, pdFALSE) == pdTRUE) {
+//            LCD_PRINT_STRING("SW_ON !!", 5, 2, 3);
+//            LED2_Toggle();
+//        } else {
+//            LCD_PRINT_STRING("SW_OFF !!", 5, 2, 3);
+//        }
 
 
 

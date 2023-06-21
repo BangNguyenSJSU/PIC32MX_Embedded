@@ -51,6 +51,7 @@
 #include "peripheral/coretimer/plib_coretimer.h"
 #include "bsp/bsp.h"
 #include "peripheral/uart/plib_uart2.h"
+#include "peripheral/UART_baremetal/UART2_dma_PIC32MX.h"
 #include "peripheral/tmr/plib_tmr2.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
