@@ -49,7 +49,6 @@
 #include "LCD_Task1.h"
 #include "definitions.h"
 #include "config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h"
-//#include "USER_DEFINITION_CONFIG/SYSTEM_DEF.h"
 
 
 
@@ -126,36 +125,42 @@ void LCD_TASK1_Tasks(void) {
 
     switchPressToLCDSemaphore = xSemaphoreCreateBinary();
     /* DMA */
-    char lcd_TestStringRow1[] = "RX_Byte:";
     char lcd_TestStringRow1_2[6];
-    unsigned char lcd_string[40] = {0};
+    char lcd_string[40] = {0};
     UART_RX_DMA_CtrlObj* UART2_RX_Object = UART2_Get_CtrlObjectPtr();
-   
-    while (1)
-    {
+    while (1) {
+        memset(lcd_TestStringRow1_2, 0, 6);
+        sprintf(lcd_TestStringRow1_2, "%2u", UART2_DMA_RX_GetBuffCapacityCounter());
+        LCD_PRINT_STRING(lcd_TestStringRow1_2, 0, 0, 11);
         LED1_Toggle();
-        LCD_PRINT_STRING("count", 0, 0, 6);
-        byteArrayToHexString (UART2_RX_Object->data, 40, lcd_string);
-         if (!DCH0CONbits.CHEDET)
-        {
-          LCD_PRINT_STRING (lcd_string, 40, 1, 0);
-          memset (lcd_TestStringRow1_2, 0, 6);
-          sprintf (lcd_TestStringRow1_2, "%2u\0 ", UART2_DMA_RX_HeadNodeIndex() + 1);
-          LCD_PRINT_STRING (lcd_TestStringRow1_2, 6, 0, 11);
-          UART2_DMA_RX_Reset();
-       }
+        
+        
+        if (UART2_RX_Object->IsDONE) {
+            byteArrayToHexString(UART2_RX_Object->data, 40,lcd_string);
+            LCD_PRINT_STRING(lcd_string,40, 1, 0);
+            UART2_DMA_RX_Reset();
+        }
 
-//        if (xSemaphoreTakeFromISR(switchPressToLCDSemaphore, pdFALSE) == pdTRUE) {
-//            LCD_PRINT_STRING("SW_ON !!", 5, 2, 3);
-//            LED2_Toggle();
-//        } else {
-//            LCD_PRINT_STRING("SW_OFF !!", 5, 2, 3);
-//        }
+        if (xSemaphoreTakeFromISR(switchPressToLCDSemaphore, pdFALSE) == pdTRUE) {
+            LCD_PRINT_STRING("SW_ON_",0, 2,0);
+            LED2_Toggle(); 
+        }
+        else if (!UART2_RX_Object->IsDONE && (UART2_DMA_RX_GetBuffCapacityCounter() > 2))
+        {
+            LCD_CLEAR_PARTICULAR(1,0,20);
+            LCD_CLEAR_PARTICULAR(3,0,20); 
+        }
+        else
+        {
+            LCD_PRINT_STRING("SW_OFF",0, 2,0);
+        }
+          
+
 
 
 
         /* Blink LED at every 1000 ms. Meanwhile allow other ready tasks to run */
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
     }
 }
 

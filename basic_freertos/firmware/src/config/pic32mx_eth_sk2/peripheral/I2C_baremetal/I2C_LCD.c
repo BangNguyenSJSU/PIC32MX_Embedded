@@ -158,7 +158,7 @@ expanderWrite (uint8_t _data)
   /* This function is a low level byte transfer to LCD module */
   uint8_t data_transfer = ((_data) | _backlightval);
   /* Reuse I2C write EPPROM */
-  i2c_LCD_write (_Addr,&data_transfer);
+  i2c_LCD_write(_Addr,&data_transfer);
 }
 
 static void

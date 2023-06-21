@@ -128,9 +128,8 @@ extern "C" {
      */
     uint8_t i2c_eeprom_read(uint8_t slaveAddress, uint16_t memLocation,unsigned char* data, size_t size);
 
-    uint8_t
-    i2c_LCD_write(uint8_t slaveAddress,unsigned char* data);
-
+    uint8_t i2c_LCD_write(uint8_t slaveAddress,unsigned char* data);
+ 
 #ifdef	__cplusplus
 }
 #endif

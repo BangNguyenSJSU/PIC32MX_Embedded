@@ -24,10 +24,9 @@ extern "C" {
 #define WRITE_FUNC_CODE 0x10
 
     typedef struct {
-        char __attribute__((coherent)) data[BUFFER_DMA_SIZE];
+        unsigned char __attribute__((coherent)) data[BUFFER_DMA_SIZE];
         size_t buff_head_Index;
-        size_t buff_tail_Index;
-        size_t buff_capacity; // Add count to keep track of the current number of elements
+        size_t buff_capacity; 
         volatile bool IsDONE;
         size_t writeDataLen;
         size_t expectedTotalRxLen;
@@ -84,7 +83,8 @@ extern "C" {
     void UART2_DMA_RX_Initialize(void);
     UART_RX_DMA_CtrlObj* UART2_Get_CtrlObjectPtr(void);
     void UART2_DMA_RX_Reset(void);
-    size_t UART2_DMA_RX_HeadNodeIndex(void);
+    size_t UART2_DMA_RX_GetBuffCapacityCounter(void);
+    size_t UART2_DMA_RX_GetBuffIndexCounter(void);
     bool UART2_DMA_RX_IsReadRequest(void);
     bool UART2_DMA_RX_IsWriteRequest(void);
     size_t UART2_DMA_RX_WriteDataLen(void);

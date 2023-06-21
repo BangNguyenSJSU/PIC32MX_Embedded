@@ -274,4 +274,3 @@ i2c_LCD_write (uint8_t slaveAddress,unsigned char* data)
       return 1;
     }
 }
-
