@@ -39,9 +39,8 @@ build/pic32mx_eth_sk2/production/_ext/1360937237/LCD_Task1.o: \
  ../src/config/pic32mx_eth_sk2/system/system_common.h \
  ../src/config/pic32mx_eth_sk2/system/system_module.h \
  ../src/config/pic32mx_eth_sk2/system/system_common.h ../src/LCD_Task1.h \
- ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h \
- ../src/USER_HELPER/HELPER_FUNCTION.h \
- ../src/config/pic32mx_eth_sk2/toolchain_specifics.h
+ ../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h \
+ ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h
 
 ../src/LCD_Task1.h:
 
@@ -125,8 +124,6 @@ build/pic32mx_eth_sk2/production/_ext/1360937237/LCD_Task1.o: \
 
 ../src/LCD_Task1.h:
 
+../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h:
+
 ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h:
-
-../src/USER_HELPER/HELPER_FUNCTION.h:
-
-../src/config/pic32mx_eth_sk2/toolchain_specifics.h:

@@ -189,7 +189,7 @@ void LCD_TASK1_Initialize ( void );
     This routine must be called from SYS_Tasks() routine.
  */
 
-void LCD_TASK1_Tasks( void );
+void LCD_TASK1_Task_Running( void );
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus

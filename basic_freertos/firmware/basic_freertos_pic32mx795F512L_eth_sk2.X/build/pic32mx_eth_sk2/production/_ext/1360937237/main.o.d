@@ -37,7 +37,8 @@ build/pic32mx_eth_sk2/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/pic32mx_eth_sk2/system/system.h \
  ../src/config/pic32mx_eth_sk2/system/system_common.h \
  ../src/config/pic32mx_eth_sk2/system/system_module.h \
- ../src/config/pic32mx_eth_sk2/system/system_common.h ../src/LCD_Task1.h
+ ../src/config/pic32mx_eth_sk2/system/system_common.h ../src/LCD_Task1.h \
+ ../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h
 
 ../src/config/pic32mx_eth_sk2/definitions.h:
 
@@ -118,3 +119,5 @@ build/pic32mx_eth_sk2/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/config/pic32mx_eth_sk2/system/system_common.h:
 
 ../src/LCD_Task1.h:
+
+../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h:

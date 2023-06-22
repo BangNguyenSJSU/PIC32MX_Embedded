@@ -64,7 +64,7 @@
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
 #include "LCD_Task1.h"
-
+#include "../../UartDmaRx_Task.h"
 
 
 

@@ -64,12 +64,17 @@ TaskHandle_t xLCD_TASK1_Tasks;
 
 static void LCD_Task1_Tasks(  void *pvParameters  )
 {   
-    while(true)
-    {
-        LCD_TASK1_Tasks();
-    }
+        LCD_TASK1_Task_Running();
 }
-/* Handle for the APP_TASK2_Tasks. */
+
+
+
+static void Uart_Dma_Rx_Tasks (void *pvParameters)
+{
+     UART_DMA_RX_Task_Running();
+}
+
+
 
 
 
@@ -99,13 +104,19 @@ void SYS_Tasks ( void )
     
 
     /* Maintain the application's state machine. */
-        /* Create OS Thread for APP_TASK1_Tasks. */
     (void) xTaskCreate((TaskFunction_t) LCD_Task1_Tasks,
-                "APP_TASK1_Tasks",
+                "LCD_Tasks",
                 1024,
                 NULL,
                 1,
                 &xLCD_TASK1_Tasks);
+    
+    (void) xTaskCreate((TaskFunction_t) Uart_Dma_Rx_Tasks,
+                "UART_RX_Tasks",
+                1024,
+                NULL,
+                1,
+                &xUART_DMA_RX_Tasks);
 
 
 

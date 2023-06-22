@@ -108,6 +108,7 @@
         <itemPath>../src/USER_HELPER/HELPER_FUNCTION.h</itemPath>
       </logicalFolder>
       <itemPath>../src/LCD_Task1.h</itemPath>
+      <itemPath>../src/UartDmaRx_Task.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -216,6 +217,7 @@
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/LCD_Task1.c</itemPath>
+      <itemPath>../src/UartDmaRx_Task.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -410,6 +412,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
         <property key="memories.eeprom" value="true"/>

@@ -125,65 +125,67 @@ SYSTEM_OBJECTS sysObj;
   Remarks:
  */
 
-void SYS_Initialize(void* data) {
+void
+SYS_Initialize (void* data)
+{
 
-    /* MISRAC 2012 deviation block start */
-    /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
+  /* MISRAC 2012 deviation block start */
+  /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
-    /* Start out with interrupts disabled before configuring any modules */
-    (void) __builtin_disable_interrupts();
-
-
-    CLK_Initialize();
-
-    /* Configure KSEG0 as cacheable memory. This is needed for Prefetch Buffer */
-    __builtin_mtc0(16, 0, (__builtin_mfc0(16, 0) | 0x3U));
-
-    /* Configure Flash Wait States and Prefetch */
-    CHECONbits.PFMWS = 2;
-    CHECONbits.PREFEN = 3;
-
-    /* Set the SRAM wait states to One */
-    BMXCONbits.BMXWSDRM = 1;
-
-    /* Configure Debug Data Port */
-    DDPCONbits.JTAGEN = 0;
+  /* Start out with interrupts disabled before configuring any modules */
+  (void) __builtin_disable_interrupts ();
 
 
+  CLK_Initialize ();
 
-    GPIO_Initialize();
+  /* Configure KSEG0 as cacheable memory. This is needed for Prefetch Buffer */
+  __builtin_mtc0 (16, 0, (__builtin_mfc0 (16, 0) | 0x3U));
 
-    CORETIMER_Initialize();
-    BSP_Initialize();
-    //UART2_Initialize();
-    UART2_forDMA_Initialize(UART_SPEED_BAUDRATE, _GetPeripheralClock());
-    TMR2_Initialize();
+  /* Configure Flash Wait States and Prefetch */
+  CHECONbits.PFMWS = 2;
+  CHECONbits.PREFEN = 3;
 
-    DMAC_Initialize();
-    TMR1_Initialize();
+  /* Set the SRAM wait states to One */
+  BMXCONbits.BMXWSDRM = 1;
+
+  /* Configure Debug Data Port */
+  DDPCONbits.JTAGEN = 0;
 
 
 
-    /* MISRAC 2012 deviation block start */
-    /* Following MISRA-C rules deviated in this block  */
-    /* MISRA C-2012 Rule 11.3 - Deviation record ID - H3_MISRAC_2012_R_11_3_DR_1 */
-    /* MISRA C-2012 Rule 11.8 - Deviation record ID - H3_MISRAC_2012_R_11_8_DR_1 */
+  GPIO_Initialize ();
+
+  CORETIMER_Initialize ();
+  BSP_Initialize ();
+  //UART2_Initialize();
+  UART2_forDMA_Initialize (UART_SPEED_BAUDRATE, _GetPeripheralClock ());
+  TMR2_Initialize ();
+
+  DMAC_Initialize ();
+  TMR1_Initialize ();
+
+
+
+  /* MISRAC 2012 deviation block start */
+  /* Following MISRA-C rules deviated in this block  */
+  /* MISRA C-2012 Rule 11.3 - Deviation record ID - H3_MISRAC_2012_R_11_3_DR_1 */
+  /* MISRA C-2012 Rule 11.8 - Deviation record ID - H3_MISRAC_2012_R_11_8_DR_1 */
 
 
 
 
-    /* MISRAC 2012 deviation block end */
-    LCD_TASK1_Initialize();
+  /* MISRAC 2012 deviation block end */
+  LCD_TASK1_Initialize ();
+  UART_DMA_RX_Task_Initialize ();
+
+  EVIC_Initialize ();
+
+  /* Enable global interrupts */
+  (void) __builtin_enable_interrupts ();
 
 
-    EVIC_Initialize();
 
-    /* Enable global interrupts */
-    (void) __builtin_enable_interrupts();
-
-
-
-    /* MISRAC 2012 deviation block end */
+  /* MISRAC 2012 deviation block end */
 }
 
 /*******************************************************************************

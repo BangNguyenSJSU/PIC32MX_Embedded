@@ -49,7 +49,7 @@
 #include "LCD_Task1.h"
 #include "definitions.h"
 #include "config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h"
-#include "USER_HELPER/HELPER_FUNCTION.h"
+
 
 
 
@@ -62,11 +62,6 @@ LCD_TASK1_DATA app_task1Data;
 #define LCD_MAX_COLLUM 20u
 #define LCD_MAX_ROW 4u
 #define I2C_SPEED_HZ 100000U
-
-
-// *****************************************************************************
-// Section: Application Callback Functions
-// *****************************************************************************
 
 static void
 SwitchPressLCD_Handler (CN_PIN cnPin, uintptr_t context)
@@ -120,7 +115,7 @@ LCD_TASK1_Initialize (void)
   // LCD_PRINT_STRING ("Byte:", 0, 0, 0);
   GPIO_PinInterruptCallbackRegister (CN19_PIN, SwitchPressLCD_Handler, (uintptr_t) NULL);
   GPIO_PinInterruptEnable (CN19_PIN);
-  UART2_DMA_RX_Initialize ();
+  // UART2_DMA_RX_Initialize (); ??????????
 
 }
 
@@ -132,7 +127,7 @@ LCD_TASK1_Initialize (void)
     This task periodically runs every 1 second and toggles LED1
  */
 void
-LCD_TASK1_Tasks (void)
+LCD_TASK1_Task_Running (void)
 {
 
   switchPressToLCDSemaphore = xSemaphoreCreateBinary ();
@@ -150,12 +145,11 @@ LCD_TASK1_Tasks (void)
 
 
       /* crash check */
-      LED1_Toggle ();
+      // LED1_Toggle ();
 
 
       if (UART2_RX_Object->IsDONE)
         {
-
           size_t buffSize = UART2_RX_Object->expectedTotalRxLen;
           sprintf (lcd_counterString, "B#%d R_W:%2d", buffSize, UART2_DMA_RX_IsWriteRequest ()); // !! can cause crash ( need to ??? )
           /* CS verify */
@@ -167,62 +161,17 @@ LCD_TASK1_Tasks (void)
           uint16_t calculatedCS = Modbus_CRC16 (UART2_RX_Object->data, (buffSize - 2));
 
           /* Handle The reply */
-          switch (funcCode)
-            {
-            case 0x10:
-              responseBuffer[0] = slaveAddress;
-              responseBuffer[1] = funcCode;
-              responseBuffer[2] = UART2_RX_Object->data[2]; // Starting Address High
-              responseBuffer[3] = UART2_RX_Object->data[3]; // Starting Address Low
-              responseBuffer[4] = UART2_RX_Object->data[4]; // Quantity of Registers High
-              responseBuffer[5] = UART2_RX_Object->data[5]; // Quantity of Registers Low
-              uint16_t respondCS = Modbus_CRC16 (responseBuffer, 6);
-              responseBuffer[6] = respondCS & 0xFF;
-              responseBuffer[7] = (respondCS >> 8) & 0xFF;
-              UART2_Write (responseBuffer, 8);
-              //               sprintf (lcd_cs_string, "%X %X %X %X", regAddress, regCount, receivedCS, calculatedCS);
-              //               LCD_PRINT_STRING (lcd_cs_string, 0, 2, 0);
-
-
-              //          LCD_PRINT_STRING (lcd_counterString, 0, 0, 0);
-              //          byteArrayToHexString (UART2_RX_Object->data, 40, lcd_BuffDatastring);
-              //          LCD_PRINT_STRING (lcd_BuffDatastring, 40, 1, 0);
-              UART2_DMA_RX_Reset ();
-              break;
-              //            case 0x03:
-              //              responseBuffer[0] = slaveAddress;
-              //              responseBuffer[1] = funcCode;
-              //              responseBuffer[2] = UART2_RX_Object->data[2]; // Starting Address High
-              //              responseBuffer[3] = UART2_RX_Object->data[3]; // Starting Address Low
-              //              responseBuffer[4] = UART2_RX_Object->data[4]; // Quantity of Registers High
-              //              responseBuffer[5] = UART2_RX_Object->data[5]; // Quantity of Registers Low
-
-            default:
-              break;
-            }
-
-
+          sprintf (lcd_cs_string, "%X %X %X %X", regAddress, regCount, receivedCS, calculatedCS);
+          LCD_PRINT_STRING (lcd_cs_string, 0, 2, 0);
+          LCD_PRINT_STRING (lcd_counterString, 0, 0, 0);
+          byteArrayToHexString (UART2_RX_Object->data, 40, lcd_BuffDatastring);
+          LCD_PRINT_STRING (lcd_BuffDatastring, 40, 1, 0);
         }
 
-
-      //      if (xSemaphoreTakeFromISR (switchPressToLCDSemaphore, pdFALSE) == pdTRUE)
-      //        {
-      //          LCD_PRINT_STRING ("SW_ON_", 0, 2, 0);
-      //          LED2_Toggle ();
-      //        }
-      //      else if (!UART2_RX_Object->IsDONE && (UART2_DMA_RX_GetBuffCapacityCounter () > 2))
-      //        {
-      //          LCD_CLEAR_PARTICULAR (1, 0, 20);
-      //          LCD_CLEAR_PARTICULAR (3, 0, 20);
-      //        }
-      //      else
-      //        {
-      //
-      //        }
       /* Blink LED at every 1000 ms. Meanwhile allow other ready tasks to run */
       // LATAINV = (1UL << 6);
       // TRISACLR = (1UL << 6);
-      // vTaskDelay (500 / portTICK_PERIOD_MS);
+      //  vTaskDelay (50 / portTICK_PERIOD_MS);
     }
 }
 

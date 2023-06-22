@@ -59,7 +59,7 @@
 extern TaskHandle_t xLCD_TASK1_Tasks;
 
 /* Declaration of  APP_TASK2_Tasks task handle */
-extern TaskHandle_t xAPP_TASK2_Tasks;
+extern TaskHandle_t xUART_DMA_RX_Tasks;
 
 /* Declaration of  APP_TASK3_Tasks task handle */
 extern TaskHandle_t xAPP_TASK3_Tasks;
