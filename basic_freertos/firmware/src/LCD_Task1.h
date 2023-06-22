@@ -157,6 +157,8 @@ typedef struct
 void LCD_TASK1_Initialize ( void );
 
 
+
+
 /*******************************************************************************
   Function:
     void APP_TASK1_Tasks ( void )

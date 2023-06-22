@@ -29,11 +29,14 @@ extern "C" {
     void convert_uint16_to_uint32(uint32_t *output, uint16_t high_byte, uint16_t low_byte);
     void convert_uint32_to_uint16(uint32_t input, uint16_t *high_byte, uint16_t *low_byte);
 
+    /* ---------------- Modbus crc ---------------- */
 
     /* ---- BLOCKING DELAY FROM CORE-TIMER ---- */
-    void delay_coreTimer_us(unsigned int us);
-    void delay_coreTimer_ms(unsigned int ms);
-    
+//    void delay_coreTimer_us(unsigned int us);
+//    void delay_coreTimer_ms(unsigned int ms);
+
+uint16_t Modbus_CRC16(uint8_t* buffer, uint16_t buffer_length);
+
 
 #ifdef	__cplusplus
 }

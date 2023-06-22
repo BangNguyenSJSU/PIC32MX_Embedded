@@ -41,3 +41,24 @@ void convert_uint32_to_uint16(uint32_t input, uint16_t *high_byte, uint16_t *low
 //        // Wait until the difference between the current Core Timer count
 //    }
 //}
+
+uint16_t Modbus_CRC16(uint8_t* buffer, uint16_t buffer_length)
+{
+    uint16_t crc = 0xFFFF;
+    for (int pos = 0; pos < buffer_length; pos++)
+    {
+        crc ^= (uint16_t)buffer[pos];  // XOR byte into least significant byte of crc
+
+        for (int i = 8; i != 0; i--)   // Loop over each bit
+        { 
+            if ((crc & 0x0001) != 0)   // If the LSB is set
+            {
+                crc >>= 1;              // Shift right and XOR 0xA001
+                crc ^= 0xA001;
+            }
+            else                        // Else LSB is not set
+                crc >>= 1;              // Just shift right
+        }
+    }
+    return crc;
+}

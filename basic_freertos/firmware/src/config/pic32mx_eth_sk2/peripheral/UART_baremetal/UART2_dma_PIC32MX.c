@@ -416,7 +416,7 @@ UART2_DMA_RX_Reset(void) {
         }
         DCH0CONbits.CHEN = 1;
         DCH0ECONbits.CABORT = 0;
-        uart2_dmaObjCtrl.IsDONE = false;
+        uart2_dmaObjCtrl.IsDONE = 0;
     }
 
 
@@ -440,12 +440,27 @@ size_t UART2_DMA_RX_GetBuffIndexCounter(void) {
 
 bool
 UART2_DMA_RX_IsReadRequest(void) {
-    return (uart2_dmaObjCtrl.data[BUFFER_INDX_FUNC_CODE] == 0x03);
+  if (uart2_dmaObjCtrl.buff_capacity < 3)
+    {
+      return false;
+    }
+  else
+    {
+       return (uart2_dmaObjCtrl.data[BUFFER_INDX_FUNC_CODE] == 0x03);
+    }
 }
 
 bool
 UART2_DMA_RX_IsWriteRequest(void) {
+  
+    if (uart2_dmaObjCtrl.buff_capacity < 3)
+    {
+      return false;
+    }
+  else
+    {
     return (uart2_dmaObjCtrl.data[BUFFER_INDX_FUNC_CODE] == 0x10);
+    }
 }
 
 size_t
@@ -459,7 +474,8 @@ UART2_DMA_RX_WriteDataLen(void) {
         uart2_dmaObjCtrl.expectedTotalRxLen = 9 + uart2_dmaObjCtrl.writeDataLen;
         return uart2_dmaObjCtrl.expectedTotalRxLen;
     } else {
-        return 0;
+        uart2_dmaObjCtrl.expectedTotalRxLen = 0;
+        return uart2_dmaObjCtrl.expectedTotalRxLen;
     }
 }
 
@@ -467,9 +483,9 @@ bool
 UART2_DMA_RX_isDONE(void) {
     UART2_DMA_RX_GetBuffCapacityCounter();
     UART2_DMA_RX_GetBuffIndexCounter();
-    if (uart2_dmaObjCtrl.buff_capacity > 7) {
+    if (uart2_dmaObjCtrl.buff_capacity > 6) {
         UART2_DMA_RX_WriteDataLen();
-        uart2_dmaObjCtrl.IsDONE = 1; //(uart2RX_objCtrl.expectedTotalRxLen == uart2RX_objCtrl.buff_capacity); // Original 
+        uart2_dmaObjCtrl.IsDONE = (uart2_dmaObjCtrl.expectedTotalRxLen == uart2_dmaObjCtrl.buff_capacity); // Original 
 
         return uart2_dmaObjCtrl.IsDONE;
     } else {
@@ -480,6 +496,9 @@ UART2_DMA_RX_isDONE(void) {
 
 void
 UART_2_DMA_RX_2_InterruptHandler(void) {
+  
+//  LATAINV = (1UL<<6);
+//  TRISACLR = (1UL << 6);
     if (DCH0INTbits.CHSDIF == true) {
         if (UART2_DMA_RX_isDONE()) {
             //GPIO_ToggleState (PORT_A, PIN_6);
