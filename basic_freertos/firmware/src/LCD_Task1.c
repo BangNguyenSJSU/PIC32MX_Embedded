@@ -145,7 +145,7 @@ LCD_TASK1_Task_Running (void)
 
 
       /* crash check */
-      // LED1_Toggle ();
+       LED1_Toggle ();
 
 
       if (UART2_RX_Object->IsDONE)
@@ -162,14 +162,14 @@ LCD_TASK1_Task_Running (void)
           sprintf (lcd_cs_string, "%X %X %X %X", regAddress, regCount, receivedCS, calculatedCS);
           LCD_PRINT_STRING (lcd_cs_string, 0, 2, 0);
           LCD_PRINT_STRING (lcd_counterString, 0, 0, 0);
-          byteArrayToHexString (UART2_RX_Object->data, 40, lcd_BuffDatastring);
-          LCD_PRINT_STRING (lcd_BuffDatastring, 40, 1, 0);
+          //byteArrayToHexString (UART2_RX_Object->data, 40, lcd_BuffDatastring);
+         // LCD_PRINT_STRING (lcd_BuffDatastring, 40, 1, 0);
         }
 
       /* Blink LED at every 1000 ms. Meanwhile allow other ready tasks to run */
       // LATAINV = (1UL << 6);
       // TRISACLR = (1UL << 6);
-      //  vTaskDelay (50 / portTICK_PERIOD_MS);
+      vTaskDelay (5 / portTICK_PERIOD_MS);
     }
 }
 

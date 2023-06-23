@@ -16,6 +16,16 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+    
+    typedef struct {
+    uint8_t  MB_SlaveAdd;
+    uint8_t  MB_FunCode;
+    uint16_t MB_RegAdd;
+    uint16_t MB_RegCnt;
+    uint8_t  MB_ByteCnt;
+    uint8_t* MB_DataBuffPtr;
+    uint16_t MB_CRC16_Received;
+} ModbusMessage_t;
 
     void UART_DMA_RX_Task_Initialize (void);
     void UART_DMA_RX_Task_Running (void);
