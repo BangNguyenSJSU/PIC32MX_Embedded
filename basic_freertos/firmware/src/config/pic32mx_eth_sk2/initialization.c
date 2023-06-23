@@ -113,7 +113,7 @@
 /* Structure to hold the object handles for the modules in the system. */
 SYSTEM_OBJECTS sysObj;
 
-#define UART_SPEED_BAUDRATE 19200u
+#define UART_SPEED_BAUDRATE 115200u
 
 /*******************************************************************************
   Function:

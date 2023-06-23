@@ -5,6 +5,8 @@ build/pic32mx_eth_sk2/production/_ext/111649226/initialization.o: \
  ../src/config/pic32mx_eth_sk2/bsp/bsp.h \
  ../src/config/pic32mx_eth_sk2/device.h \
  ../src/config/pic32mx_eth_sk2/toolchain_specifics.h \
+ ../src/../src/USER_HELPER/HELPER_FUNCTION.h \
+ ../src/config/pic32mx_eth_sk2/toolchain_specifics.h \
  ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.h \
  ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart_common.h \
  ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.h \
@@ -49,6 +51,10 @@ build/pic32mx_eth_sk2/production/_ext/111649226/initialization.o: \
 ../src/config/pic32mx_eth_sk2/bsp/bsp.h:
 
 ../src/config/pic32mx_eth_sk2/device.h:
+
+../src/config/pic32mx_eth_sk2/toolchain_specifics.h:
+
+../src/../src/USER_HELPER/HELPER_FUNCTION.h:
 
 ../src/config/pic32mx_eth_sk2/toolchain_specifics.h:
 

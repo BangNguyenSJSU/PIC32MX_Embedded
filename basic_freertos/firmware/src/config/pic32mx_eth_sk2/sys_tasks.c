@@ -59,8 +59,7 @@
 // Section: RTOS "Tasks" Routine
 // *****************************************************************************
 // *****************************************************************************
-/* Handle for the LCD_TASK1_Tasks. */
-TaskHandle_t xLCD_TASK1_Tasks;
+
 
 static void LCD_Task1_Tasks(  void *pvParameters  )
 {   
@@ -109,14 +108,14 @@ void SYS_Tasks ( void )
                 1024,
                 NULL,
                 1,
-                &xLCD_TASK1_Tasks);
+                &xLCD_TASK1_TaskObject);
     
     (void) xTaskCreate((TaskFunction_t) Uart_Dma_Rx_Tasks,
                 "UART_RX_Tasks",
-                1024,
+                512,
                 NULL,
                 1,
-                &xUART_DMA_RX_Tasks);
+                &xUART_DMA_RX_TaskObject);
 
 
 

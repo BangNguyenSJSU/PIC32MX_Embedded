@@ -5,12 +5,14 @@
         <group>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/interrupts.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/initialization.c</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/definitions.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/sys_tasksObject.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/sys_tasks.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/UartDmaRx_Task.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/portmacro.h</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/third_party/rtos/FreeRTOS/Source/include/task.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/UartDmaRx_Task.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c</file>

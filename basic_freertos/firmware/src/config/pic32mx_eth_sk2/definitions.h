@@ -50,6 +50,7 @@
 #include <stdbool.h>
 #include "peripheral/coretimer/plib_coretimer.h"
 #include "bsp/bsp.h"
+#include "../src/USER_HELPER/HELPER_FUNCTION.h"
 #include "peripheral/uart/plib_uart2.h"
 #include "peripheral/UART_baremetal/UART2_dma_PIC32MX.h"
 #include "peripheral/tmr/plib_tmr2.h"

@@ -112,10 +112,8 @@ LCD_TASK1_Initialize (void)
   /* TODO: Initialize your application's state machine and other parameters */
   LCD_init (LCD_I2C_SLAVE_ADD, LCD_MAX_COLLUM, LCD_MAX_ROW, I2C_SPEED_HZ);
   LCD_SET_BACK_LIGHT (true);
-  // LCD_PRINT_STRING ("Byte:", 0, 0, 0);
   GPIO_PinInterruptCallbackRegister (CN19_PIN, SwitchPressLCD_Handler, (uintptr_t) NULL);
   GPIO_PinInterruptEnable (CN19_PIN);
-  // UART2_DMA_RX_Initialize (); ??????????
 
 }
 
@@ -126,6 +124,10 @@ LCD_TASK1_Initialize (void)
   Remarks:
     This task periodically runs every 1 second and toggles LED1
  */
+
+/* Handle for the LCD_TASK1_Tasks. */
+TaskHandle_t xLCD_TASK1_TaskObject;
+
 void
 LCD_TASK1_Task_Running (void)
 {
@@ -136,8 +138,6 @@ LCD_TASK1_Task_Running (void)
   char lcd_BuffDatastring[40] = {0};
   char lcd_cs_string[20] = {0};
   UART_RX_DMA_CtrlObj* UART2_RX_Object = UART2_Get_CtrlObjectPtr ();
-
-  char responseBuffer[256];
   while (1)
     {
       memset (lcd_counterString, 0, 20);
@@ -151,10 +151,8 @@ LCD_TASK1_Task_Running (void)
       if (UART2_RX_Object->IsDONE)
         {
           size_t buffSize = UART2_RX_Object->expectedTotalRxLen;
-          sprintf (lcd_counterString, "B#%d R_W:%2d", buffSize, UART2_DMA_RX_IsWriteRequest ()); // !! can cause crash ( need to ??? )
+          sprintf (lcd_counterString, "B#%d R_W:0x%X", buffSize, UART2_RX_Object->data[1]); 
           /* CS verify */
-          uint8_t slaveAddress = UART2_RX_Object->data[0];
-          uint8_t funcCode = UART2_RX_Object->data[1];
           uint16_t regAddress = ((UART2_RX_Object->data[2] << 8) | UART2_RX_Object->data[3]);
           uint16_t regCount = ((UART2_RX_Object->data[4] << 8) | UART2_RX_Object->data[5]);
           uint16_t receivedCS = ((UART2_RX_Object->data[buffSize - 1] << 8) | UART2_RX_Object->data[buffSize - 2]);

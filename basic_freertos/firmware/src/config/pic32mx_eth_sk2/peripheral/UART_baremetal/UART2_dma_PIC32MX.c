@@ -9,16 +9,23 @@
 #include "UART2_dma_PIC32MX.h"
 #include "../dmac/plib_dmac.h"
 
+// MODBUS
+#define MODBUS_CS_SIZE 2U
+#define MODBUS_RD_HEADER_SIZE 6U
+#define MODBUS_WR_HEADER_SIZE 6U
+#define MODBUS_BYTE_COUNT_SIZE 1U
+
+#define MODBUS_FUNC_WR 0x10
+#define MODBUS_FUNC_RD 0x03
+
 // DMA 
 #define DMA_UART_BUFF_MAX_SIZE  256U
 char __attribute__ ((coherent)) uartDMA_buff[DMA_UART_BUFF_MAX_SIZE];
 UART_RX_DMA_CtrlObj uart2_dmaObjCtrl;
 
-// plib_Object (Harmony)
-UART_dma_OBJECT uart2Obj;
-#define UART_HIGH_SPEED_X4_BAUDRATE   0b1
-/*--------------------------- Static function --------------------*/
 
+/*--------------------------- Static function --------------------*/
+#define UART_HIGH_SPEED_X4_BAUDRATE   0b1
 
 static unsigned int
 calculateU2BRG (unsigned int PBCLK, unsigned int baudRate)
@@ -57,19 +64,6 @@ UART2_forDMA_Initialize (uint32_t baudRate, uint32_t PBCLK)
 
   IEC1CLR = _IEC1_U2TXIE_MASK;
 
-  /* Initialize instance object */
-  uart2Obj.rxBuffer = NULL;
-  uart2Obj.rxSize = 0;
-  uart2Obj.rxProcessedSize = 0;
-  uart2Obj.rxBusyStatus = false;
-  uart2Obj.rxCallback = NULL;
-  uart2Obj.txBuffer = NULL;
-  uart2Obj.txSize = 0;
-  uart2Obj.txProcessedSize = 0;
-  uart2Obj.txBusyStatus = false;
-  uart2Obj.txCallback = NULL;
-  uart2Obj.errors = UART_ERROR_NONE;
-
   /* Turn ON UART2 */
   U2MODESET = _U2MODE_ON_MASK;
 }
@@ -78,14 +72,13 @@ void
 UART2_DMA_RX_Initialize (void)
 {
 
-  memset (uart2_dmaObjCtrl.data, 0, BUFFER_DMA_SIZE);
-  uart2_dmaObjCtrl.buff_head_Index = 0; //(DCH0DPTR & 0xFFFF);
+  memset (uart2_dmaObjCtrl.data, 0, BUFF_DMA_SIZE);
+  uart2_dmaObjCtrl.buff_head_Index = 0; 
   uart2_dmaObjCtrl.buff_capacity = 0;
   uart2_dmaObjCtrl.IsDONE = false;
   uart2_dmaObjCtrl.writeDataLen = 0;
   uart2_dmaObjCtrl.expectedTotalRxLen = 0;
   DMAC_ChannelTransfer (DMAC_CHANNEL_0, (const void *) &U2RXREG, 1, &uart2_dmaObjCtrl.data, DMA_UART_BUFF_MAX_SIZE, 1);
-
 }
 
 UART_RX_DMA_CtrlObj*
@@ -99,10 +92,9 @@ UART2_DMA_RX_Reset (void)
 {
   if (uart2_dmaObjCtrl.IsDONE)
     {
-      //GPIO_ToggleState (PORT_A, PIN_6);
       if (DCH0ECONbits.CABORT)
         {
-          memset (uart2_dmaObjCtrl.data, 0, BUFFER_DMA_SIZE);
+          memset (uart2_dmaObjCtrl.data, 0, BUFF_DMA_SIZE);
         }
       DCH0CONbits.CHEN = 1;
       DCH0ECONbits.CABORT = 0;
@@ -134,46 +126,18 @@ UART2_DMA_RX_GetBuffIndexCounter (void)
   return uart2_dmaObjCtrl.buff_head_Index;
 }
 
-bool
-UART2_DMA_RX_IsReadRequest (void)
-{
-  if (uart2_dmaObjCtrl.buff_capacity < 3)
-    {
-      return false;
-    }
-  else
-    {
-      return (uart2_dmaObjCtrl.data[BUFFER_INDX_FUNC_CODE] == 0x03);
-    }
-}
-
-bool
-UART2_DMA_RX_IsWriteRequest (void)
-{
-
-  if (uart2_dmaObjCtrl.buff_capacity < 3)
-    {
-      return false;
-    }
-  else
-    {
-      return (uart2_dmaObjCtrl.data[BUFFER_INDX_FUNC_CODE] == 0x10);
-    }
-}
-
 size_t
 UART2_DMA_RX_WriteDataLen (void)
 {
-  // uint16_t regCount = ((uart2RX_objCtrl.data[4] << 8) | uart2RX_objCtrl.data[5]);
-  if (uart2_dmaObjCtrl.data[BUFFER_INDX_FUNC_CODE] == 0x03)
+  if (uart2_dmaObjCtrl.data[BUFF_INDX_FUNC_CODE] == MODBUS_FUNC_RD)
     {
-      uart2_dmaObjCtrl.expectedTotalRxLen = 8;
+      uart2_dmaObjCtrl.expectedTotalRxLen = MODBUS_RD_HEADER_SIZE + MODBUS_CS_SIZE;
       return uart2_dmaObjCtrl.expectedTotalRxLen;
     }
-  else if (uart2_dmaObjCtrl.data[BUFFER_INDX_FUNC_CODE] == 0x10)
+  else if (uart2_dmaObjCtrl.data[BUFF_INDX_FUNC_CODE] == MODBUS_FUNC_WR)
     {
-      uart2_dmaObjCtrl.writeDataLen = uart2_dmaObjCtrl.data[BUFFER_INDEX_WRITTEN_BYTE_COUNT];
-      uart2_dmaObjCtrl.expectedTotalRxLen = 9 + uart2_dmaObjCtrl.writeDataLen;
+      uart2_dmaObjCtrl.writeDataLen = uart2_dmaObjCtrl.data[BUFF_INDX_BYTE_COUNT];
+      uart2_dmaObjCtrl.expectedTotalRxLen = MODBUS_RD_HEADER_SIZE + MODBUS_BYTE_COUNT_SIZE + uart2_dmaObjCtrl.writeDataLen + MODBUS_CS_SIZE;
       return uart2_dmaObjCtrl.expectedTotalRxLen;
     }
   else
@@ -188,12 +152,11 @@ UART2_DMA_RX_isDONE (void)
 {
   UART2_DMA_RX_GetBuffCapacityCounter ();
   UART2_DMA_RX_GetBuffIndexCounter ();
-  if (uart2_dmaObjCtrl.buff_capacity > 6)
+  if (uart2_dmaObjCtrl.buff_capacity >= (MODBUS_RD_HEADER_SIZE + MODBUS_BYTE_COUNT_SIZE))
     {
       UART2_DMA_RX_WriteDataLen ();
       uart2_dmaObjCtrl.IsDONE = (uart2_dmaObjCtrl.expectedTotalRxLen == uart2_dmaObjCtrl.buff_capacity); // Original 
-
-      return uart2_dmaObjCtrl.IsDONE;
+      return uart2_dmaObjCtrl.IsDONE; // Original 
     }
   else
     {
@@ -205,21 +168,17 @@ UART2_DMA_RX_isDONE (void)
 void
 UART_2_DMA_RX_2_InterruptHandler (void)
 {
-
-  //  LATAINV = (1UL<<6); // Debug Purpose
-  //  TRISACLR = (1UL << 6); // Debug Purpose
-
   BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
   if (DCH0INTbits.CHSDIF == true)
     {
-      
-       /* Clear the address error flag */
+
+      /* Clear the address error flag */
       DCH0INTCLR = _DCH0INT_CHSHIF_MASK;
       DCH0INTCLR = _DCH0INT_CHSDIF_MASK;
       /* Clear the interrupt flag and call event handler */
       IFS1CLR = 0x10000;
-      
+
       if (UART2_DMA_RX_isDONE ())
         {
           //GPIO_ToggleState (PORT_A, PIN_6);
@@ -228,15 +187,13 @@ UART_2_DMA_RX_2_InterruptHandler (void)
           /* We have not woken a task at the start of the ISR. */
           xHigherPriorityTaskWoken = pdFALSE;
 
-          /* Clear the RX interrupt Flag */
-          IFS0CLR = _IFS0_U1RXIF_MASK;
-
           /* A new data has been received, notify the receiving task */
-          vTaskNotifyGiveFromISR (xUART_DMA_RX_Tasks, &xHigherPriorityTaskWoken);
+          vTaskNotifyGiveFromISR (xUART_DMA_RX_TaskObject, &xHigherPriorityTaskWoken);
 
           /* Now the buffer is empty we can switch context if necessary. */
           portEND_SWITCHING_ISR (xHigherPriorityTaskWoken);
-        }    
- 
+        }
+      // TO DO: Adding Error Handling with we reach the the max size and wont be able to detect last byte
+
     }
 }
