@@ -73,6 +73,12 @@ static void Uart_Dma_Rx_Tasks (void *pvParameters)
      UART_DMA_RX_Task_Running();
 }
 
+static void MODBUS_REGISTER_MAP_Tasks( void *pvParameters)
+{
+  MODBUS_REGISTER_MAP_Task_Runing ();
+
+}
+
 
 
 
@@ -95,6 +101,12 @@ void SYS_Tasks ( void )
 {
     /* Maintain system services */
     
+  // Create a queue to handle register commands
+  registerCommandQueue = xQueueCreate (3, sizeof (uint16_t));
+  if (registerCommandQueue == NULL)
+    {
+      // Handle error in queue creation
+    }
 
     /* Maintain Device Drivers */
     
@@ -103,12 +115,12 @@ void SYS_Tasks ( void )
     
 
     /* Maintain the application's state machine. */
-    (void) xTaskCreate((TaskFunction_t) LCD_Task1_Tasks,
-                "LCD_Tasks",
-                1024,
-                NULL,
-                1,
-                &xLCD_TASK1_TaskObject);
+//    (void) xTaskCreate((TaskFunction_t) LCD_Task1_Tasks,
+//                "LCD_Tasks",
+//                1024,
+//                NULL,
+//                1,
+//                &xLCD_TASK1_TaskObject);
     
     (void) xTaskCreate((TaskFunction_t) Uart_Dma_Rx_Tasks,
                 "UART_RX_Tasks",
@@ -116,6 +128,12 @@ void SYS_Tasks ( void )
                 NULL,
                 1,
                 &xUART_DMA_RX_TaskObject);
+    (void) xTaskCreate((TaskFunction_t) MODBUS_REGISTER_MAP_Tasks,
+                "Modbus_Tasks",
+                256,
+                NULL,
+                1,
+                &xMODBUS_REGISTER_TaskObject);
 
 
 

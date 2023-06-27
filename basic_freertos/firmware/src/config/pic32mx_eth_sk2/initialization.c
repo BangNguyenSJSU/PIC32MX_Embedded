@@ -177,6 +177,7 @@ SYS_Initialize (void* data)
   /* MISRAC 2012 deviation block end */
   LCD_TASK1_Initialize ();
   UART_DMA_RX_Task_Initialize ();
+  MODBUS_REGISTER_MAP_Task_Initialize ();
 
   EVIC_Initialize ();
 

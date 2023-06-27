@@ -135,7 +135,7 @@ LCD_TASK1_Task_Running (void)
   switchPressToLCDSemaphore = xSemaphoreCreateBinary ();
   /* DMA */
   char lcd_counterString[20];
-  char lcd_BuffDatastring[40] = {0};
+//  char lcd_BuffDatastring[40] = {0};
   char lcd_cs_string[20] = {0};
   UART_RX_DMA_CtrlObj* UART2_RX_Object = UART2_Get_CtrlObjectPtr ();
   while (1)
@@ -145,7 +145,7 @@ LCD_TASK1_Task_Running (void)
 
 
       /* crash check */
-       LED1_Toggle ();
+      // LED1_Toggle ();
 
 
       if (UART2_RX_Object->IsDONE)
@@ -169,7 +169,7 @@ LCD_TASK1_Task_Running (void)
       /* Blink LED at every 1000 ms. Meanwhile allow other ready tasks to run */
       // LATAINV = (1UL << 6);
       // TRISACLR = (1UL << 6);
-      vTaskDelay (5 / portTICK_PERIOD_MS);
+     // vTaskDelay (5 / portTICK_PERIOD_MS);
     }
 }
 
