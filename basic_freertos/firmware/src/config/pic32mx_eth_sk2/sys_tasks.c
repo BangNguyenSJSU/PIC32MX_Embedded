@@ -21,26 +21,26 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
-*
-* Subject to your compliance with these terms, you may use Microchip software
-* and any derivatives exclusively with Microchip products. It is your
-* responsibility to comply with third party license terms applicable to your
-* use of third party software (including open source software) that may
-* accompany Microchip software.
-*
-* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-* PARTICULAR PURPOSE.
-*
-* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+ *
+ * Subject to your compliance with these terms, you may use Microchip software
+ * and any derivatives exclusively with Microchip products. It is your
+ * responsibility to comply with third party license terms applicable to your
+ * use of third party software (including open source software) that may
+ * accompany Microchip software.
+ *
+ * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+ * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+ * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+ * PARTICULAR PURPOSE.
+ *
+ * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+ * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+ * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+ * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+ * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+ * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+ * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
  *******************************************************************************/
 // DOM-IGNORE-END
 
@@ -60,22 +60,22 @@
 // *****************************************************************************
 // *****************************************************************************
 
-
-static void LCD_Task1_Tasks(  void *pvParameters  )
-{   
-        LCD_TASK1_Task_Running();
+static void
+LCD_Task1_Tasks (void *pvParameters)
+{
+  LCD_TASK1_Task_Running ();
 }
 
-
-
-static void Uart_Dma_Rx_Tasks (void *pvParameters)
+static void
+Uart_Dma_Rx_Tasks (void *pvParameters)
 {
-     UART_DMA_RX_Task_Running();
+  UART_DMA_RX_Task_Running ();
 }
 
-static void MODBUS_REGISTER_MAP_Tasks( void *pvParameters)
+static void
+MODBUS_REGISTER_MAP_Tasks (void *pvParameters)
 {
-  MODBUS_REGISTER_MAP_Task_Runing ();
+  MODBUS_WR_Request_Task_Runing ();
 
 }
 
@@ -96,54 +96,60 @@ static void MODBUS_REGISTER_MAP_Tasks( void *pvParameters)
 
   Remarks:
     See prototype in system/common/sys_module.h.
-*/
-void SYS_Tasks ( void )
+ */
+void
+SYS_Tasks (void)
 {
-    /* Maintain system services */
-    
+  /* Maintain system services */
+
   // Create a queue to handle register commands
-  registerCommandQueue = xQueueCreate (3, sizeof (uint16_t));
-  if (registerCommandQueue == NULL)
+  modbusWrittenQueue = xQueueCreate (128, sizeof (MODBUS_REISTER_INFO));
+  if (modbusWrittenQueue == NULL)
+    {
+      // Handle error in queue creation
+    }
+  modbusReadQueue = xQueueCreate (10, sizeof (MODBUS_REISTER_INFO));
+  if (modbusReadQueue == NULL)
     {
       // Handle error in queue creation
     }
 
-    /* Maintain Device Drivers */
-    
-
-    /* Maintain Middleware & Other Libraries */
-    
-
-    /* Maintain the application's state machine. */
-//    (void) xTaskCreate((TaskFunction_t) LCD_Task1_Tasks,
-//                "LCD_Tasks",
-//                1024,
-//                NULL,
-//                1,
-//                &xLCD_TASK1_TaskObject);
-    
-    (void) xTaskCreate((TaskFunction_t) Uart_Dma_Rx_Tasks,
-                "UART_RX_Tasks",
-                512,
-                NULL,
-                1,
-                &xUART_DMA_RX_TaskObject);
-    (void) xTaskCreate((TaskFunction_t) MODBUS_REGISTER_MAP_Tasks,
-                "Modbus_Tasks",
-                256,
-                NULL,
-                1,
-                &xMODBUS_REGISTER_TaskObject);
+  /* Maintain Device Drivers */
 
 
+  /* Maintain Middleware & Other Libraries */
 
 
-    /* Start RTOS Scheduler. */
-    
-     /**********************************************************************
-     * Create all Threads for APP Tasks before starting FreeRTOS Scheduler *
-     ***********************************************************************/
-    vTaskStartScheduler(); /* This function never returns. */
+  /* Maintain the application's state machine. */
+  //    (void) xTaskCreate((TaskFunction_t) LCD_Task1_Tasks,
+  //                "LCD_Tasks",
+  //                1024,
+  //                NULL,
+  //                1,
+  //                &xLCD_TASK1_TaskObject);
+
+  (void) xTaskCreate ((TaskFunction_t) Uart_Dma_Rx_Tasks,
+                      "UART_RX_Tasks",
+                      512,
+                      NULL,
+                      2,
+                      &xUART_DMA_RX_TaskObject);
+  (void) xTaskCreate ((TaskFunction_t) MODBUS_REGISTER_MAP_Tasks,
+                      "Modbus_Tasks",
+                      512,
+                      NULL,
+                      1,
+                      &xMODBUS_REGISTER_TaskObject);
+
+
+
+
+  /* Start RTOS Scheduler. */
+
+  /**********************************************************************
+   * Create all Threads for APP Tasks before starting FreeRTOS Scheduler *
+   ***********************************************************************/
+  vTaskStartScheduler (); /* This function never returns. */
 
 }
 

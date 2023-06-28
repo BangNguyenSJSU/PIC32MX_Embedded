@@ -146,7 +146,7 @@ pulseEnable (uint8_t _data)
 {
   expanderWrite (_data | ENABLE_BIT); // En high
   //delay_coreTimer_ms(1); // enable pulse must be >450ns
-  CORETIMER_DelayUs (100);
+  CORETIMER_DelayUs (5);
 
   expanderWrite (_data & ~ENABLE_BIT); // En low
   CORETIMER_DelayUs (50); // commands need > 37us to settle

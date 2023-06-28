@@ -9,8 +9,11 @@ TaskHandle_t xUART_DMA_RX_TaskObject; // extern Declare in "sys_tasksObject.h"
 
 /* Handle Parsing Modbus RTU Message sent from Master */
 TaskHandle_t xMODBUS_REGISTER_TaskObject; // extern Declare in "sys_tasksObject.h"
+
 // Declare a queue for handling register commands
-QueueHandle_t registerCommandQueue;
+QueueHandle_t modbusWrittenQueue;
+QueueHandle_t modbusReadQueue;
+QueueHandle_t modbusReadReplyQueue;
 
 #define READ_REG_FUNCODE 0x03
 #define WRITE_REG_FUNCODE 0x10
@@ -49,7 +52,7 @@ Modbus_InitTable (MODBUS_REGISTER_TABLE_S *registerTable)
       if ((RegIndex >= 0) && (RegIndex <= CHANNEL_10_STATE))
         {
           registerTable->MB_REG_ACCESS_TYPE[RegIndex] = REG_ACCESS_RD;
-         // registerTable->MB_REG_DATA[RegIndex] = RegIndex;
+          // registerTable->MB_REG_DATA[RegIndex] = RegIndex;
         }
       else if ((RegIndex >= CHANNEL_1_CURRENT_SET_POINT) && (RegIndex <= FACTORY_CHANNEL_10_OFFSET_LOW))
         {
@@ -137,7 +140,7 @@ UART_DMA_RX_Task_Running (void)
 {
   /* TaskObjectHandler */
   xUART_DMA_RX_TaskObject = xTaskGetCurrentTaskHandle ();
-  uint32_t ulNotifiedValue;
+  // uint32_t ulNotifiedValue;
 
   /* Handle DMA Uart Rev */
   UART_RX_DMA_CtrlObj* UART2_RX_Object = UART2_Get_CtrlObjectPtr ();
@@ -145,6 +148,8 @@ UART_DMA_RX_Task_Running (void)
 
   /* Handle Parsing Message */
   ModbusMessage_t MessRXObj;
+  MODBUS_REISTER_INFO regObj;
+  //  MODBUS_REISTER_INFO regObjRD;
 
   /* --- */
   while (true)
@@ -191,16 +196,13 @@ UART_DMA_RX_Task_Running (void)
                   UART2_Write (responseBuffer, 8);
                   UART2_DMA_RX_Reset ();
 
-                  /*using quue to send MODBUS_Task */
+                  /* xQueueSend MODBUS_Task */
                   for (uint16_t RegIndx = 0; RegIndx < MessRXObj.MB_RegCnt; RegIndx++)
                     {
-                      uint16_t _reg_data = ((MessRXObj.MB_DataBuffPtr[0 + (RegIndx * 2)] << 8) | MessRXObj.MB_DataBuffPtr[1 + (RegIndx * 2)]);
-                      uint16_t _reg_add = MessRXObj.MB_RegAdd + RegIndx;
-                      Modbus_MultiWrite (&MOBBUS_REG_TABLE, _reg_add, 1, &_reg_data);
-                       if(_reg_add == 0x42)
-                         {
-                            xQueueSend (registerCommandQueue, (void*) &_reg_add, portMAX_DELAY);
-                         }                   
+                      regObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
+                      regObj.regData = ((MessRXObj.MB_DataBuffPtr[0 + (RegIndx * 2)] << 8) | MessRXObj.MB_DataBuffPtr[1 + (RegIndx * 2)]);
+                      Modbus_MultiWrite (&MOBBUS_REG_TABLE, regObj.regAdd, 1, &regObj.regData); //
+                      xQueueSend (modbusWrittenQueue, &regObj, portMAX_DELAY);
 
                     }
                   break;
@@ -208,7 +210,6 @@ UART_DMA_RX_Task_Running (void)
                   /* Update RX Message Object */
                   MessRXObj.MB_ByteCnt = 2 * MessRXObj.MB_RegCnt;
                   responseBuffer[RD_RESPOND_BYTE_CNT_INDX] = 2 * MessRXObj.MB_RegCnt;
-                  uint16_t registerVal = 0x0000;
                   for (size_t RegIndx = 0; RegIndx <= MessRXObj.MB_RegCnt; RegIndx++)
                     {
 
@@ -224,19 +225,14 @@ UART_DMA_RX_Task_Running (void)
                       else
                         {
                           /* Packet */
-                          uint16_t _reg_add = MessRXObj.MB_RegAdd + RegIndx;
-                          Modbus_MultiRead (&MOBBUS_REG_TABLE, _reg_add, 1, &registerVal);
-                          responseBuffer[RD_RESPOND_DATA_INDX_H + (RegIndx * REG_DATA_SIZE)] = (registerVal >> 8) & 0xFF; // High byte reg val
-                          responseBuffer[RD_RESPOND_DATA_INDX_L + (RegIndx * REG_DATA_SIZE)] = registerVal & 0xFF; // Low byte reg_val
-                          //                          uint16_t _reg_data = ((MessRXObj.MB_DataBuffPtr[0 + (RegIndx * 2)] << 8) | MessRXObj.MB_DataBuffPtr[1 + (RegIndx * 2)]);
-//                          if(_reg_add == 0x42)
-//                            {
-//                               xQueueSend (registerCommandQueue, (void*) &_reg_data, portMAX_DELAY);
-//                            }
-                        
+                          regObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
+                          regObj.regData = 0x0000;
+                          Modbus_MultiRead (&MOBBUS_REG_TABLE, regObj.regAdd, 1, &regObj.regData);
+                          responseBuffer[RD_RESPOND_DATA_INDX_H + (RegIndx * REG_DATA_SIZE)] = (regObj.regData >> 8) & 0xFF; // High byte reg val
+                          responseBuffer[RD_RESPOND_DATA_INDX_L + (RegIndx * REG_DATA_SIZE)] = regObj.regData & 0xFF; // Low byte reg_val
+                          LED2_Toggle ();
                         }
                     }
-
                   break;
                 default:
                   break;
@@ -247,27 +243,83 @@ UART_DMA_RX_Task_Running (void)
     }
 }
 
-void
-MODBUS_REGISTER_MAP_Task_Runing (void)
+/* Draft version ( need to factoring the code ) */
+static uint16_t
+ChannelEnableDev1_CH1_CH5 (uint16_t modbusAdd, uint16_t modbusData)
 {
-  uint16_t receiveVal = 0;
-  uint16_t regVal= 0;
+  static uint16_t InternalRegVal;
+  if ((CHANNEL_1_ENABLE <= modbusAdd) && (modbusAdd <= CHANNEL_5_ENABLE))
+    {
+      uint8_t channelBit = (modbusAdd) - CHANNEL_1_ENABLE;
+      if (modbusData == 1)
+        {
+          uint16_t tempValSET = (1 << channelBit);
+          InternalRegVal = InternalRegVal | tempValSET;
+        }
+      else
+        {
+          uint16_t tempValCLR = (0 << channelBit);
+          InternalRegVal = InternalRegVal & tempValCLR;
+        }
+
+    }
+  return InternalRegVal;
+}
+
+static uint16_t
+ChannelEnableDev1_CH6_CH10 (uint16_t modbusAdd, uint16_t modbusData)
+{
+  static uint16_t InternalRegVal;
+  if ((CHANNEL_6_ENABLE <= modbusAdd) && (modbusAdd <= CHANNEL_10_ENABLE))
+    {
+      uint8_t channelBit = (modbusAdd) - CHANNEL_6_ENABLE;
+      if (modbusData == 1)
+        {
+          uint16_t tempValSET = (1 << channelBit);
+          InternalRegVal = InternalRegVal | tempValSET;
+        }
+      else
+        {
+          uint16_t tempValCLR = (0 << channelBit);
+          InternalRegVal = InternalRegVal & tempValCLR;
+        }
+
+    }
+  return InternalRegVal;
+}
+
+void
+MODBUS_WR_Request_Task_Runing (void)
+{
+
+  MODBUS_REISTER_INFO regInfoWR;
   char lcd_BuffDatastring[20] = {0};
+  char lcd_BuffDatastring2[20] = {0};
+
   while (1)
     {
 
-      //Modbus_MultiWrite (&MOBBUS_REG_TABLE, _reg_add, 1, &_reg_data);
-
-      if (xQueueReceive (registerCommandQueue, (void*) &receiveVal, portMAX_DELAY) == pdTRUE)
+      uint16_t channelStatus1 = 0;
+      uint16_t channelStatus2 = 0;
+      if (xQueueReceive (modbusWrittenQueue, (void*) &regInfoWR, portMAX_DELAY) == pdTRUE)
         {
-          // Handle the 
           LED1_Toggle ();
-          Modbus_MultiRead (&MOBBUS_REG_TABLE, receiveVal, 1, &regVal);
-          sprintf(lcd_BuffDatastring, "0x%.4X",regVal);
-          LCD_PRINT_STRING (lcd_BuffDatastring, 0, 1, 0);
+
+          channelStatus1 = ChannelEnableDev1_CH1_CH5 (regInfoWR.regAdd, regInfoWR.regData);
+          channelStatus2 = ChannelEnableDev1_CH6_CH10 (regInfoWR.regAdd, regInfoWR.regData);
+          //TO DO: write into internal register base on modbus value
+          if (channelStatus1 != 0)
+            {
+              sprintf (lcd_BuffDatastring, "0x%.4X", channelStatus1);
+              LCD_PRINT_STRING (lcd_BuffDatastring, 0, 0, 0);
+            }
+          if (channelStatus2 != 0)
+            {
+              sprintf (lcd_BuffDatastring2, "0x%.4X", channelStatus2);
+              LCD_PRINT_STRING (lcd_BuffDatastring2, 0, 1, 0);
+            }
+
         }
-
-
       //   vTaskDelay(5 / portTICK_PERIOD_MS);
     }
 }

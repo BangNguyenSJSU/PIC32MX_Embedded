@@ -157,6 +157,11 @@ extern "C" {
         uint16_t MB_REG_DATA[TOTAL_MODBUS_REGISTERS];
         REG_ACESS_TYPE_E MB_REG_ACCESS_TYPE[TOTAL_MODBUS_REGISTERS];
     } MODBUS_REGISTER_TABLE_S;
+    
+    typedef struct {
+        uint16_t regAdd;
+        uint16_t regData; 
+    }MODBUS_REISTER_INFO;
 
     /* Both read and write */
     typedef struct {
@@ -181,7 +186,8 @@ extern "C" {
 
     /**/
     void MODBUS_REGISTER_MAP_Task_Initialize(void);
-    void MODBUS_REGISTER_MAP_Task_Runing(void);
+    void MODBUS_WR_Request_Task_Runing(void);
+    void MODBUS_RD_Request_Task_Runing(void);
 
     /**/
     // Function to perform a read operation on multiple Modbus registers

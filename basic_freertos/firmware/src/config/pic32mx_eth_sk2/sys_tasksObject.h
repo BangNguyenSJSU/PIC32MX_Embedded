@@ -65,7 +65,10 @@ extern TaskHandle_t xUART_DMA_RX_TaskObject;
 extern TaskHandle_t xMODBUS_REGISTER_TaskObject;
 
 // Declare a queue for handling register commands
-extern QueueHandle_t registerCommandQueue;
+extern QueueHandle_t modbusWrittenQueue;
+extern QueueHandle_t modbusReadQueue;
+extern QueueHandle_t modbusReadReplyQueue;
+
 
 
 #endif //SYS_TASKS_H

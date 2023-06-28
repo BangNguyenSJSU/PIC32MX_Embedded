@@ -254,7 +254,7 @@ uint8_t
 i2c_LCD_write (uint8_t slaveAddress,unsigned char* data)
 {
   bool ready = false;
-  CORETIMER_DelayUs (500);
+  CORETIMER_DelayUs (10);
 
   ready = I2C_start ();
   if (!ready)
