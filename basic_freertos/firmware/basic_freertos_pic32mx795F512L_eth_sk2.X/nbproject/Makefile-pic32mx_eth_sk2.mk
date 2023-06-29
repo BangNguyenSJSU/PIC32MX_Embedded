@@ -30,24 +30,18 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
 COMPARISON_BUILD=-mafrlcsj
 else
 COMPARISON_BUILD=
-endif
-
-ifdef SUB_IMAGE_ADDRESS
-
-else
-SUB_IMAGE_ADDRESS_COMMAND=
 endif
 
 # Object Directory
@@ -57,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../src/config/pic32mx_eth_sk2/bsp/bsp.c ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c ../src/config/pic32mx_eth_sk2/initialization.c ../src/config/pic32mx_eth_sk2/interrupts.c ../src/config/pic32mx_eth_sk2/interrupts_a.S ../src/config/pic32mx_eth_sk2/exceptions.c ../src/config/pic32mx_eth_sk2/freertos_hooks.c ../src/config/pic32mx_eth_sk2/sys_tasks.c ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S ../src/third_party/rtos/FreeRTOS/Source/croutine.c ../src/third_party/rtos/FreeRTOS/Source/list.c ../src/third_party/rtos/FreeRTOS/Source/queue.c ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c ../src/third_party/rtos/FreeRTOS/Source/timers.c ../src/third_party/rtos/FreeRTOS/Source/event_groups.c ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c ../src/USER_HELPER/HELPER_FUNCTION.c ../src/main.c ../src/LCD_Task1.c ../src/UartDmaRx_Task.c
+SOURCEFILES_QUOTED_IF_SPACED=../src/config/pic32mx_eth_sk2/bsp/bsp.c ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c ../src/config/pic32mx_eth_sk2/initialization.c ../src/config/pic32mx_eth_sk2/interrupts.c ../src/config/pic32mx_eth_sk2/interrupts_a.S ../src/config/pic32mx_eth_sk2/exceptions.c ../src/config/pic32mx_eth_sk2/freertos_hooks.c ../src/config/pic32mx_eth_sk2/sys_tasks.c ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S ../src/third_party/rtos/FreeRTOS/Source/croutine.c ../src/third_party/rtos/FreeRTOS/Source/list.c ../src/third_party/rtos/FreeRTOS/Source/queue.c ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c ../src/third_party/rtos/FreeRTOS/Source/timers.c ../src/third_party/rtos/FreeRTOS/Source/event_groups.c ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c ../src/USER_HELPER/HELPER_FUNCTION.c ../src/main.c ../src/LCD_Task1.c ../src/UartDmaRx_Task.c ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.c ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c ../src/USER_HELPER/REGISTERS_MAP.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1123471642/bsp.o ${OBJECTDIR}/_ext/467495608/osal_freertos.o ${OBJECTDIR}/_ext/1968539896/plib_clk.o ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o ${OBJECTDIR}/_ext/895164091/plib_dmac.o ${OBJECTDIR}/_ext/895125403/plib_evic.o ${OBJECTDIR}/_ext/895071575/plib_gpio.o ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o ${OBJECTDIR}/_ext/894686958/plib_tmr1.o ${OBJECTDIR}/_ext/894668632/plib_uart2.o ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o ${OBJECTDIR}/_ext/1844760744/sys_reset.o ${OBJECTDIR}/_ext/111649226/initialization.o ${OBJECTDIR}/_ext/111649226/interrupts.o ${OBJECTDIR}/_ext/111649226/interrupts_a.o ${OBJECTDIR}/_ext/111649226/exceptions.o ${OBJECTDIR}/_ext/111649226/freertos_hooks.o ${OBJECTDIR}/_ext/111649226/sys_tasks.o ${OBJECTDIR}/_ext/1665200909/heap_1.o ${OBJECTDIR}/_ext/951553248/port.o ${OBJECTDIR}/_ext/951553248/port_asm.o ${OBJECTDIR}/_ext/404212886/croutine.o ${OBJECTDIR}/_ext/404212886/list.o ${OBJECTDIR}/_ext/404212886/queue.o ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o ${OBJECTDIR}/_ext/404212886/timers.o ${OBJECTDIR}/_ext/404212886/event_groups.o ${OBJECTDIR}/_ext/404212886/stream_buffer.o ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1123471642/bsp.o.d ${OBJECTDIR}/_ext/467495608/osal_freertos.o.d ${OBJECTDIR}/_ext/1968539896/plib_clk.o.d ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o.d ${OBJECTDIR}/_ext/895164091/plib_dmac.o.d ${OBJECTDIR}/_ext/895125403/plib_evic.o.d ${OBJECTDIR}/_ext/895071575/plib_gpio.o.d ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o.d ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o.d ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o.d ${OBJECTDIR}/_ext/894686958/plib_tmr1.o.d ${OBJECTDIR}/_ext/894668632/plib_uart2.o.d ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o.d ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o.d ${OBJECTDIR}/_ext/1844760744/sys_reset.o.d ${OBJECTDIR}/_ext/111649226/initialization.o.d ${OBJECTDIR}/_ext/111649226/interrupts.o.d ${OBJECTDIR}/_ext/111649226/interrupts_a.o.d ${OBJECTDIR}/_ext/111649226/exceptions.o.d ${OBJECTDIR}/_ext/111649226/freertos_hooks.o.d ${OBJECTDIR}/_ext/111649226/sys_tasks.o.d ${OBJECTDIR}/_ext/1665200909/heap_1.o.d ${OBJECTDIR}/_ext/951553248/port.o.d ${OBJECTDIR}/_ext/951553248/port_asm.o.d ${OBJECTDIR}/_ext/404212886/croutine.o.d ${OBJECTDIR}/_ext/404212886/list.o.d ${OBJECTDIR}/_ext/404212886/queue.o.d ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o.d ${OBJECTDIR}/_ext/404212886/timers.o.d ${OBJECTDIR}/_ext/404212886/event_groups.o.d ${OBJECTDIR}/_ext/404212886/stream_buffer.o.d ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o.d ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1123471642/bsp.o ${OBJECTDIR}/_ext/467495608/osal_freertos.o ${OBJECTDIR}/_ext/1968539896/plib_clk.o ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o ${OBJECTDIR}/_ext/895164091/plib_dmac.o ${OBJECTDIR}/_ext/895125403/plib_evic.o ${OBJECTDIR}/_ext/895071575/plib_gpio.o ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o ${OBJECTDIR}/_ext/894686958/plib_tmr1.o ${OBJECTDIR}/_ext/894668632/plib_uart2.o ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o ${OBJECTDIR}/_ext/1844760744/sys_reset.o ${OBJECTDIR}/_ext/111649226/initialization.o ${OBJECTDIR}/_ext/111649226/interrupts.o ${OBJECTDIR}/_ext/111649226/interrupts_a.o ${OBJECTDIR}/_ext/111649226/exceptions.o ${OBJECTDIR}/_ext/111649226/freertos_hooks.o ${OBJECTDIR}/_ext/111649226/sys_tasks.o ${OBJECTDIR}/_ext/1665200909/heap_1.o ${OBJECTDIR}/_ext/951553248/port.o ${OBJECTDIR}/_ext/951553248/port_asm.o ${OBJECTDIR}/_ext/404212886/croutine.o ${OBJECTDIR}/_ext/404212886/list.o ${OBJECTDIR}/_ext/404212886/queue.o ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o ${OBJECTDIR}/_ext/404212886/timers.o ${OBJECTDIR}/_ext/404212886/event_groups.o ${OBJECTDIR}/_ext/404212886/stream_buffer.o ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o ${OBJECTDIR}/_ext/893259528/SPI.o ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1123471642/bsp.o.d ${OBJECTDIR}/_ext/467495608/osal_freertos.o.d ${OBJECTDIR}/_ext/1968539896/plib_clk.o.d ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o.d ${OBJECTDIR}/_ext/895164091/plib_dmac.o.d ${OBJECTDIR}/_ext/895125403/plib_evic.o.d ${OBJECTDIR}/_ext/895071575/plib_gpio.o.d ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o.d ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o.d ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o.d ${OBJECTDIR}/_ext/894686958/plib_tmr1.o.d ${OBJECTDIR}/_ext/894668632/plib_uart2.o.d ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o.d ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o.d ${OBJECTDIR}/_ext/1844760744/sys_reset.o.d ${OBJECTDIR}/_ext/111649226/initialization.o.d ${OBJECTDIR}/_ext/111649226/interrupts.o.d ${OBJECTDIR}/_ext/111649226/interrupts_a.o.d ${OBJECTDIR}/_ext/111649226/exceptions.o.d ${OBJECTDIR}/_ext/111649226/freertos_hooks.o.d ${OBJECTDIR}/_ext/111649226/sys_tasks.o.d ${OBJECTDIR}/_ext/1665200909/heap_1.o.d ${OBJECTDIR}/_ext/951553248/port.o.d ${OBJECTDIR}/_ext/951553248/port_asm.o.d ${OBJECTDIR}/_ext/404212886/croutine.o.d ${OBJECTDIR}/_ext/404212886/list.o.d ${OBJECTDIR}/_ext/404212886/queue.o.d ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o.d ${OBJECTDIR}/_ext/404212886/timers.o.d ${OBJECTDIR}/_ext/404212886/event_groups.o.d ${OBJECTDIR}/_ext/404212886/stream_buffer.o.d ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o.d ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o.d ${OBJECTDIR}/_ext/893259528/SPI.o.d ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o.d ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1123471642/bsp.o ${OBJECTDIR}/_ext/467495608/osal_freertos.o ${OBJECTDIR}/_ext/1968539896/plib_clk.o ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o ${OBJECTDIR}/_ext/895164091/plib_dmac.o ${OBJECTDIR}/_ext/895125403/plib_evic.o ${OBJECTDIR}/_ext/895071575/plib_gpio.o ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o ${OBJECTDIR}/_ext/894686958/plib_tmr1.o ${OBJECTDIR}/_ext/894668632/plib_uart2.o ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o ${OBJECTDIR}/_ext/1844760744/sys_reset.o ${OBJECTDIR}/_ext/111649226/initialization.o ${OBJECTDIR}/_ext/111649226/interrupts.o ${OBJECTDIR}/_ext/111649226/interrupts_a.o ${OBJECTDIR}/_ext/111649226/exceptions.o ${OBJECTDIR}/_ext/111649226/freertos_hooks.o ${OBJECTDIR}/_ext/111649226/sys_tasks.o ${OBJECTDIR}/_ext/1665200909/heap_1.o ${OBJECTDIR}/_ext/951553248/port.o ${OBJECTDIR}/_ext/951553248/port_asm.o ${OBJECTDIR}/_ext/404212886/croutine.o ${OBJECTDIR}/_ext/404212886/list.o ${OBJECTDIR}/_ext/404212886/queue.o ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o ${OBJECTDIR}/_ext/404212886/timers.o ${OBJECTDIR}/_ext/404212886/event_groups.o ${OBJECTDIR}/_ext/404212886/stream_buffer.o ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o
+OBJECTFILES=${OBJECTDIR}/_ext/1123471642/bsp.o ${OBJECTDIR}/_ext/467495608/osal_freertos.o ${OBJECTDIR}/_ext/1968539896/plib_clk.o ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o ${OBJECTDIR}/_ext/895164091/plib_dmac.o ${OBJECTDIR}/_ext/895125403/plib_evic.o ${OBJECTDIR}/_ext/895071575/plib_gpio.o ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o ${OBJECTDIR}/_ext/894686958/plib_tmr1.o ${OBJECTDIR}/_ext/894668632/plib_uart2.o ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o ${OBJECTDIR}/_ext/1844760744/sys_reset.o ${OBJECTDIR}/_ext/111649226/initialization.o ${OBJECTDIR}/_ext/111649226/interrupts.o ${OBJECTDIR}/_ext/111649226/interrupts_a.o ${OBJECTDIR}/_ext/111649226/exceptions.o ${OBJECTDIR}/_ext/111649226/freertos_hooks.o ${OBJECTDIR}/_ext/111649226/sys_tasks.o ${OBJECTDIR}/_ext/1665200909/heap_1.o ${OBJECTDIR}/_ext/951553248/port.o ${OBJECTDIR}/_ext/951553248/port_asm.o ${OBJECTDIR}/_ext/404212886/croutine.o ${OBJECTDIR}/_ext/404212886/list.o ${OBJECTDIR}/_ext/404212886/queue.o ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o ${OBJECTDIR}/_ext/404212886/timers.o ${OBJECTDIR}/_ext/404212886/event_groups.o ${OBJECTDIR}/_ext/404212886/stream_buffer.o ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o ${OBJECTDIR}/_ext/893259528/SPI.o ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o
 
 # Source Files
-SOURCEFILES=../src/config/pic32mx_eth_sk2/bsp/bsp.c ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c ../src/config/pic32mx_eth_sk2/initialization.c ../src/config/pic32mx_eth_sk2/interrupts.c ../src/config/pic32mx_eth_sk2/interrupts_a.S ../src/config/pic32mx_eth_sk2/exceptions.c ../src/config/pic32mx_eth_sk2/freertos_hooks.c ../src/config/pic32mx_eth_sk2/sys_tasks.c ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S ../src/third_party/rtos/FreeRTOS/Source/croutine.c ../src/third_party/rtos/FreeRTOS/Source/list.c ../src/third_party/rtos/FreeRTOS/Source/queue.c ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c ../src/third_party/rtos/FreeRTOS/Source/timers.c ../src/third_party/rtos/FreeRTOS/Source/event_groups.c ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c ../src/USER_HELPER/HELPER_FUNCTION.c ../src/main.c ../src/LCD_Task1.c ../src/UartDmaRx_Task.c
+SOURCEFILES=../src/config/pic32mx_eth_sk2/bsp/bsp.c ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c ../src/config/pic32mx_eth_sk2/initialization.c ../src/config/pic32mx_eth_sk2/interrupts.c ../src/config/pic32mx_eth_sk2/interrupts_a.S ../src/config/pic32mx_eth_sk2/exceptions.c ../src/config/pic32mx_eth_sk2/freertos_hooks.c ../src/config/pic32mx_eth_sk2/sys_tasks.c ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S ../src/third_party/rtos/FreeRTOS/Source/croutine.c ../src/third_party/rtos/FreeRTOS/Source/list.c ../src/third_party/rtos/FreeRTOS/Source/queue.c ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c ../src/third_party/rtos/FreeRTOS/Source/timers.c ../src/third_party/rtos/FreeRTOS/Source/event_groups.c ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c ../src/USER_HELPER/HELPER_FUNCTION.c ../src/main.c ../src/LCD_Task1.c ../src/UartDmaRx_Task.c ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.c ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c ../src/USER_HELPER/REGISTERS_MAP.c
 
 
 
@@ -88,7 +82,7 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-pic32mx_eth_sk2.mk dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-pic32mx_eth_sk2.mk ${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=32MX795F512L
 MP_LINKER_FILE_OPTION=,--script="..\src\config\pic32mx_eth_sk2\p32MX795F512L.ld"
@@ -101,7 +95,7 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assembleWithPreprocess
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/111649226/interrupts_a.o: ../src/config/pic32mx_eth_sk2/interrupts_a.S  .generated_files/flags/pic32mx_eth_sk2/265dae2766efc40ad0b2ffe3a76773baf7f345ca .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/interrupts_a.o: ../src/config/pic32mx_eth_sk2/interrupts_a.S  .generated_files/flags/pic32mx_eth_sk2/ad6dee1990398d59307b053fab5752a38a3a0fd7 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts_a.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts_a.o 
@@ -109,7 +103,7 @@ ${OBJECTDIR}/_ext/111649226/interrupts_a.o: ../src/config/pic32mx_eth_sk2/interr
 	${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -MMD -MF "${OBJECTDIR}/_ext/111649226/interrupts_a.o.d"  -o ${OBJECTDIR}/_ext/111649226/interrupts_a.o ../src/config/pic32mx_eth_sk2/interrupts_a.S  -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/111649226/interrupts_a.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,-I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -mdfp="${DFP_DIR}"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/111649226/interrupts_a.o.d" "${OBJECTDIR}/_ext/111649226/interrupts_a.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/951553248/port_asm.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S  .generated_files/flags/pic32mx_eth_sk2/66a635dc37877ea3d5bd8c71d40a4b93e6db6bca .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/951553248/port_asm.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S  .generated_files/flags/pic32mx_eth_sk2/2d3cf3c870983d617627c78ca3506313620e69ea .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/951553248" 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port_asm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port_asm.o 
@@ -118,7 +112,7 @@ ${OBJECTDIR}/_ext/951553248/port_asm.o: ../src/third_party/rtos/FreeRTOS/Source/
 	@${FIXDEPS} "${OBJECTDIR}/_ext/951553248/port_asm.o.d" "${OBJECTDIR}/_ext/951553248/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
 	
 else
-${OBJECTDIR}/_ext/111649226/interrupts_a.o: ../src/config/pic32mx_eth_sk2/interrupts_a.S  .generated_files/flags/pic32mx_eth_sk2/ca71c34c2273972bed9b666f624efcee9e7e10cb .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/interrupts_a.o: ../src/config/pic32mx_eth_sk2/interrupts_a.S  .generated_files/flags/pic32mx_eth_sk2/76036a2a06124a3ae8794bd681eb0fbd5516f9f9 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts_a.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts_a.o 
@@ -126,7 +120,7 @@ ${OBJECTDIR}/_ext/111649226/interrupts_a.o: ../src/config/pic32mx_eth_sk2/interr
 	${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -MMD -MF "${OBJECTDIR}/_ext/111649226/interrupts_a.o.d"  -o ${OBJECTDIR}/_ext/111649226/interrupts_a.o ../src/config/pic32mx_eth_sk2/interrupts_a.S  -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/111649226/interrupts_a.o.asm.d",--gdwarf-2,-I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -mdfp="${DFP_DIR}"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/111649226/interrupts_a.o.d" "${OBJECTDIR}/_ext/111649226/interrupts_a.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/951553248/port_asm.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S  .generated_files/flags/pic32mx_eth_sk2/88bb618c07740d21af84b3dc05eead9a7da1543f .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/951553248/port_asm.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S  .generated_files/flags/pic32mx_eth_sk2/99b4e918f9336a224f4f254b3f1fd67ca99ed294 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/951553248" 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port_asm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port_asm.o 
@@ -139,402 +133,438 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1123471642/bsp.o: ../src/config/pic32mx_eth_sk2/bsp/bsp.c  .generated_files/flags/pic32mx_eth_sk2/c88e6dbcfe4d1372e4ae967b85e9e47a57ee5183 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1123471642/bsp.o: ../src/config/pic32mx_eth_sk2/bsp/bsp.c  .generated_files/flags/pic32mx_eth_sk2/bd8d813217b157849a11e76ccf876e073986cc08 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1123471642" 
 	@${RM} ${OBJECTDIR}/_ext/1123471642/bsp.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1123471642/bsp.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1123471642/bsp.o.d" -o ${OBJECTDIR}/_ext/1123471642/bsp.o ../src/config/pic32mx_eth_sk2/bsp/bsp.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/467495608/osal_freertos.o: ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c  .generated_files/flags/pic32mx_eth_sk2/25bd23227535cd4ea5160d932b6df3c03b3956a2 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/467495608/osal_freertos.o: ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c  .generated_files/flags/pic32mx_eth_sk2/2324924e9483a5384943769d6700dddc0484074b .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/467495608" 
 	@${RM} ${OBJECTDIR}/_ext/467495608/osal_freertos.o.d 
 	@${RM} ${OBJECTDIR}/_ext/467495608/osal_freertos.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/467495608/osal_freertos.o.d" -o ${OBJECTDIR}/_ext/467495608/osal_freertos.o ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1968539896/plib_clk.o: ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c  .generated_files/flags/pic32mx_eth_sk2/2ed4a6a66c3e82673ac544d6a6d2732f3bb4d08f .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1968539896/plib_clk.o: ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c  .generated_files/flags/pic32mx_eth_sk2/ad81752dd55cf7badeda47a2048bfa7fbbb7eb45 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1968539896" 
 	@${RM} ${OBJECTDIR}/_ext/1968539896/plib_clk.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1968539896/plib_clk.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1968539896/plib_clk.o.d" -o ${OBJECTDIR}/_ext/1968539896/plib_clk.o ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1824765036/plib_coretimer.o: ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c  .generated_files/flags/pic32mx_eth_sk2/9f616a10f1a598673079ace37de3d369b6e4eb .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1824765036/plib_coretimer.o: ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c  .generated_files/flags/pic32mx_eth_sk2/b3b037fc6c384069cf95c0faf17c22b5f4696769 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1824765036" 
 	@${RM} ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1824765036/plib_coretimer.o.d" -o ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/895164091/plib_dmac.o: ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c  .generated_files/flags/pic32mx_eth_sk2/a68ee7a7d761eb641b2d90300cbaac6a9edd0d04 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/895164091/plib_dmac.o: ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c  .generated_files/flags/pic32mx_eth_sk2/fe686eee6a794b350fa788a480a44a4ad4818b8f .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/895164091" 
 	@${RM} ${OBJECTDIR}/_ext/895164091/plib_dmac.o.d 
 	@${RM} ${OBJECTDIR}/_ext/895164091/plib_dmac.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/895164091/plib_dmac.o.d" -o ${OBJECTDIR}/_ext/895164091/plib_dmac.o ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/895125403/plib_evic.o: ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c  .generated_files/flags/pic32mx_eth_sk2/88b127da49fb5215c24c3446121dfc01f82768d5 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/895125403/plib_evic.o: ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c  .generated_files/flags/pic32mx_eth_sk2/f659f225e54607097e2652b10ce7eadc5b2a7ff4 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/895125403" 
 	@${RM} ${OBJECTDIR}/_ext/895125403/plib_evic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/895125403/plib_evic.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/895125403/plib_evic.o.d" -o ${OBJECTDIR}/_ext/895125403/plib_evic.o ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/895071575/plib_gpio.o: ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c  .generated_files/flags/pic32mx_eth_sk2/fa89fe1e94fe7d7e9e8bb61b65016d82c473e21f .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/895071575/plib_gpio.o: ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c  .generated_files/flags/pic32mx_eth_sk2/2f5119126380dbdb84a87f535d1cc46c934c08d8 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/895071575" 
 	@${RM} ${OBJECTDIR}/_ext/895071575/plib_gpio.o.d 
 	@${RM} ${OBJECTDIR}/_ext/895071575/plib_gpio.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/895071575/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/895071575/plib_gpio.o ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2146581590/I2C_LCD.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c  .generated_files/flags/pic32mx_eth_sk2/14e5d6792ca1bd6ae36264ae416f3cd5c972eeb7 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/2146581590/I2C_LCD.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c  .generated_files/flags/pic32mx_eth_sk2/6b9966ccfad0e53701fa163cc275d6b6a0ec6d6e .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/2146581590" 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/2146581590/I2C_LCD.o.d" -o ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/ce140e234ea0ba6bfe586d18a049d91c9a9fca3 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/de65f3c50e69284594f7890c469ba4f4525f9d31 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/2146581590" 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o.d" -o ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1968523521/plib_tmr2.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c  .generated_files/flags/pic32mx_eth_sk2/af07df6b294e89831f9427c4f958f73d48d022c4 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1968523521/plib_tmr2.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c  .generated_files/flags/pic32mx_eth_sk2/358cd1381bb4500144a1cf0ae044498384b573ac .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1968523521" 
 	@${RM} ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1968523521/plib_tmr2.o.d" -o ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/894686958/plib_tmr1.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c  .generated_files/flags/pic32mx_eth_sk2/fee8b4c0db0e4a1c876131bae56e205ed5699ff1 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/894686958/plib_tmr1.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c  .generated_files/flags/pic32mx_eth_sk2/b6697ea4201883ee8844956465abbd6f77c92dde .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/894686958" 
 	@${RM} ${OBJECTDIR}/_ext/894686958/plib_tmr1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/894686958/plib_tmr1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/894686958/plib_tmr1.o.d" -o ${OBJECTDIR}/_ext/894686958/plib_tmr1.o ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/894668632/plib_uart2.o: ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c  .generated_files/flags/pic32mx_eth_sk2/ec7e8c0bc3967b2460181eba51f2338b58a20b82 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/894668632/plib_uart2.o: ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c  .generated_files/flags/pic32mx_eth_sk2/96ba2e41caf367170df0c6c83f7d970170512968 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/894668632" 
 	@${RM} ${OBJECTDIR}/_ext/894668632/plib_uart2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/894668632/plib_uart2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/894668632/plib_uart2.o.d" -o ${OBJECTDIR}/_ext/894668632/plib_uart2.o ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/a64a8162d796d936fc8084dc2ab85630fc67d423 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/1add9800270cb1fc2d7fea80ac0f60063d2a8698 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1880771394" 
 	@${RM} ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o.d" -o ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1603735184/xc32_monitor.o: ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c  .generated_files/flags/pic32mx_eth_sk2/85976e2455dde0be4f9feadba4214eb16a6a4002 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1603735184/xc32_monitor.o: ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c  .generated_files/flags/pic32mx_eth_sk2/c6108f4fdf3ebf4cdf7d8837c020981779e9f9b9 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1603735184" 
 	@${RM} ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1603735184/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1844760744/sys_reset.o: ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c  .generated_files/flags/pic32mx_eth_sk2/6abad43c883b05815fcd736ed386a6a481cecd00 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1844760744/sys_reset.o: ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c  .generated_files/flags/pic32mx_eth_sk2/18fc16cce2b17abde5b00e3cd03f5061af50fa6e .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1844760744" 
 	@${RM} ${OBJECTDIR}/_ext/1844760744/sys_reset.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1844760744/sys_reset.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1844760744/sys_reset.o.d" -o ${OBJECTDIR}/_ext/1844760744/sys_reset.o ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/initialization.o: ../src/config/pic32mx_eth_sk2/initialization.c  .generated_files/flags/pic32mx_eth_sk2/eff9c769c26a39a2ddbd44724f2d93d3773ccbf7 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/initialization.o: ../src/config/pic32mx_eth_sk2/initialization.c  .generated_files/flags/pic32mx_eth_sk2/289b40261ae5fab3111beb2ee20b995dd842bca6 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/initialization.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/initialization.o.d" -o ${OBJECTDIR}/_ext/111649226/initialization.o ../src/config/pic32mx_eth_sk2/initialization.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/interrupts.o: ../src/config/pic32mx_eth_sk2/interrupts.c  .generated_files/flags/pic32mx_eth_sk2/264a2db1797f5eabf8d1f4727298dab0e408d8a .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/interrupts.o: ../src/config/pic32mx_eth_sk2/interrupts.c  .generated_files/flags/pic32mx_eth_sk2/f3c6f254d2b2e45d16620a8b1e09a8aef89cea42 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/interrupts.o.d" -o ${OBJECTDIR}/_ext/111649226/interrupts.o ../src/config/pic32mx_eth_sk2/interrupts.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/exceptions.o: ../src/config/pic32mx_eth_sk2/exceptions.c  .generated_files/flags/pic32mx_eth_sk2/2f2cf17c7179d27cc839685b9495b100470b6e8e .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/exceptions.o: ../src/config/pic32mx_eth_sk2/exceptions.c  .generated_files/flags/pic32mx_eth_sk2/452fdc1d5340c703bb167711052db607f9c23b5b .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/exceptions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/exceptions.o.d" -o ${OBJECTDIR}/_ext/111649226/exceptions.o ../src/config/pic32mx_eth_sk2/exceptions.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/freertos_hooks.o: ../src/config/pic32mx_eth_sk2/freertos_hooks.c  .generated_files/flags/pic32mx_eth_sk2/c70b25acc41cb8cff9cf79a881d5f3d39841c69d .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/freertos_hooks.o: ../src/config/pic32mx_eth_sk2/freertos_hooks.c  .generated_files/flags/pic32mx_eth_sk2/5afc1a0d8d47d77f25a43c754a468abd8dce09cc .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/freertos_hooks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/freertos_hooks.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/freertos_hooks.o.d" -o ${OBJECTDIR}/_ext/111649226/freertos_hooks.o ../src/config/pic32mx_eth_sk2/freertos_hooks.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/sys_tasks.o: ../src/config/pic32mx_eth_sk2/sys_tasks.c  .generated_files/flags/pic32mx_eth_sk2/23eaa31b388b184092e2052d29b7eac35eff2412 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/sys_tasks.o: ../src/config/pic32mx_eth_sk2/sys_tasks.c  .generated_files/flags/pic32mx_eth_sk2/e03f1bc89912d7f46c37a39c7fe2a7972da77ef0 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/sys_tasks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/sys_tasks.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/sys_tasks.o.d" -o ${OBJECTDIR}/_ext/111649226/sys_tasks.o ../src/config/pic32mx_eth_sk2/sys_tasks.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1665200909/heap_1.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c  .generated_files/flags/pic32mx_eth_sk2/73f46139cd639162ee4102293c730fe619b2a395 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1665200909/heap_1.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c  .generated_files/flags/pic32mx_eth_sk2/7ad5b252c39019f01e6777f35511785e9ca4c85f .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1665200909" 
 	@${RM} ${OBJECTDIR}/_ext/1665200909/heap_1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1665200909/heap_1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1665200909/heap_1.o.d" -o ${OBJECTDIR}/_ext/1665200909/heap_1.o ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/951553248/port.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c  .generated_files/flags/pic32mx_eth_sk2/117a0bd80a87e475cab2e68bffe9f9a92fcd2d51 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/951553248/port.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c  .generated_files/flags/pic32mx_eth_sk2/8dde32e1ab86abf04c1f3b19f1e973216d8cecd6 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/951553248" 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/951553248/port.o.d" -o ${OBJECTDIR}/_ext/951553248/port.o ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/croutine.o: ../src/third_party/rtos/FreeRTOS/Source/croutine.c  .generated_files/flags/pic32mx_eth_sk2/1834061a03c9e66f29ab9507ec4abe551cb0d4f8 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/croutine.o: ../src/third_party/rtos/FreeRTOS/Source/croutine.c  .generated_files/flags/pic32mx_eth_sk2/e85688edbee2e3000a202938c3a8a80e435495fc .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/croutine.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/croutine.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/croutine.o.d" -o ${OBJECTDIR}/_ext/404212886/croutine.o ../src/third_party/rtos/FreeRTOS/Source/croutine.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/list.o: ../src/third_party/rtos/FreeRTOS/Source/list.c  .generated_files/flags/pic32mx_eth_sk2/68bb79c81c15e979e8c632abf87ddca0f7205131 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/list.o: ../src/third_party/rtos/FreeRTOS/Source/list.c  .generated_files/flags/pic32mx_eth_sk2/372d3b370d4a3af6417d39c82234c7f3055ab627 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/list.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/list.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/list.o.d" -o ${OBJECTDIR}/_ext/404212886/list.o ../src/third_party/rtos/FreeRTOS/Source/list.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/queue.o: ../src/third_party/rtos/FreeRTOS/Source/queue.c  .generated_files/flags/pic32mx_eth_sk2/3e8f34b67361d4b5e6ab33bcea9986a44675d257 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/queue.o: ../src/third_party/rtos/FreeRTOS/Source/queue.c  .generated_files/flags/pic32mx_eth_sk2/6f907cc064eb1aff9a49c6acfd775bead70e7d4f .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/queue.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/queue.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/queue.o.d" -o ${OBJECTDIR}/_ext/404212886/queue.o ../src/third_party/rtos/FreeRTOS/Source/queue.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o: ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c  .generated_files/flags/pic32mx_eth_sk2/e2c81e386fa714fbac81a2a01a41382ffa3e93b .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o: ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c  .generated_files/flags/pic32mx_eth_sk2/cc17facc2801c87cae314304e468cb7cb18edfcd .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o.d" -o ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/timers.o: ../src/third_party/rtos/FreeRTOS/Source/timers.c  .generated_files/flags/pic32mx_eth_sk2/31ae9ebba437bdcea6adf42cac2587a9ae322c1a .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/timers.o: ../src/third_party/rtos/FreeRTOS/Source/timers.c  .generated_files/flags/pic32mx_eth_sk2/a93d6a9b00ff3ed8324d833f67b15bd495ab2642 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/timers.o.d" -o ${OBJECTDIR}/_ext/404212886/timers.o ../src/third_party/rtos/FreeRTOS/Source/timers.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/event_groups.o: ../src/third_party/rtos/FreeRTOS/Source/event_groups.c  .generated_files/flags/pic32mx_eth_sk2/3f2e9b54cc18279fab77fe6a4d8a2dfcae391b48 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/event_groups.o: ../src/third_party/rtos/FreeRTOS/Source/event_groups.c  .generated_files/flags/pic32mx_eth_sk2/d591b2428c6c525ace069243891be28250213f38 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/event_groups.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/event_groups.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/event_groups.o.d" -o ${OBJECTDIR}/_ext/404212886/event_groups.o ../src/third_party/rtos/FreeRTOS/Source/event_groups.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/stream_buffer.o: ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c  .generated_files/flags/pic32mx_eth_sk2/ad6c7b1af00fe960536338fb0e29a9b67f0e0fca .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/stream_buffer.o: ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c  .generated_files/flags/pic32mx_eth_sk2/72a75358d53c0bb49384fd77f40b7a43a375aa89 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/stream_buffer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/stream_buffer.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/stream_buffer.o.d" -o ${OBJECTDIR}/_ext/404212886/stream_buffer.o ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o: ../src/USER_HELPER/HELPER_FUNCTION.c  .generated_files/flags/pic32mx_eth_sk2/62875ed3ab45831d5bdb6a8411c493c1742f446e .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o: ../src/USER_HELPER/HELPER_FUNCTION.c  .generated_files/flags/pic32mx_eth_sk2/cee655668b8692a4e0d7465ad3f65c7fc03ab19e .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/743442264" 
 	@${RM} ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o.d 
 	@${RM} ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o.d" -o ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o ../src/USER_HELPER/HELPER_FUNCTION.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/pic32mx_eth_sk2/59748fbdd3c80dde0d4c2e4281c78654910eec87 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/pic32mx_eth_sk2/55f59e4ed4c17c4ef47c9a2a0c63a544c0715333 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/LCD_Task1.o: ../src/LCD_Task1.c  .generated_files/flags/pic32mx_eth_sk2/f6564c4bc9dd5aa235802aad20e64ba6c3eba09b .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1360937237/LCD_Task1.o: ../src/LCD_Task1.c  .generated_files/flags/pic32mx_eth_sk2/eb21c9d4b36ff138531b2c21091e3627ce121a8f .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/LCD_Task1.o.d" -o ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o ../src/LCD_Task1.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o: ../src/UartDmaRx_Task.c  .generated_files/flags/pic32mx_eth_sk2/a560ab2fbdf1ca4a797d79534f4b600cfe2840ed .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o: ../src/UartDmaRx_Task.c  .generated_files/flags/pic32mx_eth_sk2/dd29dd03d7742bd709dcccd45641cb804e654450 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o.d" -o ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o ../src/UartDmaRx_Task.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/_ext/893259528/SPI.o: ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.c  .generated_files/flags/pic32mx_eth_sk2/7d6518c121a0914e12ddfead90e80075a4f3e280 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/_ext/893259528" 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI.o.d 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/893259528/SPI.o.d" -o ${OBJECTDIR}/_ext/893259528/SPI.o ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o: ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c  .generated_files/flags/pic32mx_eth_sk2/2d9053b110e3deb4e9e720a6a75a0950b039f857 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/_ext/893259528" 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o.d 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o.d" -o ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o: ../src/USER_HELPER/REGISTERS_MAP.c  .generated_files/flags/pic32mx_eth_sk2/3fa222a135c4f71734d1b3229230a20d08697d8a .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/_ext/743442264" 
+	@${RM} ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o.d 
+	@${RM} ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o.d" -o ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o ../src/USER_HELPER/REGISTERS_MAP.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
-${OBJECTDIR}/_ext/1123471642/bsp.o: ../src/config/pic32mx_eth_sk2/bsp/bsp.c  .generated_files/flags/pic32mx_eth_sk2/94c5d7e52e36e7d9f678528d0f94f58a4cf044e7 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1123471642/bsp.o: ../src/config/pic32mx_eth_sk2/bsp/bsp.c  .generated_files/flags/pic32mx_eth_sk2/b259ce812f47a8c9136f2cadf6f95b9e5832791c .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1123471642" 
 	@${RM} ${OBJECTDIR}/_ext/1123471642/bsp.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1123471642/bsp.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1123471642/bsp.o.d" -o ${OBJECTDIR}/_ext/1123471642/bsp.o ../src/config/pic32mx_eth_sk2/bsp/bsp.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/467495608/osal_freertos.o: ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c  .generated_files/flags/pic32mx_eth_sk2/2c22cf48c7b66df64fc61750287456dc5e89980e .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/467495608/osal_freertos.o: ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c  .generated_files/flags/pic32mx_eth_sk2/a894ccb6cc8f6f97c05ecb8968223a00390d08eb .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/467495608" 
 	@${RM} ${OBJECTDIR}/_ext/467495608/osal_freertos.o.d 
 	@${RM} ${OBJECTDIR}/_ext/467495608/osal_freertos.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/467495608/osal_freertos.o.d" -o ${OBJECTDIR}/_ext/467495608/osal_freertos.o ../src/config/pic32mx_eth_sk2/osal/osal_freertos.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1968539896/plib_clk.o: ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c  .generated_files/flags/pic32mx_eth_sk2/2e48d449d1ac3c3fd45da04ce168bd24c748122f .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1968539896/plib_clk.o: ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c  .generated_files/flags/pic32mx_eth_sk2/c833c52c632a8718f972d961657ce0b88fc40691 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1968539896" 
 	@${RM} ${OBJECTDIR}/_ext/1968539896/plib_clk.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1968539896/plib_clk.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1968539896/plib_clk.o.d" -o ${OBJECTDIR}/_ext/1968539896/plib_clk.o ../src/config/pic32mx_eth_sk2/peripheral/clk/plib_clk.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1824765036/plib_coretimer.o: ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c  .generated_files/flags/pic32mx_eth_sk2/d02b612e551573bb3af5d2d8a4e01e3ed76de55a .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1824765036/plib_coretimer.o: ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c  .generated_files/flags/pic32mx_eth_sk2/44f75edfa4af04e0f6fbd02d89e18732d7393920 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1824765036" 
 	@${RM} ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1824765036/plib_coretimer.o.d" -o ${OBJECTDIR}/_ext/1824765036/plib_coretimer.o ../src/config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/895164091/plib_dmac.o: ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c  .generated_files/flags/pic32mx_eth_sk2/b8ea8de056f51962a41e4f2a0d03e1b8b82419fd .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/895164091/plib_dmac.o: ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c  .generated_files/flags/pic32mx_eth_sk2/49f96450afea6aaeda664866fe91951f6bbac1b9 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/895164091" 
 	@${RM} ${OBJECTDIR}/_ext/895164091/plib_dmac.o.d 
 	@${RM} ${OBJECTDIR}/_ext/895164091/plib_dmac.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/895164091/plib_dmac.o.d" -o ${OBJECTDIR}/_ext/895164091/plib_dmac.o ../src/config/pic32mx_eth_sk2/peripheral/dmac/plib_dmac.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/895125403/plib_evic.o: ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c  .generated_files/flags/pic32mx_eth_sk2/a1e3ae24b9d0bde6485b900eb9b96b1aefef688e .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/895125403/plib_evic.o: ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c  .generated_files/flags/pic32mx_eth_sk2/b74ff22a2c478b47025e7a1ab036c693a3c6370f .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/895125403" 
 	@${RM} ${OBJECTDIR}/_ext/895125403/plib_evic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/895125403/plib_evic.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/895125403/plib_evic.o.d" -o ${OBJECTDIR}/_ext/895125403/plib_evic.o ../src/config/pic32mx_eth_sk2/peripheral/evic/plib_evic.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/895071575/plib_gpio.o: ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c  .generated_files/flags/pic32mx_eth_sk2/ad6f379ac4e6cded1d5cf03ea59ac174f3799789 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/895071575/plib_gpio.o: ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c  .generated_files/flags/pic32mx_eth_sk2/c4cfc08ddccc6cc54cd456c31a54156e38ebb7b4 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/895071575" 
 	@${RM} ${OBJECTDIR}/_ext/895071575/plib_gpio.o.d 
 	@${RM} ${OBJECTDIR}/_ext/895071575/plib_gpio.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/895071575/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/895071575/plib_gpio.o ../src/config/pic32mx_eth_sk2/peripheral/gpio/plib_gpio.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2146581590/I2C_LCD.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c  .generated_files/flags/pic32mx_eth_sk2/b2a861f5caff199b0efa74b1e78938d40451e4eb .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/2146581590/I2C_LCD.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c  .generated_files/flags/pic32mx_eth_sk2/cb79b658ab597cf37ccaf4dfd21d96848db87d4b .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/2146581590" 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/2146581590/I2C_LCD.o.d" -o ${OBJECTDIR}/_ext/2146581590/I2C_LCD.o ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/bfffb279bf2eaba8ea51a52bc3ae0cabfad4344a .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/65bb48da1f62c76c354932802a945ce57720b135 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/2146581590" 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o.d" -o ${OBJECTDIR}/_ext/2146581590/I2C2_PIC32MX.o ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1968523521/plib_tmr2.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c  .generated_files/flags/pic32mx_eth_sk2/4aa1e3eeb3ea8d2edddb1a55205553150ea56cc8 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1968523521/plib_tmr2.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c  .generated_files/flags/pic32mx_eth_sk2/51e9c24477094354636aa84b022432345f3e0a1b .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1968523521" 
 	@${RM} ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1968523521/plib_tmr2.o.d" -o ${OBJECTDIR}/_ext/1968523521/plib_tmr2.o ../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/894686958/plib_tmr1.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c  .generated_files/flags/pic32mx_eth_sk2/f7e64d82f3cad0a0b5cdb634c58b74b37895632e .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/894686958/plib_tmr1.o: ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c  .generated_files/flags/pic32mx_eth_sk2/ba9db2b844ea1ead2e42fa7882d17756617f0e8c .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/894686958" 
 	@${RM} ${OBJECTDIR}/_ext/894686958/plib_tmr1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/894686958/plib_tmr1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/894686958/plib_tmr1.o.d" -o ${OBJECTDIR}/_ext/894686958/plib_tmr1.o ../src/config/pic32mx_eth_sk2/peripheral/tmr1/plib_tmr1.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/894668632/plib_uart2.o: ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c  .generated_files/flags/pic32mx_eth_sk2/44290d0209a5367b6227c14418862aeed0c2e7c0 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/894668632/plib_uart2.o: ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c  .generated_files/flags/pic32mx_eth_sk2/56d705c973f79795431e21ab5c1e6bca58567873 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/894668632" 
 	@${RM} ${OBJECTDIR}/_ext/894668632/plib_uart2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/894668632/plib_uart2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/894668632/plib_uart2.o.d" -o ${OBJECTDIR}/_ext/894668632/plib_uart2.o ../src/config/pic32mx_eth_sk2/peripheral/uart/plib_uart2.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/99447e154140ef5e7600105c58a2377f2654d231 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o: ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c  .generated_files/flags/pic32mx_eth_sk2/6420dcdf24a3d757fd04394e39b4c22b31d4ed2f .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1880771394" 
 	@${RM} ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o.d" -o ${OBJECTDIR}/_ext/1880771394/UART2_dma_PIC32MX.o ../src/config/pic32mx_eth_sk2/peripheral/UART_baremetal/UART2_dma_PIC32MX.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1603735184/xc32_monitor.o: ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c  .generated_files/flags/pic32mx_eth_sk2/1e6eff3f8c1539c28806054fca8475e8ad4debbe .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1603735184/xc32_monitor.o: ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c  .generated_files/flags/pic32mx_eth_sk2/5ad5041e3713c2c5a46a9b20e126bfe6664a643f .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1603735184" 
 	@${RM} ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1603735184/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/1603735184/xc32_monitor.o ../src/config/pic32mx_eth_sk2/stdio/xc32_monitor.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1844760744/sys_reset.o: ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c  .generated_files/flags/pic32mx_eth_sk2/6295feb9bec04eefc4da77e90de449b4ca0eb6bd .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1844760744/sys_reset.o: ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c  .generated_files/flags/pic32mx_eth_sk2/9a79333139ee6c38b02f61bf60706bc46c20a3b2 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1844760744" 
 	@${RM} ${OBJECTDIR}/_ext/1844760744/sys_reset.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1844760744/sys_reset.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1844760744/sys_reset.o.d" -o ${OBJECTDIR}/_ext/1844760744/sys_reset.o ../src/config/pic32mx_eth_sk2/system/reset/sys_reset.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/initialization.o: ../src/config/pic32mx_eth_sk2/initialization.c  .generated_files/flags/pic32mx_eth_sk2/1a8f5312d9928fb0c43c61a9b52ee4d8ad202771 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/initialization.o: ../src/config/pic32mx_eth_sk2/initialization.c  .generated_files/flags/pic32mx_eth_sk2/d1632c4106ad8024c39c0e243c22931389e04c05 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/initialization.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/initialization.o.d" -o ${OBJECTDIR}/_ext/111649226/initialization.o ../src/config/pic32mx_eth_sk2/initialization.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/interrupts.o: ../src/config/pic32mx_eth_sk2/interrupts.c  .generated_files/flags/pic32mx_eth_sk2/5b27340c46289ba768baf07a4ffe931ef7791b32 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/interrupts.o: ../src/config/pic32mx_eth_sk2/interrupts.c  .generated_files/flags/pic32mx_eth_sk2/6050108b932d4271cf1550f57cd71076d00b759d .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/interrupts.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/interrupts.o.d" -o ${OBJECTDIR}/_ext/111649226/interrupts.o ../src/config/pic32mx_eth_sk2/interrupts.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/exceptions.o: ../src/config/pic32mx_eth_sk2/exceptions.c  .generated_files/flags/pic32mx_eth_sk2/f63f08b33939f85445e514eba957ff5756b05f86 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/exceptions.o: ../src/config/pic32mx_eth_sk2/exceptions.c  .generated_files/flags/pic32mx_eth_sk2/784c85548fab395ea9c4526bd6ea87084390d5f7 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/exceptions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/exceptions.o.d" -o ${OBJECTDIR}/_ext/111649226/exceptions.o ../src/config/pic32mx_eth_sk2/exceptions.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/freertos_hooks.o: ../src/config/pic32mx_eth_sk2/freertos_hooks.c  .generated_files/flags/pic32mx_eth_sk2/82e7fe64e6bbd241ff4f99968d4a8eca5943eed6 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/freertos_hooks.o: ../src/config/pic32mx_eth_sk2/freertos_hooks.c  .generated_files/flags/pic32mx_eth_sk2/8e8eb35cd4b06793053a2dca8f132c25393f6ddb .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/freertos_hooks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/freertos_hooks.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/freertos_hooks.o.d" -o ${OBJECTDIR}/_ext/111649226/freertos_hooks.o ../src/config/pic32mx_eth_sk2/freertos_hooks.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/111649226/sys_tasks.o: ../src/config/pic32mx_eth_sk2/sys_tasks.c  .generated_files/flags/pic32mx_eth_sk2/ca30f83ec258acdab014792d77c8e532c7fadc03 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/111649226/sys_tasks.o: ../src/config/pic32mx_eth_sk2/sys_tasks.c  .generated_files/flags/pic32mx_eth_sk2/23ba3d2c155c66c7068d392b897d97d58cf00734 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/111649226" 
 	@${RM} ${OBJECTDIR}/_ext/111649226/sys_tasks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/111649226/sys_tasks.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/111649226/sys_tasks.o.d" -o ${OBJECTDIR}/_ext/111649226/sys_tasks.o ../src/config/pic32mx_eth_sk2/sys_tasks.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1665200909/heap_1.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c  .generated_files/flags/pic32mx_eth_sk2/e0cdcecc04fd467ae6185a1910ac1499a68aaece .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1665200909/heap_1.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c  .generated_files/flags/pic32mx_eth_sk2/783ab78bc4ea4febfe87ab198382bfcf9dbf355b .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1665200909" 
 	@${RM} ${OBJECTDIR}/_ext/1665200909/heap_1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1665200909/heap_1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1665200909/heap_1.o.d" -o ${OBJECTDIR}/_ext/1665200909/heap_1.o ../src/third_party/rtos/FreeRTOS/Source/portable/MemMang/heap_1.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/951553248/port.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c  .generated_files/flags/pic32mx_eth_sk2/3a72e0d8c675647d8208f5d0434ea8767559afae .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/951553248/port.o: ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c  .generated_files/flags/pic32mx_eth_sk2/782e706656314dbc9133381a14dde5e1a963ed9d .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/951553248" 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/951553248/port.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/951553248/port.o.d" -o ${OBJECTDIR}/_ext/951553248/port.o ../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/port.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/croutine.o: ../src/third_party/rtos/FreeRTOS/Source/croutine.c  .generated_files/flags/pic32mx_eth_sk2/520d38b3a3bcda245f4a7dc484abc36a5c0379d6 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/croutine.o: ../src/third_party/rtos/FreeRTOS/Source/croutine.c  .generated_files/flags/pic32mx_eth_sk2/6dc8ef011b620dc40942a1ce8f6141efe5435df .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/croutine.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/croutine.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/croutine.o.d" -o ${OBJECTDIR}/_ext/404212886/croutine.o ../src/third_party/rtos/FreeRTOS/Source/croutine.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/list.o: ../src/third_party/rtos/FreeRTOS/Source/list.c  .generated_files/flags/pic32mx_eth_sk2/eea15f193b03d092de40c5342f34f29889b06310 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/list.o: ../src/third_party/rtos/FreeRTOS/Source/list.c  .generated_files/flags/pic32mx_eth_sk2/16e559ed94b006b5cc85672d856fffa79b3e87d .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/list.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/list.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/list.o.d" -o ${OBJECTDIR}/_ext/404212886/list.o ../src/third_party/rtos/FreeRTOS/Source/list.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/queue.o: ../src/third_party/rtos/FreeRTOS/Source/queue.c  .generated_files/flags/pic32mx_eth_sk2/cd7da35497c1774ff7d7b516533f597161d621e8 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/queue.o: ../src/third_party/rtos/FreeRTOS/Source/queue.c  .generated_files/flags/pic32mx_eth_sk2/9063a2901fafe3c8518cdbf566ebc69dd70f0181 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/queue.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/queue.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/queue.o.d" -o ${OBJECTDIR}/_ext/404212886/queue.o ../src/third_party/rtos/FreeRTOS/Source/queue.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o: ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c  .generated_files/flags/pic32mx_eth_sk2/90ea87c62d51b91d3c90785a5dfea205b51d86d1 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o: ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c  .generated_files/flags/pic32mx_eth_sk2/25d183afb68e1bc103d96a2b09ba49a2cda78b61 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o.d" -o ${OBJECTDIR}/_ext/404212886/FreeRTOS_tasks.o ../src/third_party/rtos/FreeRTOS/Source/FreeRTOS_tasks.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/timers.o: ../src/third_party/rtos/FreeRTOS/Source/timers.c  .generated_files/flags/pic32mx_eth_sk2/e99fc407f63ebf1a2daf80027cfc5f8dc37b13e7 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/timers.o: ../src/third_party/rtos/FreeRTOS/Source/timers.c  .generated_files/flags/pic32mx_eth_sk2/6cc53a81e0cf4aefb81b643114cd29ff0d5f64a0 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/timers.o.d" -o ${OBJECTDIR}/_ext/404212886/timers.o ../src/third_party/rtos/FreeRTOS/Source/timers.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/event_groups.o: ../src/third_party/rtos/FreeRTOS/Source/event_groups.c  .generated_files/flags/pic32mx_eth_sk2/65d6fd44b719729732e332076ea8011714b49064 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/event_groups.o: ../src/third_party/rtos/FreeRTOS/Source/event_groups.c  .generated_files/flags/pic32mx_eth_sk2/c32a315669d80b35e6f8368c223e8d1d8eaf5fc1 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/event_groups.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/event_groups.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/event_groups.o.d" -o ${OBJECTDIR}/_ext/404212886/event_groups.o ../src/third_party/rtos/FreeRTOS/Source/event_groups.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/404212886/stream_buffer.o: ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c  .generated_files/flags/pic32mx_eth_sk2/a96e67cfbe2064a88de133b0efdd67615f3fd1dd .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/404212886/stream_buffer.o: ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c  .generated_files/flags/pic32mx_eth_sk2/a09c8d6cbc384e1c7d3545994bc455637d7ca162 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/404212886" 
 	@${RM} ${OBJECTDIR}/_ext/404212886/stream_buffer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/404212886/stream_buffer.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/404212886/stream_buffer.o.d" -o ${OBJECTDIR}/_ext/404212886/stream_buffer.o ../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o: ../src/USER_HELPER/HELPER_FUNCTION.c  .generated_files/flags/pic32mx_eth_sk2/7f4fa855c824cdcb5d50086107501a91bd4d6a9e .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o: ../src/USER_HELPER/HELPER_FUNCTION.c  .generated_files/flags/pic32mx_eth_sk2/ee1b6a764349797e0f515820d5dcd31738b20836 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/743442264" 
 	@${RM} ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o.d 
 	@${RM} ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o.d" -o ${OBJECTDIR}/_ext/743442264/HELPER_FUNCTION.o ../src/USER_HELPER/HELPER_FUNCTION.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/pic32mx_eth_sk2/8a0c762943d68b7980bb3c199aec7c47efdcb7c .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/pic32mx_eth_sk2/adafcc4253646a893be1b958c1722e0a2e62fdf2 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/LCD_Task1.o: ../src/LCD_Task1.c  .generated_files/flags/pic32mx_eth_sk2/34c436fee147e542d248bb797806f9ef63c8719e .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1360937237/LCD_Task1.o: ../src/LCD_Task1.c  .generated_files/flags/pic32mx_eth_sk2/3bb71a77dd6cb5baeec5b87f8f941b22cdd2ef4c .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/LCD_Task1.o.d" -o ${OBJECTDIR}/_ext/1360937237/LCD_Task1.o ../src/LCD_Task1.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o: ../src/UartDmaRx_Task.c  .generated_files/flags/pic32mx_eth_sk2/4fd0e2e7e2925b2fea345dba8bea710c6cc8e260 .generated_files/flags/pic32mx_eth_sk2/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o: ../src/UartDmaRx_Task.c  .generated_files/flags/pic32mx_eth_sk2/a852dd618f6d208d58f11c39ae14d5f40c82178c .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o.d" -o ${OBJECTDIR}/_ext/1360937237/UartDmaRx_Task.o ../src/UartDmaRx_Task.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/893259528/SPI.o: ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.c  .generated_files/flags/pic32mx_eth_sk2/fa13d4dcf8fa55dc1ddb1a544a21818582cebcd9 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/_ext/893259528" 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI.o.d 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/893259528/SPI.o.d" -o ${OBJECTDIR}/_ext/893259528/SPI.o ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o: ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c  .generated_files/flags/pic32mx_eth_sk2/ceb2e28921be72870202bf058e0cf65ee137b38a .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/_ext/893259528" 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o.d 
+	@${RM} ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o.d" -o ${OBJECTDIR}/_ext/893259528/SPI_COMM_INTERFACE.o ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o: ../src/USER_HELPER/REGISTERS_MAP.c  .generated_files/flags/pic32mx_eth_sk2/9ffc8decf468e163527536ad0aae654ab3b025b2 .generated_files/flags/pic32mx_eth_sk2/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/_ext/743442264" 
+	@${RM} ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o.d 
+	@${RM} ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/pic32mx_eth_sk2" -I"../src/third_party/rtos/FreeRTOS/Source/include" -I"../src/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o.d" -o ${OBJECTDIR}/_ext/743442264/REGISTERS_MAP.o ../src/USER_HELPER/REGISTERS_MAP.c    -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -547,15 +577,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../src/config/pic32mx_eth_sk2/p32MX795F512L.ld
-	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_PK3=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC02000:0x1FC02FEF -mreserve=boot@0x1FC02000:0x1FC024FF  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_PK3=1,--defsym=_min_heap_size=1024,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
+${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../src/config/pic32mx_eth_sk2/p32MX795F512L.ld
+	@${MKDIR} ${DISTDIR} 
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_PK3=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC02000:0x1FC02FEF -mreserve=boot@0x1FC02000:0x1FC024FF  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_PK3=1,--defsym=_min_heap_size=1024,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   ../src/config/pic32mx_eth_sk2/p32MX795F512L.ld
-	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=1024,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
-	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   ../src/config/pic32mx_eth_sk2/p32MX795F512L.ld
+	@${MKDIR} ${DISTDIR} 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_pic32mx_eth_sk2=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=1024,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/basic_freertos_pic32mx795F512L_eth_sk2.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 
@@ -568,8 +598,8 @@ endif
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
-	${RM} -r build/pic32mx_eth_sk2
-	${RM} -r dist/pic32mx_eth_sk2
+	${RM} -r ${OBJECTDIR}
+	${RM} -r ${DISTDIR}
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

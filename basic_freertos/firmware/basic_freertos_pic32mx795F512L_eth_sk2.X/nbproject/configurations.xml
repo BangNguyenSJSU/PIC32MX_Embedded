@@ -38,6 +38,12 @@
               <itemPath>../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h</itemPath>
               <itemPath>../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="SPI_baremetal"
+                           displayName="SPI_baremetal"
+                           projectFiles="true">
+              <itemPath>../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.h</itemPath>
+              <itemPath>../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
               <itemPath>../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr_common.h</itemPath>
               <itemPath>../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.h</itemPath>
@@ -106,6 +112,7 @@
       </logicalFolder>
       <logicalFolder name="USER_HELPER" displayName="USER_HELPER" projectFiles="true">
         <itemPath>../src/USER_HELPER/HELPER_FUNCTION.h</itemPath>
+        <itemPath>../src/USER_HELPER/REGISTERS_MAP.h</itemPath>
       </logicalFolder>
       <itemPath>../src/LCD_Task1.h</itemPath>
       <itemPath>../src/UartDmaRx_Task.h</itemPath>
@@ -158,6 +165,12 @@
                            projectFiles="true">
               <itemPath>../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.c</itemPath>
               <itemPath>../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="SPI_baremetal"
+                           displayName="SPI_baremetal"
+                           projectFiles="true">
+              <itemPath>../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.c</itemPath>
+              <itemPath>../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c</itemPath>
             </logicalFolder>
             <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
               <itemPath>../src/config/pic32mx_eth_sk2/peripheral/tmr/plib_tmr2.c</itemPath>
@@ -214,6 +227,7 @@
       </logicalFolder>
       <logicalFolder name="USER_HELPER" displayName="USER_HELPER" projectFiles="true">
         <itemPath>../src/USER_HELPER/HELPER_FUNCTION.c</itemPath>
+        <itemPath>../src/USER_HELPER/REGISTERS_MAP.c</itemPath>
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/LCD_Task1.c</itemPath>
@@ -412,6 +426,10 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="firmware.download.all" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
         <property key="memories.eeprom" value="true"/>

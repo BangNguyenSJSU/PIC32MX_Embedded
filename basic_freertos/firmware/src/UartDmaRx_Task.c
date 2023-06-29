@@ -226,7 +226,7 @@ UART_DMA_RX_Task_Running (void)
                         {
                           /* Packet */
                           regObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
-                          regObj.regData = 0x0000;
+                          regObj.regData =  0x0000;
                           Modbus_MultiRead (&MOBBUS_REG_TABLE, regObj.regAdd, 1, &regObj.regData);
                           responseBuffer[RD_RESPOND_DATA_INDX_H + (RegIndx * REG_DATA_SIZE)] = (regObj.regData >> 8) & 0xFF; // High byte reg val
                           responseBuffer[RD_RESPOND_DATA_INDX_L + (RegIndx * REG_DATA_SIZE)] = regObj.regData & 0xFF; // Low byte reg_val
