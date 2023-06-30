@@ -2,6 +2,7 @@
 #include "UartDmaRx_Task.h"
 #include "definitions.h"
 #include "config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h"
+#include "config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.h"
 
 
 /* Handle for the UART_DMA_RX_Task */
@@ -47,20 +48,66 @@ Modbus_InitTable (MODBUS_REGISTER_TABLE_S *registerTable)
 
   for (int RegIndex = SERIAL_NUMBER_1; RegIndex < TOTAL_MODBUS_REGISTERS; RegIndex++)
     {
+      /* Initialize the Data + AccessType */
       registerTable->MB_REG_DATA[RegIndex] = 0;
+      registerTable->MB_REG_DEVICE_ID[RegIndex] = 0xFF;
+      registerTable->isNEW_FLAG[RegIndex] = 0;
 
       if ((RegIndex >= 0) && (RegIndex <= CHANNEL_10_STATE))
         {
-          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = REG_ACCESS_RD;
-          // registerTable->MB_REG_DATA[RegIndex] = RegIndex;
+          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = MODBUS_REG_ACCESS_RD;
         }
       else if ((RegIndex >= CHANNEL_1_CURRENT_SET_POINT) && (RegIndex <= FACTORY_CHANNEL_10_OFFSET_LOW))
         {
-          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = REG_ACCESS_RW;
+          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = MODBUS_REG_ACCESS_RW;
         }
       else if ((RegIndex >= FACTORY_CHANNEL_0A_SLOPE) && (RegIndex <= FACTORY_CHANNEL_10_SLOPE))
         {
-          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = REG_ACCESS_RD;
+          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = MODBUS_REG_ACCESS_RD;
+        }
+
+      /* Initialize STM32 Device ID */
+      // Set MAX CURRENT
+      if ((RegIndex >= CHANNEL_1_MAX_CURRENT) && (RegIndex <= CHANNEL_5_MAX_CURRENT))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
+        }
+
+      if ((RegIndex >= CHANNEL_6_MAX_CURRENT) && (RegIndex <= CHANNEL_10_MAX_CURRENT))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
+        }
+
+      // MONITOR STATUS 
+      if ((RegIndex >= CHANNEL_1_MEASURED_CURRENT) && (RegIndex <= CHANNEL_5_STATE))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
+        }
+
+      if ((RegIndex >= CHANNEL_6_MEASURED_CURRENT) && (RegIndex <= CHANNEL_10_STATE))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
+        }
+
+      // SET POINT
+      if ((RegIndex >= CHANNEL_1_CURRENT_SET_POINT) && (RegIndex <= CHANNEL_5_CURRENT_SET_POINT))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
+        }
+
+      if ((RegIndex >= CHANNEL_6_CURRENT_SET_POINT) && (RegIndex <= CHANNEL_10_CURRENT_SET_POINT))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
+        }
+      // ENABLE 
+      if ((RegIndex >= CHANNEL_1_ENABLE) && (RegIndex <= CHANNEL_5_ENABLE))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
+        }
+
+      if ((RegIndex >= CHANNEL_6_ENABLE) && (RegIndex <= CHANNEL_10_ENABLE))
+        {
+          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
         }
     }
   return 0;
@@ -72,7 +119,7 @@ int
 Modbus_MultiRead (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress, uint16_t registerCount, uint16_t *outputBuffer)
 {
   // Check if registerTable pointer, outputBuffer pointer is not NULL, and starting address + register count does not exceed total registers
-  if (registerTable == NULL || outputBuffer == NULL || startingAddress + registerCount > TOTAL_MODBUS_REGISTERS)
+  if ((registerTable == NULL) || (outputBuffer == NULL) || ((startingAddress + registerCount) > TOTAL_MODBUS_REGISTERS))
     {
       return -1; // Return error code
     }
@@ -80,8 +127,10 @@ Modbus_MultiRead (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddre
   for (int i = 0; i < registerCount; i++)
     {
       // Check if register can be read
-      if ((registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == REG_ACCESS_RD) || (registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == REG_ACCESS_RW))
+      if (((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_RD) ||
+          ((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_RW))
         {
+          // TO DO: Might want to check isNEW_FLAG before read
           outputBuffer[i] = registerTable->MB_REG_DATA[startingAddress + i];
         }
       else
@@ -97,7 +146,7 @@ int
 Modbus_MultiWrite (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress, uint16_t registerCount, const uint16_t *inputData)
 {
   // Check if registerTable pointer, inputData pointer is not NULL, and starting address + register count does not exceed total registers
-  if (registerTable == NULL || inputData == NULL || startingAddress + registerCount > TOTAL_MODBUS_REGISTERS)
+  if ((registerTable == NULL) || (inputData == NULL) || ((startingAddress + registerCount) > TOTAL_MODBUS_REGISTERS))
     {
       return -1; // Return error code
     }
@@ -105,9 +154,11 @@ Modbus_MultiWrite (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddr
   for (int i = 0; i < registerCount; i++)
     {
       // Check if register can be written
-      if ((registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == REG_ACCESS_WR) || (registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == REG_ACCESS_RW))
+      if (((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_WR) ||
+          ((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_RW))
         {
           registerTable->MB_REG_DATA[startingAddress + i] = inputData[i];
+          registerTable->isNEW_FLAG[startingAddress + i] = 1;
         }
       else
         {
@@ -118,6 +169,28 @@ Modbus_MultiWrite (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddr
   return 0; // Return success code
 }
 
+bool
+Modbus_CheckNewFlag (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress)
+{
+  // Check if registerTable pointer, inputData pointer is not NULL, and starting address + register count does not exceed total registers
+  if ((registerTable == NULL) || (startingAddress > TOTAL_MODBUS_REGISTERS))
+    {
+      return 0; // Return error code
+    }
+
+  return (1 == registerTable->isNEW_FLAG[startingAddress]);
+}
+
+void
+Modbus_ClearNewFlag (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress)
+{
+  // Check if registerTable pointer, inputData pointer is not NULL, and starting address + register count does not exceed total registers
+  if ((registerTable == NULL) || (startingAddress > TOTAL_MODBUS_REGISTERS))
+    {
+      return; // Return error code
+    }
+  registerTable->isNEW_FLAG[startingAddress] = 0;
+}
 
 static MODBUS_REGISTER_TABLE_S MOBBUS_REG_TABLE;
 
@@ -226,7 +299,7 @@ UART_DMA_RX_Task_Running (void)
                         {
                           /* Packet */
                           regObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
-                          regObj.regData =  0x0000;
+                          regObj.regData = 0x0000;
                           Modbus_MultiRead (&MOBBUS_REG_TABLE, regObj.regAdd, 1, &regObj.regData);
                           responseBuffer[RD_RESPOND_DATA_INDX_H + (RegIndx * REG_DATA_SIZE)] = (regObj.regData >> 8) & 0xFF; // High byte reg val
                           responseBuffer[RD_RESPOND_DATA_INDX_L + (RegIndx * REG_DATA_SIZE)] = regObj.regData & 0xFF; // Low byte reg_val
@@ -293,7 +366,7 @@ MODBUS_WR_Request_Task_Runing (void)
 {
 
   MODBUS_REISTER_INFO regInfoWR;
-  char lcd_BuffDatastring[20] = {0};
+  char lcd_BuffDatastring1[20] = {0};
   char lcd_BuffDatastring2[20] = {0};
 
   while (1)
@@ -301,22 +374,28 @@ MODBUS_WR_Request_Task_Runing (void)
 
       uint16_t channelStatus1 = 0;
       uint16_t channelStatus2 = 0;
+
+      //commsinterface_handle_t WritePacket = {0};
+      //commsinterface_cfg_t ConfigWritePacket = {0};
+
       if (xQueueReceive (modbusWrittenQueue, (void*) &regInfoWR, portMAX_DELAY) == pdTRUE)
         {
-          LED1_Toggle ();
+
+          LATAINV = (1UL << 6);
+          TRISACLR = (1UL << 6);
 
           channelStatus1 = ChannelEnableDev1_CH1_CH5 (regInfoWR.regAdd, regInfoWR.regData);
           channelStatus2 = ChannelEnableDev1_CH6_CH10 (regInfoWR.regAdd, regInfoWR.regData);
           //TO DO: write into internal register base on modbus value
           if (channelStatus1 != 0)
             {
-              sprintf (lcd_BuffDatastring, "0x%.4X", channelStatus1);
-              LCD_PRINT_STRING (lcd_BuffDatastring, 0, 0, 0);
+              sprintf (lcd_BuffDatastring1, "0x%.4X", channelStatus1);
+              //LCD_PRINT_STRING (lcd_BuffDatastring1, 0, 0, 0);
             }
           if (channelStatus2 != 0)
             {
               sprintf (lcd_BuffDatastring2, "0x%.4X", channelStatus2);
-              LCD_PRINT_STRING (lcd_BuffDatastring2, 0, 1, 0);
+              //LCD_PRINT_STRING (lcd_BuffDatastring2, 0, 1, 0);
             }
 
         }

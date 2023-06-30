@@ -409,8 +409,9 @@ CommSPI_ProcessTransmitMultiPacket(commsinterface_handle_t *p_commsinterface, ui
             // Do Nothing 
             break;
         }
-            return OP_STATUS_SUCCESS;
+          
     }
+      return OP_STATUS_SUCCESS;
 }
 
 /********************************************************************************

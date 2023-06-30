@@ -42,7 +42,9 @@ build/pic32mx_eth_sk2/production/_ext/1360937237/UartDmaRx_Task.o: \
  ../src/config/pic32mx_eth_sk2/system/system_module.h \
  ../src/config/pic32mx_eth_sk2/system/system_common.h ../src/LCD_Task1.h \
  ../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h \
- ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h
+ ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h \
+ ../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.h \
+ ../src/config/pic32mx_eth_sk2/../../USER_HELPER/REGISTERS_MAP.h
 
 ../src/UartDmaRx_Task.h:
 
@@ -133,3 +135,7 @@ build/pic32mx_eth_sk2/production/_ext/1360937237/UartDmaRx_Task.o: \
 ../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h:
 
 ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h:
+
+../src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.h:
+
+../src/config/pic32mx_eth_sk2/../../USER_HELPER/REGISTERS_MAP.h:

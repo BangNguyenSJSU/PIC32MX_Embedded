@@ -148,20 +148,29 @@ extern "C" {
     } MODBUS_REGISTER_E;
 
     typedef enum {
-        REG_ACCESS_RD = 0x01, /**< Read access type */
-        REG_ACCESS_WR = 0x02, /**< Write access type */
-        REG_ACCESS_RW = (REG_ACCESS_RD | REG_ACCESS_WR), /**< Read and Write access type */
-    } REG_ACESS_TYPE_E;
+        DEV_STM32_1 = 0,
+        DEV_STM32_2,
+        TOTAL_STM32_DEV,
+        DEV_PIC32
+    } MODBUS_DEV_ADDRESS_E;
+
+    typedef enum {
+        MODBUS_REG_ACCESS_RD = 0x01, /**< Read access type */
+        MODBUS_REG_ACCESS_WR = 0x02, /**< Write access type */
+        MODBUS_REG_ACCESS_RW = (MODBUS_REG_ACCESS_RD | MODBUS_REG_ACCESS_WR), /**< Read and Write access type */
+    } MODBUS_REG_ACESS_TYPE_E;
 
     typedef struct {
         uint16_t MB_REG_DATA[TOTAL_MODBUS_REGISTERS];
-        REG_ACESS_TYPE_E MB_REG_ACCESS_TYPE[TOTAL_MODBUS_REGISTERS];
+        MODBUS_REG_ACESS_TYPE_E MB_REG_ACCESS_TYPE[TOTAL_MODBUS_REGISTERS];
+        MODBUS_DEV_ADDRESS_E MB_REG_DEVICE_ID[TOTAL_MODBUS_REGISTERS];
+        uint8_t isNEW_FLAG[TOTAL_MODBUS_REGISTERS];
     } MODBUS_REGISTER_TABLE_S;
-    
+
     typedef struct {
         uint16_t regAdd;
-        uint16_t regData; 
-    }MODBUS_REISTER_INFO;
+        uint16_t regData;
+    } MODBUS_REISTER_INFO;
 
     /* Both read and write */
     typedef struct {
@@ -203,6 +212,9 @@ extern "C" {
     // inputData: a buffer containing the values to write
     // Returns: 0 on success, or an error code on failure
     int Modbus_MultiWrite(MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress, uint16_t registerCount, const uint16_t *inputData);
+
+    bool Modbus_CheckNewFlag(MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress);
+    void Modbus_ClearNewFlag(MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress);
 
 
 #ifdef	__cplusplusMODBUS_REGISTER_OPERATE_Task_Initialize

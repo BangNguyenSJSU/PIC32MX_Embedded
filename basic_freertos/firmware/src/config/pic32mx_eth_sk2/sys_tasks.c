@@ -130,13 +130,13 @@ SYS_Tasks (void)
 
   (void) xTaskCreate ((TaskFunction_t) Uart_Dma_Rx_Tasks,
                       "UART_RX_Tasks",
-                      512,
+                      2048,
                       NULL,
                       2,
                       &xUART_DMA_RX_TaskObject);
   (void) xTaskCreate ((TaskFunction_t) MODBUS_REGISTER_MAP_Tasks,
                       "Modbus_Tasks",
-                      512,
+                      2048,
                       NULL,
                       1,
                       &xMODBUS_REGISTER_TaskObject);
