@@ -62,7 +62,8 @@ extern TaskHandle_t xLCD_TASK1_TaskObject;
 extern TaskHandle_t xUART_DMA_RX_TaskObject;
 
 /* Declaration of  APP_TASK3_Tasks task handle */
-extern TaskHandle_t xMODBUS_REGISTER_TaskObject;
+extern TaskHandle_t xMODBUS_REGISTER_WR_TaskObject;
+extern TaskHandle_t xMODBUS_REGISTER_RD_TaskObject;
 
 // Declare a queue for handling register commands
 extern QueueHandle_t modbusWrittenQueue;

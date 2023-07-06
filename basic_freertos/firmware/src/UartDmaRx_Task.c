@@ -3,13 +3,16 @@
 #include "definitions.h"
 #include "config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h"
 #include "config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.h"
-
+#include "config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.h"
+#include "config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.h"
 
 /* Handle for the UART_DMA_RX_Task */
 TaskHandle_t xUART_DMA_RX_TaskObject; // extern Declare in "sys_tasksObject.h"
 
 /* Handle Parsing Modbus RTU Message sent from Master */
-TaskHandle_t xMODBUS_REGISTER_TaskObject; // extern Declare in "sys_tasksObject.h"
+TaskHandle_t xMODBUS_REGISTER_WR_TaskObject; // extern Declare in "sys_tasksObject.h"
+TaskHandle_t xMODBUS_REGISTER_RD_TaskObject; // extern Declare in "sys_tasksObject.h"
+
 
 // Declare a queue for handling register commands
 QueueHandle_t modbusWrittenQueue;
@@ -36,6 +39,13 @@ QueueHandle_t modbusReadReplyQueue;
 #define RD_RESPOND_DATA_INDX_L   4u
 
 /* ---------- Local Functions ---------- */
+
+
+
+//static uint16_t
+//ChannelEnableDev1_CH1_CH5 (uint16_t modbusAdd, uint16_t modbusData);
+//static uint16_t
+//ChannelEnableDev1_CH6_CH10 (uint16_t modbusAdd, uint16_t modbusData);
 
 static int
 Modbus_InitTable (MODBUS_REGISTER_TABLE_S *registerTable)
@@ -206,11 +216,58 @@ void
 MODBUS_REGISTER_MAP_Task_Initialize (void)
 {
   Modbus_InitTable (&MOBBUS_REG_TABLE);
+  SPI1_Init_Master (500000);
+}
+
+/* Draft version ( need to factoring the code ) */
+static int
+ChannelEnableDev1_CH1_CH5 (uint16_t modbusAdd, uint16_t modbusData)
+{
+  static uint16_t InternalRegVal;
+  if ((CHANNEL_1_ENABLE <= modbusAdd) && (modbusAdd <= CHANNEL_5_ENABLE))
+    {
+      uint8_t channelBit = (modbusAdd) - CHANNEL_1_ENABLE;
+      if (modbusData == 0x01)
+        {
+          uint16_t tempValSET = (1 << channelBit);
+          InternalRegVal = InternalRegVal | tempValSET;
+        }
+      else
+        {
+          uint16_t tempValCLR = ~(1 << channelBit);
+          InternalRegVal = InternalRegVal & tempValCLR;
+        }
+    }
+  return InternalRegVal;
+}
+
+static uint16_t
+ChannelEnableDev2_CH6_CH10 (uint16_t modbusAdd, uint16_t modbusData)
+{
+  static uint16_t InternalRegVal;
+  if ((CHANNEL_6_ENABLE <= modbusAdd) && (modbusAdd <= CHANNEL_10_ENABLE))
+    {
+      uint8_t channelBit = (modbusAdd) - CHANNEL_6_ENABLE;
+      if (modbusData == 0x01)
+        {
+          uint16_t tempValSET = (1 << channelBit);
+          InternalRegVal = InternalRegVal | tempValSET;
+        }
+      else
+        {
+          uint16_t tempValCLR = ~(1 << channelBit);
+          InternalRegVal = InternalRegVal & tempValCLR;
+        }
+
+    }
+  return InternalRegVal;
 }
 
 void
 UART_DMA_RX_Task_Running (void)
 {
+  uint16_t CH_1_5_Status = 0;
+  uint16_t CH_6_10_Status = 0;
   /* TaskObjectHandler */
   xUART_DMA_RX_TaskObject = xTaskGetCurrentTaskHandle ();
   // uint32_t ulNotifiedValue;
@@ -221,8 +278,8 @@ UART_DMA_RX_Task_Running (void)
 
   /* Handle Parsing Message */
   ModbusMessage_t MessRXObj;
-  MODBUS_REISTER_INFO regObj;
-  //  MODBUS_REISTER_INFO regObjRD;
+  MODBUS_REISTER_INFO regProcessObj;
+  MODBUS_REISTER_INFO regSendObj;
 
   /* --- */
   while (true)
@@ -269,15 +326,34 @@ UART_DMA_RX_Task_Running (void)
                   UART2_Write (responseBuffer, 8);
                   UART2_DMA_RX_Reset ();
 
+
                   /* xQueueSend MODBUS_Task */
                   for (uint16_t RegIndx = 0; RegIndx < MessRXObj.MB_RegCnt; RegIndx++)
                     {
-                      regObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
-                      regObj.regData = ((MessRXObj.MB_DataBuffPtr[0 + (RegIndx * 2)] << 8) | MessRXObj.MB_DataBuffPtr[1 + (RegIndx * 2)]);
-                      Modbus_MultiWrite (&MOBBUS_REG_TABLE, regObj.regAdd, 1, &regObj.regData); //
-                      xQueueSend (modbusWrittenQueue, &regObj, portMAX_DELAY);
+                      regProcessObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
+                      regProcessObj.regData = ((MessRXObj.MB_DataBuffPtr[0 + (RegIndx * 2)] << 8) | MessRXObj.MB_DataBuffPtr[1 + (RegIndx * 2)]);
+                      Modbus_MultiWrite (&MOBBUS_REG_TABLE, regProcessObj.regAdd, 1, &regProcessObj.regData);
+
+                      CH_1_5_Status = ChannelEnableDev1_CH1_CH5 (regProcessObj.regAdd, regProcessObj.regData);
+                      CH_6_10_Status = ChannelEnableDev2_CH6_CH10 (regProcessObj.regAdd, regProcessObj.regData);
+
+                      if (CHANNEL_1_SLOPE <= regProcessObj.regAdd)
+                        {
+                          regSendObj.regAdd = (regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0317;
+                          regSendObj.regData = regProcessObj.regData;
+                          xQueueSend (modbusWrittenQueue, &regSendObj, portMAX_DELAY);
+                        }
 
                     }
+
+                  if (Modbus_CheckNewFlag (&MOBBUS_REG_TABLE, CHANNEL_1_ENABLE))
+                    {
+                      regSendObj.regAdd = 0x0301;
+                      regSendObj.regData = CH_1_5_Status;
+                      xQueueSend (modbusWrittenQueue, &regSendObj, portMAX_DELAY);
+                    }
+
+
                   break;
                 case READ_REG_FUNCODE:
                   /* Update RX Message Object */
@@ -285,6 +361,7 @@ UART_DMA_RX_Task_Running (void)
                   responseBuffer[RD_RESPOND_BYTE_CNT_INDX] = 2 * MessRXObj.MB_RegCnt;
                   for (size_t RegIndx = 0; RegIndx <= MessRXObj.MB_RegCnt; RegIndx++)
                     {
+
 
                       if (RegIndx == MessRXObj.MB_RegCnt)
                         {
@@ -298,67 +375,33 @@ UART_DMA_RX_Task_Running (void)
                       else
                         {
                           /* Packet */
-                          regObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
-                          regObj.regData = 0x0000;
-                          Modbus_MultiRead (&MOBBUS_REG_TABLE, regObj.regAdd, 1, &regObj.regData);
-                          responseBuffer[RD_RESPOND_DATA_INDX_H + (RegIndx * REG_DATA_SIZE)] = (regObj.regData >> 8) & 0xFF; // High byte reg val
-                          responseBuffer[RD_RESPOND_DATA_INDX_L + (RegIndx * REG_DATA_SIZE)] = regObj.regData & 0xFF; // Low byte reg_val
+                          regProcessObj.regAdd = MessRXObj.MB_RegAdd + RegIndx;
+                          regProcessObj.regData = 0x0000;
+                          Modbus_MultiRead (&MOBBUS_REG_TABLE, regProcessObj.regAdd, 1, &regProcessObj.regData);
+                          responseBuffer[RD_RESPOND_DATA_INDX_H + (RegIndx * REG_DATA_SIZE)] = (regProcessObj.regData >> 8) & 0xFF; // High byte reg val
+                          responseBuffer[RD_RESPOND_DATA_INDX_L + (RegIndx * REG_DATA_SIZE)] = regProcessObj.regData & 0xFF; // Low byte reg_val
                           LED2_Toggle ();
+
+                          if (CHANNEL_1_ENABLE <= regProcessObj.regAdd)
+                            {
+                              //                          regSendObj.regAdd = 0x0301;//(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0300;  //regProcessObj.regAdd; //(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0317;
+                              //                          regSendObj.regData = regProcessObj.regData;
+                              //                          xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
+                            }
                         }
+
                     }
+                  regSendObj.regAdd = 0x0301; //(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0300;  //regProcessObj.regAdd; //(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0317;
+                  regSendObj.regData = regProcessObj.regData;
+                  xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
                   break;
                 default:
                   break;
                 }
             }
         }
-      vTaskDelay (5 / portTICK_PERIOD_MS);
+      // vTaskDelay (5 / portTICK_PERIOD_MS);
     }
-}
-
-/* Draft version ( need to factoring the code ) */
-static uint16_t
-ChannelEnableDev1_CH1_CH5 (uint16_t modbusAdd, uint16_t modbusData)
-{
-  static uint16_t InternalRegVal;
-  if ((CHANNEL_1_ENABLE <= modbusAdd) && (modbusAdd <= CHANNEL_5_ENABLE))
-    {
-      uint8_t channelBit = (modbusAdd) - CHANNEL_1_ENABLE;
-      if (modbusData == 1)
-        {
-          uint16_t tempValSET = (1 << channelBit);
-          InternalRegVal = InternalRegVal | tempValSET;
-        }
-      else
-        {
-          uint16_t tempValCLR = (0 << channelBit);
-          InternalRegVal = InternalRegVal & tempValCLR;
-        }
-
-    }
-  return InternalRegVal;
-}
-
-static uint16_t
-ChannelEnableDev1_CH6_CH10 (uint16_t modbusAdd, uint16_t modbusData)
-{
-  static uint16_t InternalRegVal;
-  if ((CHANNEL_6_ENABLE <= modbusAdd) && (modbusAdd <= CHANNEL_10_ENABLE))
-    {
-      uint8_t channelBit = (modbusAdd) - CHANNEL_6_ENABLE;
-      if (modbusData == 1)
-        {
-          uint16_t tempValSET = (1 << channelBit);
-          InternalRegVal = InternalRegVal | tempValSET;
-        }
-      else
-        {
-          uint16_t tempValCLR = (0 << channelBit);
-          InternalRegVal = InternalRegVal & tempValCLR;
-        }
-
-    }
-  return InternalRegVal;
 }
 
 void
@@ -366,39 +409,54 @@ MODBUS_WR_Request_Task_Runing (void)
 {
 
   MODBUS_REISTER_INFO regInfoWR;
-  char lcd_BuffDatastring1[20] = {0};
-  char lcd_BuffDatastring2[20] = {0};
+  commsinterface_handle_t testPacket1 = {0};
+  commsinterface_cfg_t testConfigPacket1 = {0};
+  CommSPI_SetupNewPacket (&testPacket1, &testConfigPacket1, 0x01);
+  uint16_t channelStatus1;
 
   while (1)
     {
 
-      uint16_t channelStatus1 = 0;
-      uint16_t channelStatus2 = 0;
-
-      //commsinterface_handle_t WritePacket = {0};
-      //commsinterface_cfg_t ConfigWritePacket = {0};
 
       if (xQueueReceive (modbusWrittenQueue, (void*) &regInfoWR, portMAX_DELAY) == pdTRUE)
         {
-
-          LATAINV = (1UL << 6);
-          TRISACLR = (1UL << 6);
-
-          channelStatus1 = ChannelEnableDev1_CH1_CH5 (regInfoWR.regAdd, regInfoWR.regData);
-          channelStatus2 = ChannelEnableDev1_CH6_CH10 (regInfoWR.regAdd, regInfoWR.regData);
-          //TO DO: write into internal register base on modbus value
-          if (channelStatus1 != 0)
-            {
-              sprintf (lcd_BuffDatastring1, "0x%.4X", channelStatus1);
-              //LCD_PRINT_STRING (lcd_BuffDatastring1, 0, 0, 0);
-            }
-          if (channelStatus2 != 0)
-            {
-              sprintf (lcd_BuffDatastring2, "0x%.4X", channelStatus2);
-              //LCD_PRINT_STRING (lcd_BuffDatastring2, 0, 1, 0);
-            }
-
+          CommSPI_ProcessTransmitSinglePacket (&testPacket1, 0x01, regInfoWR.regAdd, regInfoWR.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE);
+          CORETIMER_DelayUs (450);
+          CommSPI_ProcessReceiveSinglePacket (&testPacket1, regInfoWR.regAdd, &channelStatus1, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE_RESPOND);
+          Modbus_ClearNewFlag (&MOBBUS_REG_TABLE, CHANNEL_1_ENABLE);
         }
-      //   vTaskDelay(5 / portTICK_PERIOD_MS);
+
+    }
+}
+
+void
+MODBUS_RD_Request_Task_Runing (void)
+{
+  MODBUS_REISTER_INFO regInfoRD;
+  commsinterface_handle_t testPacket1 = {0};
+  commsinterface_cfg_t testConfigPacket1 = {0};
+  CommSPI_SetupNewPacket (&testPacket1, &testConfigPacket1, 0x01);
+  uint16_t channelStatus1;
+  uint16_t maxCurrent1 = 10;
+
+  while (1)
+    {
+
+
+      if (xQueueReceive (modbusReadQueue, (void*) &regInfoRD, portMAX_DELAY) == pdTRUE)
+        {
+
+       //   if (regInfoRD.regAdd == CHANNEL_1_ENABLE)
+        //    {
+              Modbus_MultiWrite (&MOBBUS_REG_TABLE, regInfoRD.regAdd, 1, &maxCurrent1);
+              CORETIMER_DelayUs (450);
+              CommSPI_ProcessTransmitSinglePacket (&testPacket1, 0x01, 0x0301, regInfoRD.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_READ);
+              CORETIMER_DelayUs (450);
+              CommSPI_ProcessReceiveSinglePacket (&testPacket1, 0x0301, &channelStatus1, COMMSINTERFACE_FUNC_CODE_SINGLE_READ_RESPOND);
+
+        //    }
+          // Modbus_ClearNewFlag (&MOBBUS_REG_TABLE, CHANNEL_1_ENABLE);
+        }
+
     }
 }

@@ -73,13 +73,15 @@ Uart_Dma_Rx_Tasks (void *pvParameters)
 }
 
 static void
-MODBUS_REGISTER_MAP_Tasks (void *pvParameters)
+MODBUS_REGISTER_MAP_WR_RequestTasks (void *pvParameters)
 {
   MODBUS_WR_Request_Task_Runing ();
-
 }
 
-
+MODBUS_REGISTER_MAP_RD_RequestTasks (void *pvParameters)
+{
+  MODBUS_RD_Request_Task_Runing ();
+}
 
 
 
@@ -130,16 +132,23 @@ SYS_Tasks (void)
 
   (void) xTaskCreate ((TaskFunction_t) Uart_Dma_Rx_Tasks,
                       "UART_RX_Tasks",
-                      2048,
+                      1024,
                       NULL,
                       2,
                       &xUART_DMA_RX_TaskObject);
-  (void) xTaskCreate ((TaskFunction_t) MODBUS_REGISTER_MAP_Tasks,
-                      "Modbus_Tasks",
-                      2048,
+  (void) xTaskCreate ((TaskFunction_t) MODBUS_REGISTER_MAP_WR_RequestTasks,
+                      "ModbusWRTasks",
+                      1024,
                       NULL,
                       1,
-                      &xMODBUS_REGISTER_TaskObject);
+                      &xMODBUS_REGISTER_WR_TaskObject);
+  
+  (void) xTaskCreate ((TaskFunction_t) MODBUS_REGISTER_MAP_RD_RequestTasks,
+                      "ModbuRDTasks",
+                      1024,
+                      NULL,
+                      1,
+                      &xMODBUS_REGISTER_RD_TaskObject);
 
 
 
