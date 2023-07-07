@@ -1,10 +1,12 @@
 #include <stdint.h>
 #include "UartDmaRx_Task.h"
 #include "definitions.h"
+#include "config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.h"
 #include "config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h"
 #include "config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.h"
 #include "config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.h"
-#include "config/pic32mx_eth_sk2/peripheral/coretimer/plib_coretimer.h"
+#include "MODBUS_REGISTERS_MAP.h"
+
 
 /* Handle for the UART_DMA_RX_Task */
 TaskHandle_t xUART_DMA_RX_TaskObject; // extern Declare in "sys_tasksObject.h"
@@ -47,160 +49,9 @@ QueueHandle_t modbusReadReplyQueue;
 //static uint16_t
 //ChannelEnableDev1_CH6_CH10 (uint16_t modbusAdd, uint16_t modbusData);
 
-static int
-Modbus_InitTable (MODBUS_REGISTER_TABLE_S *registerTable)
-{
-  if (registerTable == NULL)
-    {
-      // Handle null pointer error
-      return -1;
-    }
 
-  for (int RegIndex = SERIAL_NUMBER_1; RegIndex < TOTAL_MODBUS_REGISTERS; RegIndex++)
-    {
-      /* Initialize the Data + AccessType */
-      registerTable->MB_REG_DATA[RegIndex] = 0;
-      registerTable->MB_REG_DEVICE_ID[RegIndex] = 0xFF;
-      registerTable->isNEW_FLAG[RegIndex] = 0;
 
-      if ((RegIndex >= 0) && (RegIndex <= CHANNEL_10_STATE))
-        {
-          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = MODBUS_REG_ACCESS_RD;
-        }
-      else if ((RegIndex >= CHANNEL_1_CURRENT_SET_POINT) && (RegIndex <= FACTORY_CHANNEL_10_OFFSET_LOW))
-        {
-          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = MODBUS_REG_ACCESS_RW;
-        }
-      else if ((RegIndex >= FACTORY_CHANNEL_0A_SLOPE) && (RegIndex <= FACTORY_CHANNEL_10_SLOPE))
-        {
-          registerTable->MB_REG_ACCESS_TYPE[RegIndex] = MODBUS_REG_ACCESS_RD;
-        }
 
-      /* Initialize STM32 Device ID */
-      // Set MAX CURRENT
-      if ((RegIndex >= CHANNEL_1_MAX_CURRENT) && (RegIndex <= CHANNEL_5_MAX_CURRENT))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
-        }
-
-      if ((RegIndex >= CHANNEL_6_MAX_CURRENT) && (RegIndex <= CHANNEL_10_MAX_CURRENT))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
-        }
-
-      // MONITOR STATUS 
-      if ((RegIndex >= CHANNEL_1_MEASURED_CURRENT) && (RegIndex <= CHANNEL_5_STATE))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
-        }
-
-      if ((RegIndex >= CHANNEL_6_MEASURED_CURRENT) && (RegIndex <= CHANNEL_10_STATE))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
-        }
-
-      // SET POINT
-      if ((RegIndex >= CHANNEL_1_CURRENT_SET_POINT) && (RegIndex <= CHANNEL_5_CURRENT_SET_POINT))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
-        }
-
-      if ((RegIndex >= CHANNEL_6_CURRENT_SET_POINT) && (RegIndex <= CHANNEL_10_CURRENT_SET_POINT))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
-        }
-      // ENABLE 
-      if ((RegIndex >= CHANNEL_1_ENABLE) && (RegIndex <= CHANNEL_5_ENABLE))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
-        }
-
-      if ((RegIndex >= CHANNEL_6_ENABLE) && (RegIndex <= CHANNEL_10_ENABLE))
-        {
-          registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
-        }
-    }
-  return 0;
-}
-
-/* Temporary API function for MODBUS  Table */
-
-int
-Modbus_MultiRead (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress, uint16_t registerCount, uint16_t *outputBuffer)
-{
-  // Check if registerTable pointer, outputBuffer pointer is not NULL, and starting address + register count does not exceed total registers
-  if ((registerTable == NULL) || (outputBuffer == NULL) || ((startingAddress + registerCount) > TOTAL_MODBUS_REGISTERS))
-    {
-      return -1; // Return error code
-    }
-
-  for (int i = 0; i < registerCount; i++)
-    {
-      // Check if register can be read
-      if (((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_RD) ||
-          ((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_RW))
-        {
-          // TO DO: Might want to check isNEW_FLAG before read
-          outputBuffer[i] = registerTable->MB_REG_DATA[startingAddress + i];
-        }
-      else
-        {
-          return -2; // Return error code indicating register cannot be read
-        }
-    }
-
-  return 0; // Return success code
-}
-
-int
-Modbus_MultiWrite (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress, uint16_t registerCount, const uint16_t *inputData)
-{
-  // Check if registerTable pointer, inputData pointer is not NULL, and starting address + register count does not exceed total registers
-  if ((registerTable == NULL) || (inputData == NULL) || ((startingAddress + registerCount) > TOTAL_MODBUS_REGISTERS))
-    {
-      return -1; // Return error code
-    }
-
-  for (int i = 0; i < registerCount; i++)
-    {
-      // Check if register can be written
-      if (((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_WR) ||
-          ((uint16_t) registerTable->MB_REG_ACCESS_TYPE[startingAddress + i] == (uint16_t) MODBUS_REG_ACCESS_RW))
-        {
-          registerTable->MB_REG_DATA[startingAddress + i] = inputData[i];
-          registerTable->isNEW_FLAG[startingAddress + i] = 1;
-        }
-      else
-        {
-          return -2; // Return error code indicating register cannot be written
-        }
-    }
-
-  return 0; // Return success code
-}
-
-bool
-Modbus_CheckNewFlag (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress)
-{
-  // Check if registerTable pointer, inputData pointer is not NULL, and starting address + register count does not exceed total registers
-  if ((registerTable == NULL) || (startingAddress > TOTAL_MODBUS_REGISTERS))
-    {
-      return 0; // Return error code
-    }
-
-  return (1 == registerTable->isNEW_FLAG[startingAddress]);
-}
-
-void
-Modbus_ClearNewFlag (MODBUS_REGISTER_TABLE_S *registerTable, uint16_t startingAddress)
-{
-  // Check if registerTable pointer, inputData pointer is not NULL, and starting address + register count does not exceed total registers
-  if ((registerTable == NULL) || (startingAddress > TOTAL_MODBUS_REGISTERS))
-    {
-      return; // Return error code
-    }
-  registerTable->isNEW_FLAG[startingAddress] = 0;
-}
 
 static MODBUS_REGISTER_TABLE_S MOBBUS_REG_TABLE;
 
@@ -337,19 +188,28 @@ UART_DMA_RX_Task_Running (void)
                       CH_1_5_Status = ChannelEnableDev1_CH1_CH5 (regProcessObj.regAdd, regProcessObj.regData);
                       CH_6_10_Status = ChannelEnableDev2_CH6_CH10 (regProcessObj.regAdd, regProcessObj.regData);
 
-                      if (CHANNEL_1_SLOPE <= regProcessObj.regAdd)
-                        {
-                          regSendObj.regAdd = (regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0317;
-                          regSendObj.regData = regProcessObj.regData;
-                          xQueueSend (modbusWrittenQueue, &regSendObj, portMAX_DELAY);
-                        }
+                      // if (CHANNEL_1_SLOPE <= regProcessObj.regAdd)
+                      //                      if ( (0x23 <= regProcessObj.regAdd) && Modbus_CheckSTM32_Address (&MOBBUS_REG_TABLE,regProcessObj.regAdd) )
+                      //                        {
+                      //                          regSendObj.regAdd = regProcessObj.regAdd;
+                      //                          regSendObj.regData = regProcessObj.regData;
+                      //                        //  xQueueSend (modbusWrittenQueue, &regSendObj, portMAX_DELAY);
+                      //                        }
+
 
                     }
 
                   if (Modbus_CheckNewFlag (&MOBBUS_REG_TABLE, CHANNEL_1_ENABLE))
                     {
-                      regSendObj.regAdd = 0x0301;
+                      regSendObj.regAdd = CHANNEL_1_ENABLE;
                       regSendObj.regData = CH_1_5_Status;
+                      xQueueSend (modbusWrittenQueue, &regSendObj, portMAX_DELAY);
+                    }
+
+                  if (Modbus_CheckNewFlag (&MOBBUS_REG_TABLE, CHANNEL_6_ENABLE))
+                    {
+                      regSendObj.regAdd = CHANNEL_6_ENABLE;
+                      regSendObj.regData = CH_6_10_Status;
                       xQueueSend (modbusWrittenQueue, &regSendObj, portMAX_DELAY);
                     }
 
@@ -382,18 +242,31 @@ UART_DMA_RX_Task_Running (void)
                           responseBuffer[RD_RESPOND_DATA_INDX_L + (RegIndx * REG_DATA_SIZE)] = regProcessObj.regData & 0xFF; // Low byte reg_val
                           LED2_Toggle ();
 
-                          if (CHANNEL_1_ENABLE <= regProcessObj.regAdd)
-                            {
-                              //                          regSendObj.regAdd = 0x0301;//(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0300;  //regProcessObj.regAdd; //(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0317;
-                              //                          regSendObj.regData = regProcessObj.regData;
-                              //                          xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
+//                          if (CHANNEL_1_ENABLE == regProcessObj.regAdd)
+//                            {
+//                              regSendObj.regAdd = regProcessObj.regAdd;
+//                              regSendObj.regData = regProcessObj.regData;
+//                              xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
+//                            }
+//
+//                          if (CHANNEL_6_ENABLE == regProcessObj.regAdd)
+//                            {
+//                              regSendObj.regAdd = regProcessObj.regAdd;
+//                              regSendObj.regData = regProcessObj.regData;
+//                              xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
+//                            }
+
+                          //if ((0x23 <= regProcessObj.regAdd) && Modbus_CheckSTM32_Address (&MOBBUS_REG_TABLE, regProcessObj.regAdd))
+                            if (CHANNEL_1_MEASURED_CURRENT <= regProcessObj.regAdd && CHANNEL_10_STATE >= regProcessObj.regAdd )  
+                          {
+                              regSendObj.regAdd = regProcessObj.regAdd;
+                              regSendObj.regData = regProcessObj.regData;
+                              xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
                             }
+
                         }
 
                     }
-                  regSendObj.regAdd = 0x0301; //(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0300;  //regProcessObj.regAdd; //(regProcessObj.regAdd - CHANNEL_1_SLOPE) + 0x0317;
-                  regSendObj.regData = regProcessObj.regData;
-                  xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
                   break;
                 default:
                   break;
@@ -413,17 +286,34 @@ MODBUS_WR_Request_Task_Runing (void)
   commsinterface_cfg_t testConfigPacket1 = {0};
   CommSPI_SetupNewPacket (&testPacket1, &testConfigPacket1, 0x01);
   uint16_t channelStatus1;
+  uint16_t channelStatus2;
 
   while (1)
     {
 
-
       if (xQueueReceive (modbusWrittenQueue, (void*) &regInfoWR, portMAX_DELAY) == pdTRUE)
         {
-          CommSPI_ProcessTransmitSinglePacket (&testPacket1, 0x01, regInfoWR.regAdd, regInfoWR.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE);
-          CORETIMER_DelayUs (450);
-          CommSPI_ProcessReceiveSinglePacket (&testPacket1, regInfoWR.regAdd, &channelStatus1, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE_RESPOND);
-          Modbus_ClearNewFlag (&MOBBUS_REG_TABLE, CHANNEL_1_ENABLE);
+          if (Modbus_CheckSTM32_Address (&MOBBUS_REG_TABLE, regInfoWR.regAdd))
+            {
+              if (MOBBUS_REG_TABLE.MB_REG_DEVICE_ID[regInfoWR.regAdd] == DEV_STM32_1)
+                {
+                  CommSPI_ProcessTransmitSinglePacket (&testPacket1, DEV_STM32_1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoWR.regAdd], regInfoWR.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE);
+                  CORETIMER_DelayUs (450);
+                  CommSPI_ProcessReceiveSinglePacket (&testPacket1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoWR.regAdd], &channelStatus1, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE_RESPOND);
+                  Modbus_ClearNewFlag (&MOBBUS_REG_TABLE, CHANNEL_1_ENABLE);
+                  vTaskDelay (3);
+                }
+              else if (MOBBUS_REG_TABLE.MB_REG_DEVICE_ID[regInfoWR.regAdd] == DEV_STM32_2)
+                {
+                  CommSPI_ProcessTransmitSinglePacket (&testPacket1, DEV_STM32_2, MOBBUS_REG_TABLE.InternalRegAdd[regInfoWR.regAdd], regInfoWR.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE);
+                  CORETIMER_DelayUs (450);
+                  CommSPI_ProcessReceiveSinglePacket (&testPacket1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoWR.regAdd], &channelStatus2, COMMSINTERFACE_FUNC_CODE_SINGLE_WRITE_RESPOND);
+                  Modbus_ClearNewFlag (&MOBBUS_REG_TABLE, CHANNEL_6_ENABLE);
+                  vTaskDelay (3);
+                }
+            }
+
+
         }
 
     }
@@ -437,25 +327,33 @@ MODBUS_RD_Request_Task_Runing (void)
   commsinterface_cfg_t testConfigPacket1 = {0};
   CommSPI_SetupNewPacket (&testPacket1, &testConfigPacket1, 0x01);
   uint16_t channelStatus1;
-  uint16_t maxCurrent1 = 10;
+  uint16_t channelStatus2;
 
   while (1)
     {
-
-
       if (xQueueReceive (modbusReadQueue, (void*) &regInfoRD, portMAX_DELAY) == pdTRUE)
         {
+          if (Modbus_CheckSTM32_Address (&MOBBUS_REG_TABLE, regInfoRD.regAdd))
+            {
 
-       //   if (regInfoRD.regAdd == CHANNEL_1_ENABLE)
-        //    {
-              Modbus_MultiWrite (&MOBBUS_REG_TABLE, regInfoRD.regAdd, 1, &maxCurrent1);
-              CORETIMER_DelayUs (450);
-              CommSPI_ProcessTransmitSinglePacket (&testPacket1, 0x01, 0x0301, regInfoRD.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_READ);
-              CORETIMER_DelayUs (450);
-              CommSPI_ProcessReceiveSinglePacket (&testPacket1, 0x0301, &channelStatus1, COMMSINTERFACE_FUNC_CODE_SINGLE_READ_RESPOND);
+              if (MOBBUS_REG_TABLE.MB_REG_DEVICE_ID[regInfoRD.regAdd] == DEV_STM32_1)
+                {
+                  CommSPI_ProcessTransmitSinglePacket (&testPacket1, DEV_STM32_1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], regInfoRD.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_READ);
+                  CORETIMER_DelayUs (450);
+                  CommSPI_ProcessReceiveSinglePacket (&testPacket1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], &channelStatus1, COMMSINTERFACE_FUNC_CODE_SINGLE_READ_RESPOND);
+                  vTaskDelay (3);
 
-        //    }
-          // Modbus_ClearNewFlag (&MOBBUS_REG_TABLE, CHANNEL_1_ENABLE);
+                }
+              else if (MOBBUS_REG_TABLE.MB_REG_DEVICE_ID[regInfoRD.regAdd] == DEV_STM32_2)
+                {
+                  CommSPI_ProcessTransmitSinglePacket (&testPacket1, DEV_STM32_2, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], regInfoRD.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_READ);
+                  CORETIMER_DelayUs (450);
+                  CommSPI_ProcessReceiveSinglePacket (&testPacket1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], &channelStatus2, COMMSINTERFACE_FUNC_CODE_SINGLE_READ_RESPOND);
+                  vTaskDelay (3);
+
+                }
+            }
+
         }
 
     }

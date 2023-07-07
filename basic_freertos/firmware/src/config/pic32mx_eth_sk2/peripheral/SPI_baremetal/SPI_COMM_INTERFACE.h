@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include "../../USER_HELPER/REGISTERS_MAP.h"
+#include "../../USER_HELPER/INTERNAL_REGISTERS_MAP.h"
 
 
 

@@ -240,7 +240,7 @@ CommSPI_ProcessTransmitSinglePacket(commsinterface_handle_t *p_commsinterface, u
     }
     // Setup the header part of the message
     p_commsinterface->tx_message.messagePacket.header._start_flag = FRAME_START_FLAG_VAL;
-    p_commsinterface->tx_message.messagePacket.header._dev_address = p_commsinterface->_cfg.device_address;
+    p_commsinterface->tx_message.messagePacket.header._dev_address = messID; //p_commsinterface->_cfg.device_address;
     p_commsinterface->tx_message.messagePacket.header._mess_ID = messID;
 
     // Variable to hold the total byte count for data transmission
@@ -308,8 +308,8 @@ CommSPI_ProcessReceiveSinglePacket(commsinterface_handle_t *p_commsinterface, ui
     bool valid_CS = commsinterface_ValidateRxFrame(&p_commsinterface->_rx_buffer[0], COMMSINTERFACE_SINGLE_PACKET_MAX_SIZE, p_commsinterface->_cfg.device_address);
     /* Pad byte into union array */
     memcpy(&p_commsinterface->rx_message.messFrameArray[START_FLAG_FRAME_INDEX], &p_commsinterface->_rx_buffer[START_FLAG_FRAME_INDEX], TOTAL_SINGLE_PACKET_FRAME);
-    uint8_t devAddrss_receive = p_commsinterface->rx_message.messagePacket.header._dev_address;
-    uint8_t messID_receive = p_commsinterface->rx_message.messagePacket.header._mess_ID;
+//    uint8_t devAddrss_receive = p_commsinterface->rx_message.messagePacket.header._dev_address; // Unused
+//    uint8_t messID_receive = p_commsinterface->rx_message.messagePacket.header._mess_ID; // Unused
     uint8_t messLen_receive = p_commsinterface->rx_message.messagePacket.header._mess_len;
     uint8_t opCode_receive = p_commsinterface->rx_message.messagePacket.data._func_code;
     uint16_t regAdd_receive = p_commsinterface->rx_message.messagePacket.data._reg_addr;
@@ -432,14 +432,14 @@ CommSPI_ProcessReceiveMultiPacket(commsinterface_handle_t *p_commsinterface, uin
     bool validMessLen = false;
     bool validFuncCode = false;
     bool validRegAddrss = false;
-    bool validRegValWriten = false;
+//    bool validRegValWriten = false; // Unused
     bool validRegCount = false;
     p_commsinterface->_cfg.receive_multi_reg_respond_fxn(p_commsinterface, regAddress, p_commsinterface->_rx_buffer, COMMSINTERFACE_SINGLE_PACKET_MAX_SIZE);
     bool valid_CS = commsinterface_ValidateRxFrame(&p_commsinterface->_rx_buffer[0], COMMSINTERFACE_SINGLE_PACKET_MAX_SIZE, p_commsinterface->_cfg.device_address);
     /* Pad byte into union array */
     memcpy(&p_commsinterface->rx_message.messFrameArray[START_FLAG_FRAME_INDEX], &p_commsinterface->_rx_buffer[START_FLAG_FRAME_INDEX], TOTAL_SINGLE_PACKET_FRAME);
-    uint8_t devAddrss_receive = p_commsinterface->rx_message.messagePacket.header._dev_address;
-    uint8_t messID_receive = p_commsinterface->rx_message.messagePacket.header._mess_ID;
+//    uint8_t devAddrss_receive = p_commsinterface->rx_message.messagePacket.header._dev_address; // Unused
+//    uint8_t messID_receive = p_commsinterface->rx_message.messagePacket.header._mess_ID; // Unused
     uint8_t messLen_receive = p_commsinterface->rx_message.messagePacket.header._mess_len;
     uint8_t opCode_receive = p_commsinterface->rx_message.messagePacket.data._func_code;
     uint16_t regAdd_receive = p_commsinterface->rx_message.messagePacket.data._reg_addr;

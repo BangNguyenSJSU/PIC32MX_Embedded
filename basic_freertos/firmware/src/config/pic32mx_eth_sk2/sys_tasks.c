@@ -52,6 +52,7 @@
 
 #include "definitions.h"
 #include "sys_tasksObject.h"
+#include "MODBUS_REGISTERS_MAP.h"
 
 
 // *****************************************************************************
@@ -78,6 +79,7 @@ MODBUS_REGISTER_MAP_WR_RequestTasks (void *pvParameters)
   MODBUS_WR_Request_Task_Runing ();
 }
 
+static void
 MODBUS_REGISTER_MAP_RD_RequestTasks (void *pvParameters)
 {
   MODBUS_RD_Request_Task_Runing ();
@@ -120,9 +122,10 @@ SYS_Tasks (void)
 
 
   /* Maintain Middleware & Other Libraries */
-
-
+  
   /* Maintain the application's state machine. */
+  
+  
   //    (void) xTaskCreate((TaskFunction_t) LCD_Task1_Tasks,
   //                "LCD_Tasks",
   //                1024,

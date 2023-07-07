@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/USER_HELPER/INTERNAL_REGISTERS_MAP.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/UartDmaRx_Task.h</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/MODBUS_REGISTERS_MAP.h</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/sys_tasks.c</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/MODBUS_REGISTERS_MAP.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/UartDmaRx_Task.c</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/USER_HELPER/INTERNAL_REGISTERS_MAP.h</file>
         </group>
     </open-files>
 </project-private>

@@ -66,6 +66,7 @@
 #include "system/debug/sys_debug.h"
 #include "LCD_Task1.h"
 #include "../../UartDmaRx_Task.h"
+#include "../../MODBUS_REGISTERS_MAP.h"
 
 
 

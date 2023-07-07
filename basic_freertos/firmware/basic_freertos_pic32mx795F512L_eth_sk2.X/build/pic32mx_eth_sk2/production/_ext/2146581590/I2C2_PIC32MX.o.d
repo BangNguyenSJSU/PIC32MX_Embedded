@@ -43,6 +43,8 @@ build/pic32mx_eth_sk2/production/_ext/2146581590/I2C2_PIC32MX.o: \
  ../src/config/pic32mx_eth_sk2/system/system_module.h \
  ../src/config/pic32mx_eth_sk2/system/system_common.h ../src/LCD_Task1.h \
  c:\102413_lc_p500\pic32mx_embedded\basic_freertos\firmware\src\uartdmarx_task.h \
+ c:\102413_lc_p500\pic32mx_embedded\basic_freertos\firmware\src\modbus_registers_map.h \
+ c:\102413_lc_p500\pic32mx_embedded\basic_freertos\firmware\src\USER_HELPER/INTERNAL_REGISTERS_MAP.h \
  ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/../coretimer/plib_coretimer.h
 
 ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C2_PIC32MX.h:
@@ -132,5 +134,9 @@ build/pic32mx_eth_sk2/production/_ext/2146581590/I2C2_PIC32MX.o: \
 ../src/LCD_Task1.h:
 
 c:\102413_lc_p500\pic32mx_embedded\basic_freertos\firmware\src\uartdmarx_task.h:
+
+c:\102413_lc_p500\pic32mx_embedded\basic_freertos\firmware\src\modbus_registers_map.h:
+
+c:\102413_lc_p500\pic32mx_embedded\basic_freertos\firmware\src\USER_HELPER/INTERNAL_REGISTERS_MAP.h:
 
 ../src/config/pic32mx_eth_sk2/peripheral/I2C_baremetal/../coretimer/plib_coretimer.h:

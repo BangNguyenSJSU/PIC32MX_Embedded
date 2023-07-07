@@ -42,7 +42,10 @@ build/pic32mx_eth_sk2/production/_ext/111649226/sys_tasks.o: \
  ../src/config/pic32mx_eth_sk2/system/system_module.h \
  ../src/config/pic32mx_eth_sk2/system/system_common.h ../src/LCD_Task1.h \
  ../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h \
- ../src/config/pic32mx_eth_sk2/sys_tasksObject.h
+ ../src/config/pic32mx_eth_sk2/../../MODBUS_REGISTERS_MAP.h \
+ ../src/config/pic32mx_eth_sk2/../../USER_HELPER/INTERNAL_REGISTERS_MAP.h \
+ ../src/config/pic32mx_eth_sk2/sys_tasksObject.h \
+ ../src/MODBUS_REGISTERS_MAP.h
 
 ../src/config/pic32mx_eth_sk2/definitions.h:
 
@@ -130,4 +133,10 @@ build/pic32mx_eth_sk2/production/_ext/111649226/sys_tasks.o: \
 
 ../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h:
 
+../src/config/pic32mx_eth_sk2/../../MODBUS_REGISTERS_MAP.h:
+
+../src/config/pic32mx_eth_sk2/../../USER_HELPER/INTERNAL_REGISTERS_MAP.h:
+
 ../src/config/pic32mx_eth_sk2/sys_tasksObject.h:
+
+../src/MODBUS_REGISTERS_MAP.h:
