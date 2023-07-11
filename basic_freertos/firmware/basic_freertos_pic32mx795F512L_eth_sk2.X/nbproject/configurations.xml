@@ -112,8 +112,8 @@
       </logicalFolder>
       <logicalFolder name="USER_HELPER" displayName="USER_HELPER" projectFiles="true">
         <itemPath>../src/USER_HELPER/HELPER_FUNCTION.h</itemPath>
-        <itemPath>../src/MODBUS_REGISTERS_MAP.h</itemPath>
         <itemPath>../src/USER_HELPER/INTERNAL_REGISTERS_MAP.h</itemPath>
+        <itemPath>../src/USER_HELPER/MODBUS_REGISTERS_MAP.h</itemPath>
       </logicalFolder>
       <itemPath>../src/LCD_Task1.h</itemPath>
       <itemPath>../src/UartDmaRx_Task.h</itemPath>
@@ -228,8 +228,8 @@
       </logicalFolder>
       <logicalFolder name="USER_HELPER" displayName="USER_HELPER" projectFiles="true">
         <itemPath>../src/USER_HELPER/HELPER_FUNCTION.c</itemPath>
-        <itemPath>../src/MODBUS_REGISTERS_MAP.c</itemPath>
         <itemPath>../src/USER_HELPER/INTERNAL_REGISTERS_MAP.c</itemPath>
+        <itemPath>../src/USER_HELPER/MODBUS_REGISTERS_MAP.c</itemPath>
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/LCD_Task1.c</itemPath>

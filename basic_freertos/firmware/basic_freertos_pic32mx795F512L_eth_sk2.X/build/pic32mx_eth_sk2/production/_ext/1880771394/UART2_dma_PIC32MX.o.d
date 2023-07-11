@@ -42,8 +42,8 @@ build/pic32mx_eth_sk2/production/_ext/1880771394/UART2_dma_PIC32MX.o: \
  ../src/config/pic32mx_eth_sk2/system/system_module.h \
  ../src/config/pic32mx_eth_sk2/system/system_common.h ../src/LCD_Task1.h \
  ../src/../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h \
- ../src/../src/config/pic32mx_eth_sk2/../../MODBUS_REGISTERS_MAP.h \
- ../src/../src/config/pic32mx_eth_sk2/../../USER_HELPER/INTERNAL_REGISTERS_MAP.h \
+ ../src/../src/config/pic32mx_eth_sk2/../../USER_HELPER/MODBUS_REGISTERS_MAP.h \
+ ../src/USER_HELPER/INTERNAL_REGISTERS_MAP.h \
  ../src/../src/config/pic32mx_eth_sk2/sys_tasksObject.h \
  ../src/../src/config/pic32mx_eth_sk2/definitions.h \
  ../src/config/pic32mx_eth_sk2/interrupts.h \
@@ -136,9 +136,9 @@ build/pic32mx_eth_sk2/production/_ext/1880771394/UART2_dma_PIC32MX.o: \
 
 ../src/../src/config/pic32mx_eth_sk2/../../UartDmaRx_Task.h:
 
-../src/../src/config/pic32mx_eth_sk2/../../MODBUS_REGISTERS_MAP.h:
+../src/../src/config/pic32mx_eth_sk2/../../USER_HELPER/MODBUS_REGISTERS_MAP.h:
 
-../src/../src/config/pic32mx_eth_sk2/../../USER_HELPER/INTERNAL_REGISTERS_MAP.h:
+../src/USER_HELPER/INTERNAL_REGISTERS_MAP.h:
 
 ../src/../src/config/pic32mx_eth_sk2/sys_tasksObject.h:
 

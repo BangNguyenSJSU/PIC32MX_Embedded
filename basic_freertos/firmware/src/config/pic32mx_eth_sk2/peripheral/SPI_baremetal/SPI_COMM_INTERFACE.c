@@ -240,7 +240,7 @@ CommSPI_ProcessTransmitSinglePacket(commsinterface_handle_t *p_commsinterface, u
     }
     // Setup the header part of the message
     p_commsinterface->tx_message.messagePacket.header._start_flag = FRAME_START_FLAG_VAL;
-    p_commsinterface->tx_message.messagePacket.header._dev_address = messID; //p_commsinterface->_cfg.device_address;
+    p_commsinterface->tx_message.messagePacket.header._dev_address = p_commsinterface->_cfg.device_address;
     p_commsinterface->tx_message.messagePacket.header._mess_ID = messID;
 
     // Variable to hold the total byte count for data transmission

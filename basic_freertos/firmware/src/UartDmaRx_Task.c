@@ -5,7 +5,7 @@
 #include "config/pic32mx_eth_sk2/peripheral/I2C_baremetal/I2C_LCD.h"
 #include "config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.h"
 #include "config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI.h"
-#include "MODBUS_REGISTERS_MAP.h"
+#include "USER_HELPER/MODBUS_REGISTERS_MAP.h"
 
 
 /* Handle for the UART_DMA_RX_Task */
@@ -67,7 +67,7 @@ void
 MODBUS_REGISTER_MAP_Task_Initialize (void)
 {
   Modbus_InitTable (&MOBBUS_REG_TABLE);
-  SPI1_Init_Master (500000);
+  SPI1_Init_Master (1000000);
 }
 
 /* Draft version ( need to factoring the code ) */
@@ -212,6 +212,8 @@ UART_DMA_RX_Task_Running (void)
                       regSendObj.regData = CH_6_10_Status;
                       xQueueSend (modbusWrittenQueue, &regSendObj, portMAX_DELAY);
                     }
+                  
+                  
 
 
                   break;
@@ -257,12 +259,12 @@ UART_DMA_RX_Task_Running (void)
 //                            }
 
                           //if ((0x23 <= regProcessObj.regAdd) && Modbus_CheckSTM32_Address (&MOBBUS_REG_TABLE, regProcessObj.regAdd))
-                            if (CHANNEL_1_MEASURED_CURRENT <= regProcessObj.regAdd && CHANNEL_10_STATE >= regProcessObj.regAdd )  
+                            if (CHANNEL_1_MAX_CURRENT <= regProcessObj.regAdd && CHANNEL_10_ENABLE >= regProcessObj.regAdd )  
                           {
                               regSendObj.regAdd = regProcessObj.regAdd;
                               regSendObj.regData = regProcessObj.regData;
                               xQueueSend (modbusReadQueue, &regSendObj, portMAX_DELAY);
-                            }
+                           }
 
                         }
 
@@ -339,17 +341,17 @@ MODBUS_RD_Request_Task_Runing (void)
               if (MOBBUS_REG_TABLE.MB_REG_DEVICE_ID[regInfoRD.regAdd] == DEV_STM32_1)
                 {
                   CommSPI_ProcessTransmitSinglePacket (&testPacket1, DEV_STM32_1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], regInfoRD.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_READ);
-                  CORETIMER_DelayUs (450);
+                  CORETIMER_DelayUs (80);
                   CommSPI_ProcessReceiveSinglePacket (&testPacket1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], &channelStatus1, COMMSINTERFACE_FUNC_CODE_SINGLE_READ_RESPOND);
-                  vTaskDelay (3);
+                   vTaskDelay (1);
 
                 }
               else if (MOBBUS_REG_TABLE.MB_REG_DEVICE_ID[regInfoRD.regAdd] == DEV_STM32_2)
                 {
                   CommSPI_ProcessTransmitSinglePacket (&testPacket1, DEV_STM32_2, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], regInfoRD.regData, COMMSINTERFACE_FUNC_CODE_SINGLE_READ);
-                  CORETIMER_DelayUs (450);
+                  CORETIMER_DelayUs (80);
                   CommSPI_ProcessReceiveSinglePacket (&testPacket1, MOBBUS_REG_TABLE.InternalRegAdd[regInfoRD.regAdd], &channelStatus2, COMMSINTERFACE_FUNC_CODE_SINGLE_READ_RESPOND);
-                  vTaskDelay (3);
+                  vTaskDelay (1);
 
                 }
             }
