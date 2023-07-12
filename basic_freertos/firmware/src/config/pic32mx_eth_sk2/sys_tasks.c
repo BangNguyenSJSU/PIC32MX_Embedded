@@ -107,23 +107,18 @@ SYS_Tasks (void)
   /* Maintain system services */
 
   // Create a queue to handle register commands
-  modbusWrittenQueue = xQueueCreate (128, sizeof (MODBUS_REISTER_INFO));
+  modbusWrittenQueue = xQueueCreate (1, sizeof (MODBUS_REISTER_INFO));
   if (modbusWrittenQueue == NULL)
     {
       // Handle error in queue creation
     }
-  modbusReadQueue = xQueueCreate (10, sizeof (MODBUS_REISTER_INFO));
+  modbusReadQueue = xQueueCreate (4, sizeof (MODBUS_REISTER_INFO));
   if (modbusReadQueue == NULL)
     {
       // Handle error in queue creation
     }
 
-  /* Maintain Device Drivers */
 
-
-  /* Maintain Middleware & Other Libraries */
-
-  /* Maintain the application's state machine. */
 
 
   //    (void) xTaskCreate((TaskFunction_t) LCD_Task1_Tasks,
@@ -141,14 +136,14 @@ SYS_Tasks (void)
                       &xUART_DMA_RX_TaskObject);
   (void) xTaskCreate ((TaskFunction_t) MODBUS_REGISTER_MAP_WR_RequestTasks,
                       "ModbusWRTasks",
-                      1024,
+                      2048,
                       NULL,
                       1,
                       &xMODBUS_REGISTER_WR_TaskObject);
 
   (void) xTaskCreate ((TaskFunction_t) MODBUS_REGISTER_MAP_RD_RequestTasks,
                       "ModbuRDTasks",
-                      1024,
+                      2048,
                       NULL,
                       1,
                       &xMODBUS_REGISTER_RD_TaskObject);

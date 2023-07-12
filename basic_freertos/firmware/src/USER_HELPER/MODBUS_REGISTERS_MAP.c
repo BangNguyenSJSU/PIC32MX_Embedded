@@ -36,12 +36,14 @@ Modbus_InitTable (MODBUS_REGISTER_TABLE_S *registerTable)
       if ((RegIndex >= CHANNEL_1_MAX_CURRENT) && (RegIndex <= CHANNEL_5_MAX_CURRENT))
         {
           registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_1;
+          registerTable->MB_REG_DATA[RegIndex] = 0xF8F8;
           registerTable->InternalRegAdd[RegIndex] = (RegIndex - CHANNEL_1_MAX_CURRENT) + 0x300; // Max Current Channel 1 
         }
 
       if ((RegIndex >= CHANNEL_6_MAX_CURRENT) && (RegIndex <= CHANNEL_10_MAX_CURRENT))
         {
           registerTable->MB_REG_DEVICE_ID[RegIndex] = DEV_STM32_2;
+          registerTable->MB_REG_DATA[RegIndex] = 0xF8F8;
           registerTable->InternalRegAdd[RegIndex] = (RegIndex - CHANNEL_6_MAX_CURRENT) + 0x300;
         }
 
