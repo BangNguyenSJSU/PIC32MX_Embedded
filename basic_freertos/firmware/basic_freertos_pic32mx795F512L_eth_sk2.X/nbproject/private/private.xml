@@ -5,12 +5,13 @@
         <group>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/USER_HELPER/MODBUS_REGISTERS_MAP.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/main.c</file>
-            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/peripheral/SPI_baremetal/SPI_COMM_INTERFACE.c</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/UartDmaRx_Task.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/definitions.h</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/sys_tasksObject.h</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/config/pic32mx_eth_sk2/sys_tasks.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/USER_HELPER/MODBUS_REGISTERS_MAP.h</file>
-            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/LCD_Task1.c</file>
             <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/UartDmaRx_Task.c</file>
+            <file>file:/C:/102413_LC_P500/PIC32MX_Embedded/basic_freertos/firmware/src/LCD_Task1.c</file>
         </group>
     </open-files>
 </project-private>

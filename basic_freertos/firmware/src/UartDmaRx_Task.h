@@ -26,6 +26,9 @@ extern "C" {
     void MODBUS_REGISTER_MAP_Task_Initialize(void);
     void MODBUS_WR_Request_Task_Runing(void);
     void MODBUS_RD_Request_Task_Runing(void);
+    
+    /* Handle Communication WatchDog */
+    void MODBUS_COMM_WatchDog_Task_Running(void);
 
 
 

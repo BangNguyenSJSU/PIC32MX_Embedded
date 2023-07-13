@@ -85,6 +85,11 @@ MODBUS_REGISTER_MAP_RD_RequestTasks (void *pvParameters)
   MODBUS_RD_Request_Task_Runing ();
 }
 
+static void 
+MODBUS_COMM_WatchDogTask (void *pvParameters)
+{
+    MODBUS_COMM_WatchDog_Task_Running();
+}
 
 
 
@@ -107,7 +112,7 @@ SYS_Tasks (void)
   /* Maintain system services */
 
   // Create a queue to handle register commands
-  modbusWrittenQueue = xQueueCreate (1, sizeof (MODBUS_REISTER_INFO));
+  modbusWrittenQueue = xQueueCreate (10, sizeof (MODBUS_REISTER_INFO));
   if (modbusWrittenQueue == NULL)
     {
       // Handle error in queue creation
@@ -147,6 +152,13 @@ SYS_Tasks (void)
                       NULL,
                       1,
                       &xMODBUS_REGISTER_RD_TaskObject);
+  
+   (void) xTaskCreate ((TaskFunction_t) MODBUS_COMM_WatchDogTask,
+                      "ModbuWDTasks",
+                      128,
+                      NULL,
+                      1,
+                      &xCommWatchDog_TaskObject);
 
 
 
